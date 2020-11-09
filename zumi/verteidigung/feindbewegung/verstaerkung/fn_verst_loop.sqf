@@ -239,7 +239,7 @@ _basischancen = switch _kampfkraft do {
 			1,//Motorisierter Trupp (4)
 			0.1,//Mechanisierter Trupp (5)
 			0.05,//Panzer (6)
-			0.05,//Fallschirmjäger (7)
+			0.1,//Fallschirmjäger (7)
 			0,//ZSU 23 / ZU 23 (8)
 			0,//Drehflügler (9)
 			0,//Starrflügler (10)
@@ -256,7 +256,7 @@ _basischancen = switch _kampfkraft do {
 			0.75,
 			0.15,
 			0.1,
-			0.1,
+			0.15,
 			0,
 			0,
 			0,
@@ -274,7 +274,7 @@ _basischancen = switch _kampfkraft do {
 			0.25,
 			0.2,
 			0,
-			0.1,
+			0.15,
 			0,
 			0,
 			0.05,

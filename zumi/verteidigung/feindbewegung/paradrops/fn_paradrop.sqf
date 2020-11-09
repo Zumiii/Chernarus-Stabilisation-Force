@@ -4,7 +4,6 @@
 
 */
 
-if !isServer exitWith {};
 
 params [
   ["_zielkoordinate",[0,0,0]], //ARRAY

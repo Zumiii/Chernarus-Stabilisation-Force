@@ -252,13 +252,13 @@ fzg_presets = [
 
   /* UN Truppen */
   /* 27 - Luftabwehr  */	 ,["rhsgref_nat_ural_Zu23"]
-  /* 28 - Kampfhelis	 */		,["LOP_UN_Mi8MTV3_FAB"]
+  /* 28 - Kampfhelis	 */		,["LOP_ChDKZ_Mi8MTV3_UPK23"]
   /* 29 - Offroader 	 */	,["rhsgref_nat_van"]
   /* 30 - BMPs  */		,["rhsgref_nat_btr70"]
   /* 31 - UAZs  */		,["rhsgref_nat_uaz","rhsgref_nat_uaz_open","rhsgref_nat_uaz_dshkm","rhsgref_nat_uaz_ags"]
   /* 32 - BTRs */		,["rhsgref_nat_btr70"]
-  /* 33 - Arty */	,["LOP_UN_BM21"]
-  /* 34 - Transportheli */ 		,["LOP_UN_Mi8MT_Cargo"]
+  /* 33 - Arty */	,["LOP_ChDKZ_BM21"]
+  /* 34 - Transportheli */ 		,["LOP_ChDKZ_Mi8MT_Cargo"]
   /* 35 - LKWs  */	,["rhsgref_nat_van","rhsgref_nat_ural","rhsgref_nat_ural_open"]
 
   /* Zivile Fahrzeuge */
@@ -272,7 +272,7 @@ fzg_presets = [
 
 verstaerkungsarten = [
   ["spaeher", 0, 900, 2],
-  ["fusstrupp", 0, 0, 1],
+  ["fusstrupp", 0, 120, 1],
   ["at_trupp", 0, 120, 2],
   ["aa_trupp", 0, 300, 2],
   ["trupp_mot", 0, 0, 2],

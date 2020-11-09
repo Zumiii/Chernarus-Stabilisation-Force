@@ -29,8 +29,6 @@
 
 */
 
-if !isServer exitWith {};
-
 params ["_grp","_position"];
 
 _grp setvariable ["befehl", []];

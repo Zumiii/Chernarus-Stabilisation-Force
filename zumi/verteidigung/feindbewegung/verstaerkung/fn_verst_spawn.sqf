@@ -35,15 +35,15 @@ params [
 */
 
 _spawndistance = switch _typ do {
-  case "fusstrupp" : {3000};
+  case "fusstrupp" : {2000};
   case "at_trupp";
-  case "aa_trupp" : {4000};
+  case "aa_trupp" : {3000};
   case "trupp_mech";
   case "panzer";
   case "mobile_luftabwehr";
   case "funkmobil";
-  case "trupp_mot" : {5000};
-  case "spaeher" : {3000};
+  case "trupp_mot" : {4000};
+  case "spaeher" : {2000};
   case "artillerie" : {5000};
   case "bomber" : {6000};
   case "starrfluegler" : {8000};
@@ -91,7 +91,7 @@ if (_typ isEqualTo "fallschirmjaeger") exitWith {
     case "axis_d" : {format ["AXIS_D_Gruppe_%1", (round (random 5))]};
     case "axis" : {format ["AXIS_Gruppe_%1", (round (random 4))]};
   };
-  private _grp = [_taskpos, _pos, east, selectRandom ([20] call zumi_fnc_fzg_namen), _trupp, true] call zumi_fnc_paradrop;
+  private _grp = [_taskpos, _pos, east, selectRandom ([24] call zumi_fnc_fzg_namen), _trupp, true] call zumi_fnc_paradrop;
   //Retourniere Anzahl lebende Einheiten
   (zumi_truppenteile select 1) pushBack _grp;
   count (_grp call CBA_fnc_getAlive);
@@ -107,7 +107,10 @@ switch _typ do {
   case "fusstrupp" : {
     _trupp = switch _fraktion do {
       case "axis_d" : {format ["AXIS_D_Gruppe_%1", (round (random 5))]};
-      case "axis" : {format ["AXIS_Gruppe_%1", (round (random 4))]};
+      case "axis" : {format ["AXIS_Gruppe_%1", (round (random 5))]};
+			default {
+				format ["AXIS_Gruppe_%1", (round (random 5))]
+			};
     };
     _grp = [_koords, east, _trupp] call zumi_fnc_spawn_grp;
     (zumi_truppenteile select 1) pushBack _grp;
@@ -154,7 +157,7 @@ switch _typ do {
   case "at_trupp" : {
     _trupp = switch _fraktion do {
       case "axis_d" : {format ["AXIS_D_Gruppe_%1", (round (random 5))]};
-      case "axis" : {format ["AXIS_Gruppe_%1", (round (random 4))]};
+      case "axis" : {format ["AXIS_Gruppe_%1", (round (random 5))]};
     };
     _grp = [_koords, east, _trupp] call zumi_fnc_spawn_grp;
     (zumi_truppenteile select 1) pushBack _grp;
@@ -394,8 +397,8 @@ switch _typ do {
   };
   case "funkmobil" : {
     _driver = switch _fraktion do {
-      case "axis_d" : {"LOP_TKA_Infantry_Rifleman"};
-      case "axis" : {"LOP_TKA_Infantry_Rifleman"};
+      case "axis_d" : {"LOP_CHR_Infantry_Rifleman"};
+      case "axis" : {"LOP_CHR_Infantry_Rifleman"};
     };
     private _spawn = [_pos, east, "rhs_gaz66_r142_msv"] call zumi_fnc_spawn_fzg;
     _spawn params ["_grp", "_veh"];
@@ -443,8 +446,8 @@ switch _typ do {
   };
   case "trupp_mot" : {
     _driver = switch _fraktion do {
-      case "axis_d" : {"LOP_TKA_Infantry_Crewman"};
-      case "axis" : {"LOP_TKA_Infantry_Crewman"};
+      case "axis_d" : {"LOP_CHR_Infantry_Crewman"};
+      case "axis" : {"LOP_CHR_Infantry_Crewman"};
     };
     _class = switch _fraktion do {
       case "axis_d" : {selectRandom ([14,21,15] call zumi_fnc_fzg_namen)};
@@ -452,7 +455,7 @@ switch _typ do {
     };
     _trupp = switch _fraktion do {
       case "axis_d" : {format ["AXIS_Gruppe_%1", (round (random 5))]};
-      case "axis" : {format ["AXIS_Gruppe_%1", (round (random 4))]};
+      case "axis" : {format ["AXIS_Gruppe_%1", (round (random 5))]};
     };
     _spawn = [_pos, east, _class, _trupp] call zumi_fnc_spawn_fzg;
     _spawn params ["_grp", "_veh"];
@@ -504,10 +507,14 @@ switch _typ do {
       case "axis" : {selectRandom ([25] call zumi_fnc_fzg_namen)};
     };
     _driver = switch _fraktion do {
-			case "axis_d" : {"LOP_TKA_Infantry_Crewman"};
-      case "axis" : {"LOP_TKA_Infantry_Crewman"};
+			case "axis_d" : {"LOP_CHR_Infantry_Crewman"};
+      case "axis" : {"LOP_CHR_Infantry_Crewman"};
     };
-    _spawn = [_pos, east, _class] call zumi_fnc_spawn_fzg;
+		_trupp = switch _fraktion do {
+			case "axis_d" : {format ["AXIS_Gruppe_%1", (round (random 5))]};
+			case "axis" : {format ["AXIS_Gruppe_%1", (round (random 5))]};
+		};
+    _spawn = [_pos, east, _class, _trupp] call zumi_fnc_spawn_fzg;
     _spawn params ["_grp", "_veh"];
     (zumi_truppenteile select 0) pushBack _grp;
     zumi_soldaten pushBack _grp;
@@ -553,8 +560,8 @@ switch _typ do {
   };
   case "artillerie" : {
     _driver = switch _fraktion do {
-			case "axis_d" : {"LOP_TKA_Infantry_Crewman"};
-      case "axis" : {"LOP_TKA_Infantry_Crewman"};
+			case "axis_d" : {"LOP_CHR_Infantry_Crewman"};
+      case "axis" : {"LOP_CHR_Infantry_Crewman"};
     };
     _spawn = [_pos, east, selectRandom ([19] call zumi_fnc_fzg_namen)] call zumi_fnc_spawn_fzg;
     _spawn params ["_grp", "_veh"];

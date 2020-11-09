@@ -4,7 +4,7 @@
 
 */
 
-if !isServer exitWith {};
+
 
 params ["_grp", "_zielkoordinate", ["_auftrag","verlegen"], ["_dauer",-1], ["_target", objNull], ["_radius", 75]];
 

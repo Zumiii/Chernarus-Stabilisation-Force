@@ -18,7 +18,7 @@ _objects = [];
 			_pos = getPosATL _refroad;
 			_offSetDirection = if (random 1 > 0.5) then {-1} else {1};
 			//_posX = (_pos select 0) + _width * _offSetDirection * sin(_dir);
-			_posX = (_pos select 0) + (_width/0.5) * _offSetDirection * cos(_dir);
+			_posX = (_pos select 0) + (_width/1.5) * _offSetDirection * cos(_dir);
 
 			_posY = (_pos select 1) + (_width/2) * _offSetDirection * cos(_dir);
 			_pos = [_posX, (_pos select 1), 0];

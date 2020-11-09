@@ -4,7 +4,7 @@
 
 */
 
-if !isServer exitWith {};
+
 
 params [["_ziel", objNull], "_encounter", ["_kommandeur", objNull]];
 //_encountervarianten params ["_array","_prob"];
