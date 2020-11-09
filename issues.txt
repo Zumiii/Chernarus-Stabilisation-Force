@@ -6,7 +6,7 @@ Einzelne Zivis bleiben bestehen X
 
 Zivi nach Tür beantworten bleibt stehen --> Sollte dann wieder reingehen
 
-
+"Anhalten" von Bluefor möglich machen
 
 
 - Ammo und Fuel Situation

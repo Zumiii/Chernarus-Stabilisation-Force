@@ -6,7 +6,6 @@
 
 */
 
-if !isServer exitWith {};
 
 params ["_position",["_rad", 1200], ["_side", west], ["_knowledge", 2]];
 

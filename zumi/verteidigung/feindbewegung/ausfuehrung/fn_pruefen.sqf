@@ -4,7 +4,6 @@
 
 */
 
-if !isServer exitWith {};
 
 params ["_grp"];
 

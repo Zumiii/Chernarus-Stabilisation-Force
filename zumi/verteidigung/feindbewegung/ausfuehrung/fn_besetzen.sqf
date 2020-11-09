@@ -4,7 +4,7 @@
 
 */
 
-if !isServer exitWith {};
+
 
 params ["_grp"];
 
@@ -13,12 +13,13 @@ private ["_position","_units","_statische"];
 _grp = _grp call CBA_fnc_getGroup;
 if !(local _grp) exitWith {};
 
-_position = getPosATL (leader _grp);
 _units = (units _grp);
 
 
 
 if (_units isEqualto []) exitWith {};
+
+  _position = getPosATL (leader _grp);
 
 private _befehl = _grp getVariable ["befehl", []];
 if !(_befehl isEqualTo []) then {
@@ -51,4 +52,4 @@ if !(_statische isEqualto []) then {
 if (_units isEqualto []) exitWith {};
 
 //Häuserpositionen befüllen //TODO Militärische Gebäude only und ev. Restverwertung nicht zugewiesener Einheiten
-[_position, [], _units, 75, 2, false, false] call ace_ai_fnc_garrison;
+[_position, nil, _units, 75, 2, false, false] call ace_ai_fnc_garrison;
