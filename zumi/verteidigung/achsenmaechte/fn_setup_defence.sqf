@@ -152,7 +152,7 @@ if !(_pos isequalto []) then {
 
 //can be far away
 
-  private _periphery = [true, [500, 4000, _taskcenter], [_taskcenter]] call zumi_fnc_neue_posi;
+  private _periphery = [true, [500, 3000, _taskcenter], [_taskcenter]] call zumi_fnc_neue_posi;
   private _pos = [_periphery select 0, 500, 1, 1, 75, 8, 0.25, true, false, false, false, false] call zumi_fnc_rnd_pos;
   if !(_pos isequalto []) then {
     private _vehicle_depot = createVehicle [selectRandom ["TK_WarfareBVehicleServicePoint_Base_EP1","TK_GUE_WarfareBVehicleServicePoint_Base_EP1"], [0,0,0], [], 0, "CAN_COLLIDE"];
@@ -173,7 +173,7 @@ if !(_pos isequalto []) then {
 */
 
 //One somewhere
-private _periphery = [true, [500, 5000, _taskcenter], [_taskcenter]] call zumi_fnc_neue_posi;
+private _periphery = [true, [500, 4000, _taskcenter], [_taskcenter]] call zumi_fnc_neue_posi;
 private _pos = [_periphery select 0, 500, 1, 1, 75, 8, 0.25, true, false, false, false, false] call zumi_fnc_rnd_pos;
 if !(_pos isequalto []) then {
   private _air_radar = createVehicle ["TK_WarfareBAntiAirRadar_Base_EP1", [0,0,0], [], 0, "CAN_COLLIDE"];

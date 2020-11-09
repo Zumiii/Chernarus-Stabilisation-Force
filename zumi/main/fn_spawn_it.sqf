@@ -144,5 +144,8 @@ if !(_einheiten isEqualTo []) then {
   _units pushBack _grp;
 };
 
+{
+  _x setVariable ["statisch", true];
+} forEach _units;
 
 [_units, _vehicles, _objects];

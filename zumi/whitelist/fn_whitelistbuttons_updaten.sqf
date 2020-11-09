@@ -23,17 +23,17 @@ if (_nur_fzg) exitWith {};
 private _txt = format ["closeDialog 0; [%2, %3, 'keys', %1] remoteExecCall ['zumi_fnc_whitelist_wahl', 2]", (lbSelection _fzgliste), str (getPlayerUID _caller), str (getPlayerUID _player)];
 buttonSetAction [2313, _txt];
 
-(_display displayCtrl 2314) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2315) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2316) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2317) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2318) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2319) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2320) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2321) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2322) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2323) ctrlSetTextColor [0, 0, 0, 1];
-(_display displayCtrl 2324) ctrlSetTextColor [0, 0, 0, 1];
+(_display displayCtrl 2314) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2315) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2316) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2317) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2318) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2319) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2320) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2321) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2322) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2323) ctrlSetTextColor [1, 1, 1, 1];
+(_display displayCtrl 2324) ctrlSetTextColor [1, 1, 1, 1];
 
 
 switch _eod do {
@@ -68,7 +68,7 @@ switch _panzer do {
     (_display displayCtrl 2314) ctrlSetTextColor [0, 1, 0, 1];
   };
   default {
-    (_display displayCtrl 2314) ctrlSetTextColor [0, 1, 0, 1];
+    (_display displayCtrl 2314) ctrlSetTextColor [1, 0, 0, 1];
   };
 };
 

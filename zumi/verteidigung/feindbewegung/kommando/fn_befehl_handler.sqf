@@ -108,7 +108,7 @@ If (_entsendbare isEqualTo []) exitwith {
 //Wenn Dringlichkeit vorliegt, sind alle Einheiten verfügbar, auch wenn sie Befehle hatten
 _entsendbare = if !(_dringend) then {
   _entsendbare select {
-      (_x getVariable ["befehl", []]) isEqualTo []
+      (((_x getVariable ["befehl", []]) isEqualTo []) && !(_x getVariable ["statisch", false]))
   }
 } else {
   _entsendbare

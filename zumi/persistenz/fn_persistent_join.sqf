@@ -11,6 +11,7 @@ _vehicle params ["_veh","_role", "_turretindex"];
 _medical params ["_isDeadPlayer","_isUnconscious", ["_durst", 0], ["_appetit", 0]];
 _rechte params ["_arzt", "_pio", "_eod", ["_pilot", 0], ["_pzbes", 0], ["_logistiker", 0], ["_keys", []], ["_waka", 0]];
 
+
 private _player = player;
 
 
