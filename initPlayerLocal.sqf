@@ -23,6 +23,7 @@ player setVariable ["ACE_canMoveRallypoint", false];
 
 
 player createDiaryRecord ["Diary", ["Whitelist", "For a serious gameplay, important roles need to be distributed to able players. Therefor the rights are administered by:<br></br><br></br>1. Zumi from the former FschJgBtl 323<br></br>2. Foremen<br></br><br></br>The following roles can be obtained:<br></br>- Combat first responder A/B/C<br></br>- Pionier 1 and 2<br></br>- EOD<br></br>- Pilot 1 (Helicopter) und 2 (Jets)<br></br>- Tank Crew<br></br>- Foreman<br></br><br></br>The foremen administer the vehicles, commissions and the armory. "]];
+player createDiaryRecord ["Diary", ["Welcome", "ITs your first day, rookie? Go to the <marker name='kpfue'>recruitment office</marker>.<br></br>An officer will assign you to a squad and you will be given your proper equipment."]];
 player createDiaryRecord ["Diary", ["Rules", "Play the game the way it is supposed to be played. No shenanigans! Do not ruin peoples immersion."]];
 player createDiaryRecord ["Diary", ["Prison", "People can be detained in the <marker name='Prison'>prison cell</marker>.<br></br>This feature does nothing yet. It is work in progress."]];
 player createDiaryRecord ["Diary", ["Transportation", "Vehicles are provided by the foremen at the <marker name='Parkplatz'>parking lot</marker>.<br></br>Vehicles have to be parked properly and safely after use. Repairs can be done by engineers.<br></br>It is possible for consistent groups to own a vehicle. Speak to the admin for more info."]];
