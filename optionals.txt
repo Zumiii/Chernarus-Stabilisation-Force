@@ -1,0 +1,53 @@
+enhanced turrets
+ctab
+
+
+
+21:23:23 Error in expression <ation};
+private _intelfrom = _optionen select _index;
+_intelfrom params ["_stru>
+21:23:23 Error position: <select _index;
+_intelfrom params ["_stru>
+21:23:23 Error Zero divisor
+21:23:23 File zumi\sectors\ambiente\dynamic\fn_dyn_ask_for_orders.sqf [zumi_fnc_dyn_ask_for_orders]..., line 115
+21:23:23 Error in expression <T") exitWith {
+if (isText _configEntry) then {
+getText _configEntry
+} else {
+_d>
+21:23:23 Error position: <then {
+getText _configEntry
+} else {
+_d>
+21:23:23 Error Generic error in expression
+21:23:23 File \x\cba\addons\common\fnc_getConfigEntry.sqf [CBA_fnc_getConfigEntry]..., line 1872
+
+Maintask missing
+
+c4_wait fehlerhaft
+viel mit meldungen fehlerhaft
+
+intelitems prüfen
+officers sollten wichtige infos haben!
+
+Autos sollten nicht gelöscht werden. Auto klauen bestrafen
+
+Abschliessen der Fahrzeuge (ev. ki autos klauen lassen)
+
+O Alpha 4-6: Cycle as first waypoint has no sense
+
+Einzelne Zivis bleiben bestehen X
+
+Zivi nach Tür beantworten bleibt stehen --> Sollte dann wieder reingehen
+
+
+
+
+- Ammo und Fuel Situation
+- Tageszeiten einbeziehen
+- Kräfte auch mal in Gebäude setzen für einen Hinterhalt
+
+Prüfen:
+O Alpha 4-6: Cycle as first waypoint has no sense
+Einzelne Zivis bleiben bestehen X
+Zivi nach Tür beantworten bleibt stehen --> Sollte dann wieder reingehen

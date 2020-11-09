@@ -1,0 +1,24 @@
+
+
+
+Wähle Orte aus, welche für Tasks in Frage kommen
+warlord
+defending
+humanitarian
+
+
+
+After Map restart populate certain areas maybe?
+--> Why not
+average_players_when_not_empty als Anhaltepunkt für Initialspawn
+Verstärkungen rechnen dann zusätzlich präsente Spieler
+
+
+On Start:
+Depending on Last Intel Progress:
+Choose places where the warlord could be and populate them
+If he was not seen, then he is not around
+Give the warlord a civilian Car and make him flee and be deleted at the nearest exit, when he is warned
+Make an Intel for the car somewhere
+
+On the Go:

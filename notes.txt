@@ -1,0 +1,55 @@
+
+
+
+
+
+
+Implementieren: Stellungen zur Berücksichtigung für KI
+in: zumi_fnc_reinf_pos
+
+
+//Leader droppen Intel bei Tod, wobei die Befehle dann relevant sind?
+
+
+Zuwenig im Zentrum --> Konzept überdenken
+
+
+
+
+
+
+
+Secondary Targets reduzieren
+Wegpunkte
+Da mehr Zivis hin, wo mehr Spieler sind oder allg. weniger zivis
+Infowahrscheinlichkeit erhöhen, wenn zivis rar sind
+
+_array = [];
+
+{
+  _temp = [];
+  private _pos = locationposition _x;
+  private _dist = switch (type _x) do {
+    case "NameCity" : {
+      300;
+    };
+    case "NameVillage" : {
+      250
+    };
+    case "NameCityCapital" : {
+      350
+    };
+    default {
+      250
+    };
+  };
+  for "_i" from 0 to 11 do {
+    private _offset = _pos getPos [_dist, _i*30];
+    _temp pushBack _offset;
+  };
+  _array pushBack _temp;
+} forEach (nearestLocations [[0,0,0],["NameCity", "NameCityCapital", "NameVillage", "Name"], 25000]);
+copyToClipboard str _array;
+
+
+[[[8690.44,6749.21,0],[0,""]],[[9163.93,3857.59,0],[0,""]],[[9240.95,8618.48,0],[0,""]],[[4789.83,6552.3,0],[0,""]],[[9240.95,8618.48,0],[0,""]],[[9163.93,3857.59,0],[0,""]],[[11423.3,6569.74,0],[0,""]],[[3716.36,3869.94,0],[1200,"PATROL"]],[[4907.09,12909.4,0],[1200,"DEFEND"]],[[2187.01,10984.2,0],[600,"PATROL"]],[[2736.74,6762.02,0],[0,""]],[[1559.63,3939.38,0],[1800,"PATROL"]],[[2736.74,6762.02,0],[900,"DEFEND"]],[[4012.64,8790.59,0],[0,""]],[[8131.66,3276.77,0],[0,""]],[[4004.88,4757.63,0],[0,""]],[[6839.73,5738.94,0],[0,""]],[[11184.2,12144.1,0],[0,""]],[[1816.91,9074.27,0],[0,""]],[[5976.48,4865.64,0],[0,""]],[[5994.62,10652.8,0],[0,""]],[[10099.4,5508.47,0],[0,""]],[[10440.1,9831.9,0],[1800,"GARRISON"]],[[6966.61,7781.8,0],[1200,"PATROL"]],[[8219.21,11968.2,0],[2400,"GARRISON"]],[[8131.66,3276.77,0],[1800,"PATROL"]],[[5994.62,10652.8,0],[1800,"DEFEND"]],[[13040.2,8013.61,0],[300,"SAD"]],[[10404.1,2491.95,0],[300,"SAD"]],[[3423.73,4830.76,0],[1800,"DEFEND"]],[[4004.88,4757.63,0],[1800,"PATROL"]],[[9240.95,8618.48,0],[0,""]],[[6966.61,7781.8,0],[1800,"DEFEND"]],[[1912.5,7705.83,0],[1800,"PATROL"]],[[6233.61,7790.28,0],[0,""]],[[4012.64,8790.59,0],[0,""]],[[3051.92,12681.5,0],[0,""]],[[1855.03,12072.4,0],[0,""]],[[4012.64,8790.59,0],[0,""]]]

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="Missions Stringtable">
+	<Package name="ZumiStrings">
+		<Key ID="STR_ZOPS_P1_TITEL">
+			<Original>Seize: %1</Original>
+		</Key>
+		<Key ID="STR_ZOPS_P1_NOTIZ">
+			<Original>Liberate: %1&lt;br/&gt;&lt;br/&gt;Time: %2&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;Enemy troops have dug themselves in in %1. They have been ordered to hold their ground.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Defeat the enemy forces in %1 and gain control of the sector.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%2&lt;br/&gt;&lt;br/&gt;Execute!</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_PATROL_TITEL">
+			<Original>Patrol</Original>
+		</Key>
+		<Key ID="STR_ZOPS_PATROL_NOTIZ">
+			<Original>Reconaissance patrols&lt;br/&gt;&lt;br/&gt;Time: %2&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;We need to ask the locals for hints on our targets. They may have knowledge about enemy movement.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Ask the chieftains in the villages. We need hints on enemy activity.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%1&lt;br/&gt;&lt;br/&gt;Execute!</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_HUMANITARIAN_TITEL">
+			<Original>Humanitarian Situation</Original>
+		</Key>
+		<Key ID="STR_ZOPS_HUMANITARIAN_NOTIZ">
+			<Original>Public health, infrastructure and economy&lt;br/&gt;&lt;br/&gt;Time: %2&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;The conflict is aggravating the humanitarian situation in the province.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Ameliorate the living conditions by helping the locals. Protect vital infrastructure, so the situation does not get worse.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%1&lt;br/&gt;&lt;br/&gt;Execute!</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_TENSION_TITEL">
+			<Original>Safety</Original>
+		</Key>
+		<Key ID="STR_ZOPS_TENSION_NOTIZ">
+			<Original>Lowering the tension&lt;br/&gt;&lt;br/&gt;Time: %2&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;The province must be made a safe place again.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Raise the general safety level of all villages by conducting patrols. Try to find intels about enemy activity.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%1&lt;br/&gt;&lt;br/&gt;Execute!</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_WARLORD_TITEL">
+			<Original>Warlord</Original>
+		</Key>
+		<Key ID="STR_ZOPS_WARLORD_NOTIZ">
+			<Original>Find and neutralize "Prophet"&lt;br/&gt;&lt;br/&gt;Time: %2&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;A man called "Prophet" seems to be educating men of Anizay in a salafistic manner.&lt;br/&gt;His scholars are responsible for various terrorist attacks on civilian infrastructure, including the sabotage of oilpumps and pipelines. CIA therefor considers him a serious threat to the US interests and wants him to be killed.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Identify "Prophet" and put him to rest. This one is not going to be easy, because he is believed to be well supported by the locals.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%1&lt;br/&gt;&lt;br/&gt;Execute!</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_INVASION_TITEL">
+			<Original>Army coup</Original>
+		</Key>
+		<Key ID="STR_ZOPS_INVASION_NOTIZ">
+			<Original>Military uprising&lt;br/&gt;&lt;br/&gt;Time: %2&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;The Anizay armed forces do not accept the foreign presence. They work together with the milita.&lt;br/&gt;They will try to maintain control of the area and probably launch attacks on our troops.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Defend the Anizay Province and yourself from the renegade military. Eliminate the commanding officers.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%1&lt;br/&gt;&lt;br/&gt;Execute!</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_P1_T1_TITEL">
+		<Original>Anti air</Original>
+		</Key>
+		<Key ID="STR_ZOPS_P1_T1_NOTIZ">
+			<Original>Clear skies&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;The enemy has AA guns.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Destroy all static anti air.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%2</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_P1_T2_TITEL">
+		<Original>Radio Antennas</Original>
+		</Key>
+		<Key ID="STR_ZOPS_P1_T2_NOTIZ">
+			<Original>Cut their comms&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;The enemy has set up mobile radio antennas.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Light them up.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%2</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_P1_T3_TITEL">
+		<Original>Officers</Original>
+		</Key>
+		<Key ID="STR_ZOPS_P1_T3_NOTIZ">
+			<Original>Neutralize officers&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;The commanders of the enemy troops are not going to surrender.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Eliminate the commanding officers.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%2</Original>
+		</Key>
+		<Key ID="STR_ZOPS_P1_T4_TITEL">
+		<Original>Cqb</Original>
+		</Key>
+		<Key ID="STR_ZOPS_P1_T4_NOTIZ">
+			<Original>Close quarters battle&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;The enemy has taken advantage of civilian infrastructure.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Neutralize the enemy forces in the conquered village. Check the buildings to make sure there is none left.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;%2</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_LOGITASK_TITEL">
+			<Original>Delivery</Original>
+		</Key>
+		<Key ID="STR_ZOPS_LOGITASK_NOTIZ">
+			<Original>Store goods&lt;br/&gt;&lt;br/&gt;Situation:&lt;br/&gt;A C130 is going to land on the runway.&lt;br/&gt;&lt;br/&gt;Task:&lt;br/&gt;Retrieve the cargo load and transfer it to the unloading area.&lt;br/&gt;If there is need to get rid of waste, just put it into the cargo space of that plane.&lt;br/&gt;&lt;br/&gt;Time limit:&lt;br/&gt;Until the next server restart</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_0">
+			<Original>I got some stuff to do.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_1">
+			<Original>Uhm... Good question.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_2">
+			<Original>Why do you want to know?</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_3">
+			<Original>Just wandering around.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_4">
+			<Original>Going to work.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_5">
+			<Original>Going to work in the fields.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_6">
+			<Original>Im looking for my women.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_7">
+			<Original>Im looking for my goats.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_8">
+			<Original>I might go to the market today.</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_9">
+			<Original>This is none of your business, american!</Original>
+		</Key>
+
+		<Key ID="STR_ZOPS_CIV_STORY_10">
+			<Original>I will stay here and do what a chieftain does.</Original>
+		</Key>
+
+
+	</Package>
+
+	<Package name="TaskStrings">
+		<Key ID="STR_Zumi_Task_Zuweisen">
+			<Original>Task assigned</Original>
+		</Key>
+		<Key ID="STR_Zumi_Task_Abbrechen">
+			<Original>Task canceled</Original>
+		</Key>
+		<Key ID="STR_Zumi_Task_Erstellen">
+			<Original>Task created</Original>
+		</Key>
+		<Key ID="STR_Zumi_Task_Scheitern">
+			<Original>Task failed</Original>
+		</Key>
+		<Key ID="STR_Zumi_Task_Erfolg">
+			<Original>Task succeeded</Original>
+		</Key>
+		<Key ID="STR_Zumi_Task_Aktualisiert">
+			<Original>Task updated</Original>
+		</Key>
+	</Package>
+
+</Project>
