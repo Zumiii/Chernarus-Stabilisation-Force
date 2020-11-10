@@ -18,4 +18,4 @@ switch (typeOf player) do {
 };
 
 
-player setUnitLoadout [[[],[],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",2],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",2],["ACE_tourniquet",1],["ACE_EarPlugs",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],[]],[],"rhs_8point_marpatwd","",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]], false];
+player setUnitLoadout [[],[],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["",[]],[],"rhs_8point_marpatwd","",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]];

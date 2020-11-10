@@ -50,7 +50,7 @@ ace_parachute_hideAltimeter = true;
 
 // ACE Cook off
 force force ace_cookoff_ammoCookoffDuration = 0.5;
-force force ace_cookoff_enable = true;
+force force ace_cookoff_enable = 2;
 force force ace_cookoff_enableAmmobox = true;
 force force ace_cookoff_enableAmmoCookoff = true;
 force force ace_cookoff_probabilityCoef = 0.5;
@@ -120,7 +120,10 @@ force force ace_repair_engineerSetting_wheel = 0;
 force force ace_repair_fullRepairLocation = 3;
 force force ace_repair_repairDamageThreshold = 0.6;
 force force ace_repair_repairDamageThreshold_engineer = 0.4;
-force force ace_repair_wheelRepairRequiredItems = 0;
+force force ace_repair_wheelRepairRequiredItems = ["ToolKit"]
+force force ace_repair_fullRepairRequiredItems = ["ToolKit"];
+force force ace_repair_miscRepairRequiredItems = ["ToolKit"];
+
 
 // ACE Magazine Repack
 force force ace_magazinerepack_timePerAmmo = 1.5;
@@ -179,7 +182,7 @@ force force ace_medical_statemachine_AIUnconsciousness = true;
 force force ace_medical_statemachine_cardiacArrestTime = 180;
 force force ace_medical_statemachine_fatalInjuriesAI = 0;
 force force ace_medical_statemachine_fatalInjuriesPlayer = 2;
-force force ace_medical_treatment_advancedBandages = true;
+force force ace_medical_treatment_advancedBandages = 2;
 force force ace_medical_treatment_advancedDiagnose = true;
 force force ace_medical_treatment_advancedMedication = true;
 force force ace_medical_treatment_allowLitterCreation = true;
@@ -359,11 +362,12 @@ force force ace_vehiclelock_vehicleStartingLockState = -1;
 
 // ACE View Distance Limiter
 force force ace_viewdistance_enabled = true;
-ace_viewdistance_limitViewDistance = 15000;
+force force ace_viewdistance_limitViewDistance = 8000;
 force force ace_viewdistance_objectViewDistanceCoeff = 6;
-ace_viewdistance_viewDistanceAirVehicle = 5000;
-ace_viewdistance_viewDistanceLandVehicle = 5000;
-ace_viewdistance_viewDistanceOnFoot = 5000;
+ace_viewdistance_viewDistanceAirVehicle = 10;
+ace_viewdistance_viewDistanceLandVehicle = 6;
+ace_viewdistance_viewDistanceOnFoot = 6;
+
 
 // ACE Weapons
 force force ace_common_persistentLaserEnabled = true;
