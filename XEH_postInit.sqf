@@ -363,7 +363,7 @@ if (isServer) then {
 	_waka = ["Waka", "Access the Armory",["\A3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa", "#003311"],{
 		params ["_t","_p","_actionparams"];
 		createDialog "waka_dialog";
-	},{((player getVariable ["323_waka", 0]) > 0) || ((player getVariable ["323_logistiker", 0]) > 0)}, {}, [], [0,0,0], 5] call zumi_fnc_interaction_create;
+	},{true}, {}, [], [0,0,0], 5] call zumi_fnc_interaction_create;
 
 	["zumi_interaction_add_to_object", [armory, _waka, 0, []]] call CBA_fnc_globalEventJIP;
 
@@ -481,7 +481,7 @@ if (isServer) then {
 
 	}] call CBA_fnc_addEventHandler;
 
-	_armory_stage_one = ["waka_stage_one","Armory Stage 1","\A3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa",
+	_armory_stage_one = ["waka_stage_one","Armory authorisation","\A3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa",
 	  {
 	   params ["_t","_p","_actionparams"];
 		 _t setVariable ["323_waka", 1, true];
@@ -493,7 +493,7 @@ if (isServer) then {
 
 	 ["zumi_interaction_add_to_class", ["B_Soldier_base_F", _armory_stage_one, 0, ["ACE_MainActions"], true]] call CBA_fnc_globalEventJIP;
 
-	 _armory_forbid = ["waka_entzug","Nutzungsrecht entziehen","\A3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa",
+	 _armory_forbid = ["waka_entzug","Revoke armory authorisation","\A3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa",
 	 	{
 	 	 params ["_t","_p","_actionparams"];
 	  _t setVariable ["323_waka", 0, true];

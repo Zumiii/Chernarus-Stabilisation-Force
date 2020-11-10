@@ -360,9 +360,7 @@ Armory =  [
       [
         ["CFR Bravo", "\z\ace\addons\medical_gui\ui\cross_T_9.paa"],
         [["rhs_weap_m4a1_carryhandle_grip3","","","rhsusf_acc_eotech_552",[],[],"rhsusf_acc_grip3"],[],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_corpsman",[["rhsusf_lwh_helmet_marpatwd",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30],["HandGrenade",2,1],["SmokeShell",2,1]]],["rhsusf_assault_eagleaiii_coy",[["ACE_surgicalKit",1],["ACE_quikclot",15],["ACE_elasticBandage",5],["ACE_adenosine",2],["ACE_epinephrine",10],["ACE_morphine",10],["ACE_packingBandage",20],["ACE_tourniquet",4],["ACE_salineIV",6],["ACE_splint",8]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]],
-        1,
-        0,
-        false
+        true
       ],
       [
         ["Radioman", getText (configfile >> "CfgWeapons" >> "ACRE_PRC117F" >> "picture")],
@@ -371,13 +369,12 @@ Armory =  [
       [
         ["Pilot", getText (configfile >> "CfgWeapons" >> "H_PilotHelmetHeli_B" >> "picture")],
         [["rhsusf_weap_MP7A2","","","",["rhsusf_mag_40Rnd_46x30_FMJ",0],[],""],[],[],["U_B_HeliPilotCoveralls",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["rhsusf_mag_40Rnd_46x30_FMJ",1,40]]],["V_TacVest_blk",[["ACRE_PRC152",1],["rhsusf_ANPVS_15",1],["rhsusf_mag_40Rnd_46x30_FMJ",5,40],["SmokeShellBlue",1,1],["B_IR_Grenade",1,1]]],[],"H_PilotHelmetHeli_B","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]],
-        0,
-        1,
-        false
+        true
       ],
       [
         ["Sapper", getText (configfile >> "CfgWeapons" >> "rhs_weap_M590_8RD" >> "picture")],
-        [["rhs_weap_M590_8RD","","","",[],[],""],[],["ACE_VMM3","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_rifleman",[["rhsusf_lwh_helmet_marpatwd",1],["ACE_DefusalKit",1],["ACE_Clacker",1],["HandGrenade",1,1],["SmokeShell",1,1],["rhsusf_8Rnd_00Buck",3,8],["rhsusf_8Rnd_Slug",3,8]]],["rhsusf_assault_eagleaiii_coy",[["ACE_EntrenchingTool",1],["ACE_wirecutter",1],["ACE_Fortify",1],["ToolKit",1],["ClaymoreDirectionalMine_Remote_Mag",1,1],["rhsusf_8Rnd_Slug",3,8],["rhsusf_8Rnd_00Buck",3,8],["DemoCharge_Remote_Mag",2,1]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
+        [["rhs_weap_M590_8RD","","","",[],[],""],[],["ACE_VMM3","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_rifleman",[["rhsusf_lwh_helmet_marpatwd",1],["ACE_DefusalKit",1],["ACE_Clacker",1],["HandGrenade",1,1],["SmokeShell",1,1],["rhsusf_8Rnd_00Buck",3,8],["rhsusf_8Rnd_Slug",3,8]]],["rhsusf_assault_eagleaiii_coy",[["ACE_EntrenchingTool",1],["ACE_wirecutter",1],["ACE_Fortify",1],["ToolKit",1],["ClaymoreDirectionalMine_Remote_Mag",1,1],["rhsusf_8Rnd_Slug",3,8],["rhsusf_8Rnd_00Buck",3,8],["DemoCharge_Remote_Mag",2,1]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]],
+        true
       ]
     ]
   ],

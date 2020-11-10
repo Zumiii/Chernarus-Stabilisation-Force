@@ -18,9 +18,7 @@ _auswahl = _liste lbvalue (lbcursel _liste);
 
 _insignia = (player getVariable ["BIS_fnc_setUnitInsignia_class", ""]);
 
-if ((player getVariable ["323_waka", 0]) < 1) exitWith {
-  hint "You are not allowed to do that. Ask the admin!";
-};
+
 
 switch _val do {
   case 0 : {
@@ -32,7 +30,11 @@ switch _val do {
     removeBackpack player;
     removeHeadgear player;
     removeGoggles player;
-    (((Armory select _val) select 1) select _auswahl) params ["_text_etc", "_loadout", ["_medic", 0], ["_pio", 0], ["_eod", false],["_instruktor", false]];
+    (((Armory select _val) select 1) select _auswahl) params ["_text_etc", "_loadout", ["_authorisation_necessary", false]];
+    _text_etc params ["_title", "_pic"];
+    if ((_authorisation_necessary) && (player getVariable ["323_waka", 0]) < 1) exitWith {
+      hint format ["You are not allowed to play as %1. Ask the admin for full armory authorisation!", _title];
+    };
     player setUnitLoadout [_loadout, false];
   };
   case 1 : {
