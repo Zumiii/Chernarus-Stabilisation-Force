@@ -11,6 +11,91 @@
 if (hasInterface) then {
 
 
+	["ace_arsenal_displayOpened",{
+ 		params ["_display"];
+		if ((player getVariable ["323_logistiker", 0]) > 0) exitWith {};
+		[
+			{
+				params ["_display"];
+				ctrlActivate  (_display displayCtrl 2018);
+				[_display, (_display displayCtrl 2018)] call ace_arsenal_fnc_fillLeftPanel;
+			},
+			[_display]
+		] call CBA_fnc_execNextFrame;
+
+		{
+ 			private _button = _display displayCtrl _x;
+ 			_button ctrlSetText "\A3\Ui_f\data\IGUI\Cfg\Actions\ico_OFF_ca.paa";
+ 			_button ctrlEnable false;
+ 			_button ctrlSetTooltip "Disabled by mission maker";
+		} forEach [1003, 1004, 1005, 2002, 2003, 2004, 2006, 2010, 2012, 2014, 2037, 3002, 3004];
+	}] call CBA_fnc_addEventHandler;
+/*
+	["ace_arsenal_cargoChanged", {
+    params ["_display","_item", "_addOrRemove", "_shiftState"];
+
+		switch ace_arsenal_currentLeftPanel do {
+	    case 2010 : {
+        if (_addOrRemove < 0) then {
+            for "_count" from 1 to ([1, 5] select _shiftState) do {
+                ace_arsenal_center addItemToUniform _item;
+            };
+          } else {
+            for "_count" from 1 to ([1, 5] select _shiftState) do {
+                ace_arsenal_center removeItemFromUniform _item;
+            };
+          };
+	        _load = loadUniform ace_arsenal_center;
+	        _maxLoad = gettext (configfile >> "CfgWeapons" >> uniform ace_arsenal_center >> "ItemInfo" >> "containerClass");
+	        _items = uniformItems ace_arsenal_center;
+	        ace_arsenal_currentItems set [15 ,_items];
+		    };
+	    case 2012 : {
+        if (_addOrRemove < 0) then {
+          for "_count" from 1 to ([1, 5] select _shiftState) do {
+              ace_arsenal_center addItemToVest _item;
+          };
+        } else {
+          for "_count" from 1 to ([1, 5] select _shiftState) do {
+            ace_arsenal_center removeItemFromVest _item;
+          };
+        };
+        _load = loadVest ace_arsenal_center;
+        _maxLoad = gettext (configfile >> "CfgWeapons" >> vest ace_arsenal_center >> "ItemInfo" >> "containerClass");
+        _items = vestItems ace_arsenal_center;
+        ace_arsenal_currentItems set [16,_items];
+	    };
+
+	    case 2014 : {
+	    	if (_addOrRemove < 0) then {
+        for "_count" from 1 to ([1, 5] select _shiftState) do {
+          ace_arsenal_center addItemToBackpack _item;
+         };
+	      } else {
+         for "_count" from 1 to ([1, 5] select _shiftState) do {
+           ace_arsenal_center removeItemFromBackpack _item;
+         };
+	      };
+	      _load = loadBackpack ace_arsenal_center;
+	      _maxLoad = backpack ace_arsenal_center;
+	      _items = backpackItems ace_arsenal_center;
+	      ace_arsenal_currentItems set [17,_items];
+	    };
+		};
+
+		// Update progress bar status, weight info
+		private _loadIndicatorBarCtrl = _display displayCtrl 701;
+		_loadIndicatorBarCtrl progressSetPosition _load;
+
+		private _value = {_x == _item} count _items;
+		_ctrlList lnbSetText [[_lnbCurSel, 2],str _value];
+
+		[_ctrlList, _maxLoad] call ace_arsenal_fnc_updateRightPanel;
+
+		hint "You are not allowed to pull ammo out of the arsenal";
+
+  }] call CBA_fnc_addEventHandler;
+*/
 /*
 	["zumi_jammer", {
 	  params [["_jammer", nil], ["_an", false]];
@@ -58,7 +143,7 @@ if (hasInterface) then {
 	  params ["_player","_anim"];
 		_ct = cursortarget;
 		if (isNull _ct || ([_ct] call ace_common_fnc_isPlayer)) exitWith {};
-		if ((_ct isKindoF "CAManBase" || _ct isKindoF "LandVehicle") && (_ct distance2d _player <= 20) && (alive _ct) && (!isNull driver _ct) && !(driver _ct getVariable ["ace_captives_isHandcuffed", false]) && (_player call CBA_fnc_canUseWeapon) && ((side _ct) == civilian)) then {
+		if ((_ct isKindoF "CAManBase" || _ct isKindoF "LandVehicle") && (_ct distance2d _player <= 20) && (alive _ct) && (!isNull driver _ct) && !(driver _ct getVariable ["ace_captives_isHandcuffed", false]) && (_player call CBA_fnc_canUseWeapon) && ((side _ct) IN [civilian, west])) then {
 		  switch _anim do {
 		    case "ace_gestures_Hold" : {
 					["zumi_anim", [_player, _ct, 0], _ct] call CBA_fnc_targetEvent;
@@ -365,14 +450,14 @@ if (isServer) then {
 		createDialog "waka_dialog";
 	},{true}, {}, [], [0,0,0], 5] call zumi_fnc_interaction_create;
 
-	["zumi_interaction_add_to_object", [armory, _waka, 0, []]] call CBA_fnc_globalEventJIP;
+	["zumi_interaction_add_to_object", [waka, _waka, 0, []]] call CBA_fnc_globalEventJIP;
 
 	_arsenal = ["Arsenal", "Ace Arsenal",[""],{
 		params ["_t","_p","_actionparams"];
 		[_p, _p, true] call ace_arsenal_fnc_openBox;
-	},{((player getVariable ["323_waka", 0]) > 1)}, {}, [], [0,0,0], 0] call zumi_fnc_interaction_create;
+	},{true}, {}, [], [0,0,0], 0] call zumi_fnc_interaction_create;
 
-	["zumi_interaction_add_to_object", [armory, _arsenal, 0, ["Waka"]]] call CBA_fnc_globalEventJIP;
+	["zumi_interaction_add_to_object", [waka, _arsenal, 0, ["Waka"]]] call CBA_fnc_globalEventJIP;
 
 
 	//Fullheal
@@ -636,7 +721,7 @@ if (isServer) then {
    _explosive setVariable ["ace_explosives_Direction", getDir _p, true];
 	 _explosive setVariable ["door", _door, true];
 	 _explosive setVariable ["house", _house, true];
-	 _explosive enableSimulationGlobal false;
+	 _explosive enableSimulation false;
 	 private _rigged = _house getVariable ["doors_rigged", []];
 	 _rigged pushBackUnique _door;
 	 _house setVariable ["doors_rigged", _rigged, true];

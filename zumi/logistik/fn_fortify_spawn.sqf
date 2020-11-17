@@ -31,5 +31,5 @@ _objs = [];
 } forEach _objekte;
 
 {
-  ["acex_fortify_objectPlaced", [objNull, west, _x]] call CBA_fnc_globalEvent;
+  ["acex_fortify_objectPlaced", [objNull, west, _x]] call CBA_fnc_serverEvent;
 } forEach _objs;

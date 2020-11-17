@@ -7,21 +7,21 @@
 
 
 befestigungsobjekte = [
-  ["Land_BagFence_Long_F",5],
-  ["Land_BagFence_Round_F",5],
-  ["Land_BagFence_Short_F",5],
-  ["Land_SandbagBarricade_01_half_F",5],
-  ["Land_SandbagBarricade_01_F",5],
-  ["Land_SandbagBarricade_01_hole_F",5],
-  ["Land_BagBunker_Small_F",5],
-  ["Land_BagBunker_Large_F",5],
-  ["Land_Fort_Watchtower_EP1",5],
-  ["Land_Razorwire_F",5],
-  ["Land_Plank_01_4m_F",5],
-  ["Land_Plank_01_8m_F",5],
-  ["Land_HBarrier_3_F",5],
-  ["Land_HBarrier_5_F",5],
-  ["Land_HBarrier_1_F",5]
+  ["Land_BagFence_Long_F", 50],
+  ["Land_BagFence_Round_F", 50],
+  ["Land_BagFence_Short_F", 25],
+  ["Land_SandbagBarricade_01_half_F", 100],
+  ["Land_SandbagBarricade_01_F", 150],
+  ["Land_SandbagBarricade_01_hole_F", 125],
+  ["Land_BagBunker_Small_F", 350],
+  ["Land_BagBunker_Large_F", 2100],
+  ["Land_Fort_Watchtower_EP1", 1800],
+  ["Land_Razorwire_F", 75],
+  ["Land_Plank_01_4m_F", 25],
+  ["Land_Plank_01_8m_F", 50],
+  ["Land_HBarrier_3_F", 1500],
+  ["Land_HBarrier_5_F", 2500],
+  ["Land_HBarrier_1_F", 500]
 ];
 
 zumi_carbombs = [

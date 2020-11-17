@@ -1,19 +1,18 @@
 
-
-O Alpha 4-6: Cycle as first waypoint has no sense
-
-Einzelne Zivis bleiben bestehen X
-
-Zivi nach Tür beantworten bleibt stehen --> Sollte dann wieder reingehen
-
-"Anhalten" von Bluefor möglich machen
-
-
-- Ammo und Fuel Situation
 - Tageszeiten einbeziehen
 - Kräfte auch mal in Gebäude setzen für einen Hinterhalt
 
 Prüfen:
-O Alpha 4-6: Cycle as first waypoint has no sense
-Einzelne Zivis bleiben bestehen X
-Zivi nach Tür beantworten bleibt stehen --> Sollte dann wieder reingehen
+Cycle as first waypoint has no sense
+
+Ältester läuft umher
+
+Fortify umnutzen für Logistiksystem
+
+Ausrüstung ermöglichen X
+
+Spawngesamtkonzept überdenken
+
+Feind ist zu verzettelt
+
+Sektorenkontrolle ändern
