@@ -5,11 +5,7 @@
 Prüfen:
 Cycle as first waypoint has no sense
 
-Ältester läuft umher
-
 Fortify umnutzen für Logistiksystem
-
-Ausrüstung ermöglichen X
 
 Spawngesamtkonzept überdenken
 
