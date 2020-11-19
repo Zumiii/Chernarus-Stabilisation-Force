@@ -21,7 +21,9 @@ befestigungsobjekte = [
   ["Land_Plank_01_8m_F", 50],
   ["Land_HBarrier_3_F", 1500],
   ["Land_HBarrier_5_F", 2500],
-  ["Land_HBarrier_1_F", 500]
+  ["Land_HBarrier_1_F", 500],
+  ["ACE_Wheel", 25],
+  ["ACE_Track", 25]
 ];
 
 zumi_carbombs = [

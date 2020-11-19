@@ -358,6 +358,11 @@ if (isServer) then {
 				"Mind the Performance, there has already a 100 objects been put down!" remoteExecCall ["hint", _unit];
 				false;
 			};
+			if (((typeOf _object) IN ["ACE_Wheel", "ACE_Track"]) && (_unit distance2d (getMarkerPos "Inst") > 50)) exitWith {
+				"You have to be within 50m of the repair area in order to spawn that!" remoteExecCall ["hint", _unit];
+				false;
+			};
+			/*
 			_can_build = [_unit call cba_fnc_getPos, typeOf _object] call zumi_fnc_can_build;
 			if !(_can_build) then {
 				_message = [];
@@ -372,7 +377,10 @@ if (isServer) then {
 			} else {
 				[_unit call cba_fnc_getPos, typeOf _object] call zumi_fnc_was_built;
 			};
+
 			_can_build;
+			*/
+			true;
 		}
 	] call acex_fortify_fnc_addDeployHandler;
 
@@ -472,12 +480,12 @@ if (isServer) then {
 
 	//Teleports
 
-	_tp_carrier = ["tp_carrier", "Teleport to carrier",["\A3\ui_f\data\igui\cfg\simpleTasks\types\boat_ca.paa"],{
+	_tp_airfield = ["tp_airfield", "Teleport to airfield",["\A3\ui_f\data\igui\cfg\simpleTasks\types\plane_ca.paa"],{
 		params ["_t","_p","_actionparams"];
-		_p setPosASL (getPosASL carrier);
+		_p setPosASL (getPosASL airfield);
 	},{true}, {}, [], [0,0,-3], 4] call zumi_fnc_interaction_create;
 
-	["zumi_interaction_add_to_object", [HQ, _tp_carrier, 0, []]] call CBA_fnc_globalEventJIP;
+	["zumi_interaction_add_to_object", [HQ, _tp_airfield, 0, []]] call CBA_fnc_globalEventJIP;
 
 
 	_tp_briefing = ["tp_briefing", "Teleport to briefing area",["\A3\ui_f\data\igui\cfg\simpleTasks\types\whiteboard_ca.paa"],{
@@ -485,7 +493,35 @@ if (isServer) then {
 		_p setPosASL (getPosASL HQ);
 	},{true}, {}, [], [0,0,1], 4] call zumi_fnc_interaction_create;
 
-	["zumi_interaction_add_to_object", [carrier, _tp_briefing, 0, []]] call CBA_fnc_globalEventJIP;
+	["zumi_interaction_add_to_object", [airfield, _tp_briefing, 0, []]] call CBA_fnc_globalEventJIP;
+
+	//Powerswitches
+	_powerswitch = ["Powerswitch","Hit the power switch","\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",{
+	 params ["_t","_p","_actionparams"];
+	 switch (_t animationSourcePhase "SwitchPosition") do {
+		case 0 : {
+		 {
+			private _jip_str = ["ace_interaction_setLight", [_x, true]] call cba_fnc_GlobalEventJIP;
+			[_jip_str, _x ] call CBA_fnc_removeGlobalEventJIP;
+		 } forEach (_t nearObjects ["Lamps_base_F", 600]);
+		 _t animate ["SwitchPosition", 1];
+		};
+		case 1 : {
+		 {
+			 private _jip_str = ["ace_interaction_setLight", [_x, false]] call cba_fnc_GlobalEventJIP;
+	 		[_jip_str, _x ] call CBA_fnc_removeGlobalEventJIP;
+		 } forEach (_t nearObjects ["Lamps_base_F", 600]);
+		 _t animate ["SwitchPosition", 0];
+		};
+		default {
+		 hint "Switch is currently being operated";
+		};
+	 };
+
+	},{true},{},[],[0.25,-0.1,0.4], 1] call zumi_fnc_interaction_create;
+
+
+ 	["zumi_interaction_add_to_object", [powerswitch, _powerswitch, 0, []]] call CBA_fnc_globalEventJIP;
 	/*
 
 		Fahrzeugdepot und Spieler- bzw. Lagerverwaltung
@@ -500,13 +536,13 @@ if (isServer) then {
 
 	["zumi_interaction_add_to_object", [laptop, _lagerverwaltung, 0, []]] call CBA_fnc_globalEventJIP;
 
-
+/*
 	_bestellungen = ["Bestellungsuebersicht","Bestellungsübersicht","\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa",{
 	  params ["_t","_p","_actionparams"];
 	  createDialog "lagerverwaltung_dialog";
 	},{true},{},[],[0,0,0], 1] call zumi_fnc_interaction_create;
 	["zumi_interaction_add_to_object", [laptop, _bestellungen, 0, ["Lagerverwaltung"]]] call CBA_fnc_globalEventJIP;
-
+*/
 
 	_depot = ["Fahrzeugdepot", "Fuhrparkverwaltung","\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa",{
 		params ["_t","_p","_actionparams"];
@@ -522,13 +558,14 @@ if (isServer) then {
 
 	["zumi_interaction_add_to_object", [laptop, _whitelist, 0, ["Lagerverwaltung"]]] call CBA_fnc_globalEventJIP;
 
+/*
 	_statistik = ["Statistik", "Besucherzahlen","\A3\ui_f\data\igui\cfg\simpleTasks\types\walk_ca.paa",{
 		params ["_t","_p","_actionparams"];
 		[] call zumi_fnc_show_statistic;
 	},{true}, {}, [], [0,0,0], 1] call zumi_fnc_interaction_create;
 
 	["zumi_interaction_add_to_object", [laptop, _statistik, 0, ["Lagerverwaltung"]]] call CBA_fnc_globalEventJIP;
-
+*/
 /* MISC */
 
 
