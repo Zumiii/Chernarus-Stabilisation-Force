@@ -28,7 +28,7 @@ _spieler = _array_2 select 0;
 
 
 if ({_x isEqualTo (getPlayerUID _caller)} count _whitelist < 1) exitWith {
-  "Sie sind dazu nicht berechtigt." remoteExecCall ["hint", _caller];
+  "You are not authorized." remoteExecCall ["hint", _caller];
 };
 
 
@@ -72,5 +72,5 @@ switch _recht do {
 };
 
 
-"Rechte gesetzt. Logistiker sind sofort registriert. Für den Rest gedulden Sie sich maximal 60 Sierra!" remoteExecCall ["hint", _caller];
-"Ihr Rechte wurden geändert!" remoteExecCall ["hint", _spieler];
+"Permissions have been set. Wait for roundabout 60 Sierra before you log off!" remoteExecCall ["hint", _caller];
+"Your permissions have been changed. Wait for roundabout 60 Sierra before you log off!" remoteExecCall ["hint", _spieler];

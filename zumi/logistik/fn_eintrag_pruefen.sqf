@@ -15,8 +15,8 @@ switch _button do {
     _br = parseText "<br />";
     _time = 5;
     _masse = 0;
-    _txt_array pushBack (parseText "<t align='left'><t size='1' color='#F7FE2E'>Artikel</t>");
-    _txt_array pushBack (parseText "<t align='right'><t size='1' color='#F7FE2E'>Frachtmasse</t>");
+    _txt_array pushBack (parseText "<t align='left'><t size='1' color='#F7FE2E'>Article</t>");
+    _txt_array pushBack (parseText "<t align='right'><t size='1' color='#F7FE2E'>Cargo size</t>");
     _txt_array pushBack _br;
     _txt_array pushBack _br;
     for "_i" from 0 to (count _waren)-1 do {
@@ -34,12 +34,12 @@ switch _button do {
     _txt_array pushBack (parseText format ["<t align='right'><t size='1'>%1</t>", _masse]);
     _txt_array pushBack _br;
     _txt_array pushBack _br;
-    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Bearbeitungsstatus: %1</t>", _bearbeitungsstatus]);
+    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>State of delivery: %1</t>", _bearbeitungsstatus]);
     _txt_array pushBack _br;
-    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Abholungsort: %1</t>", _abholungsort]);
+    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Place of Delivery: %1</t>", _abholungsort]);
     _txt_array pushBack _br;
     _txt_array pushBack _br;
-    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Bestellende/r: %1</t>", _auftraggeber]);
+    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Comissioner: %1</t>", _auftraggeber]);
     _txt = composeText _txt_array;
     [_txt, false, _time, 5] call ace_common_fnc_displayText;
   };
@@ -50,7 +50,7 @@ switch _button do {
     _br = parseText "<br />";
     _time = 5;
     _masse = 0;
-    _txt_array pushBack (parseText "<t align='left'><t size='1' color='#F7FE2E'>Artikel</t>");
+    _txt_array pushBack (parseText "<t align='left'><t size='1' color='#F7FE2E'>Article</t>");
     _txt_array pushBack _br;
     _txt_array pushBack _br;
     for "_i" from 0 to (count _waren)-1 do {
@@ -63,10 +63,10 @@ switch _button do {
     };
     _txt_array pushBack _br;
     _txt_array pushBack _br;
-    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Bearbeitungsstatus: %1</t>", _bearbeitungsstatus]);
+    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>State of delivery: %1</t>", _bearbeitungsstatus]);
     _txt_array pushBack _br;
     _txt_array pushBack _br;
-    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Bestellung wurde %1 durch: %2 am %3.%4.%5</t>",_bearbeitungsstatus, _name, str (_bstl select 2),str (_bstl select 1),str (_bstl select 0)]);
+    _txt_array pushBack (parseText format ["<t align='left'><t size='1' color='#F7FE2E'>Order was %1 by: %2 on %3.%4 of %5</t>",_bearbeitungsstatus, _name, str (_bstl select 2),str (_bstl select 1),str (_bstl select 0)]);
     _txt = composeText _txt_array;
     [_txt, false, _time, 5] call ace_common_fnc_displayText;
   };

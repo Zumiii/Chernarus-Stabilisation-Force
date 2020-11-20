@@ -34,7 +34,7 @@ _geaddet = false;
     for "_j" from 0 to (count _liefereinheiten)-1 do {
       if (_geaddet) exitWith {};
       (_liefereinheiten select _j) params ["_id","_classname","_icon","_anzeigename","_platzverbrauch","_cargo"];
-      if (_anzeigename isEqualTo _frachtname && (((progressPosition _progressbar) + (5*_platzverbrauch/100)) < 1.001)) exitWith {
+      if (_anzeigename isEqualTo _frachtname && (((progressPosition _progressbar) + (5*_platzverbrauch/50)) < 1.001)) exitWith {
         _geaddet = true;
         _index = _warenkorb lbAdd format ["%1: ", _anzeigename];
         _warenkorb lbSetPictureRight  [_index, _icon];

@@ -2063,7 +2063,7 @@ class bestellung_dialog {
 		class bestellung_progress_txt: rscText
 		{
 			idc = 1631;
-			text = "Used cargo space: 0/20";
+			text = "Used cargo space: 0/10";
 			style = ST_CENTER;
 			colorText[] = {0,0,0,1};
 			colorBackground[] = {0,0,0,0};

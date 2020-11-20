@@ -277,8 +277,8 @@ class zumi_fncs {
 		class zum_warenkorb;
 		class bestellung_ausloesen;
 		class update_progressbar;
-		class lieferungstask_init;
-		class lieferungstask;
+		class deliver_init;
+		class deliver;
 		class was_built;
 	};
 

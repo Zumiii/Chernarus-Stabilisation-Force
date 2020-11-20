@@ -530,28 +530,26 @@ if (isServer) then {
 
 
 
-	_lagerverwaltung = ["Lagerverwaltung","Lagerverwaltung","\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",{
+	_lagerverwaltung = ["Lagerverwaltung","Logistics Management","\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",{
 		params ["_t","_p","_actionparams"];
 	},{((player getVariable ["323_logistiker", 0]) > 0)},{},[],[0,0,0.5], 1] call zumi_fnc_interaction_create;
 
 	["zumi_interaction_add_to_object", [laptop, _lagerverwaltung, 0, []]] call CBA_fnc_globalEventJIP;
 
-/*
-	_bestellungen = ["Bestellungsuebersicht","Bestellungsübersicht","\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa",{
+	_bestellungen = ["Bestellungsuebersicht","Delivery overview","\A3\ui_f\data\igui\cfg\simpleTasks\types\container_ca.paa",{
 	  params ["_t","_p","_actionparams"];
 	  createDialog "lagerverwaltung_dialog";
 	},{true},{},[],[0,0,0], 1] call zumi_fnc_interaction_create;
 	["zumi_interaction_add_to_object", [laptop, _bestellungen, 0, ["Lagerverwaltung"]]] call CBA_fnc_globalEventJIP;
-*/
 
-	_depot = ["Fahrzeugdepot", "Fuhrparkverwaltung","\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa",{
+	_depot = ["Fahrzeugdepot", "Vehicle administration","\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa",{
 		params ["_t","_p","_actionparams"];
 		createDialog "fuhrpark_dialog";
 	},{true}, {}, [], [0,0,0], 1] call zumi_fnc_interaction_create;
 
 	["zumi_interaction_add_to_object", [laptop, _depot, 0, ["Lagerverwaltung"]]] call CBA_fnc_globalEventJIP;
 
-	_whitelist = ["Spielerverwaltung", "Spielerverwaltung","\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa",{
+	_whitelist = ["Spielerverwaltung", "Player administration","\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa",{
 		params ["_t","_p","_actionparams"];
 		createDialog "whitelist_dialog";
 	},{true}, {}, [], [0,0,0], 1] call zumi_fnc_interaction_create;

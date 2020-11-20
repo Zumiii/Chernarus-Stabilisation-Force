@@ -9,6 +9,7 @@ if (hasInterface) then {
   tasks_init = true;
   intelmarker = [];
 
+
   ["zumi_maintasks", {
     params ["_tsk"];
     [
@@ -37,6 +38,10 @@ if (hasInterface) then {
 
 // SERVER
 if (isServer) then {
+
+  order_in_progress = false;
+  publicVariable "order_in_progress";
+
     private _sectors = SECTORS;
     // GLOBAL
     private _inidbi = ["new", "us"] call OO_INIDBI;

@@ -36,15 +36,15 @@ lbClear _archiv;
 
 for "_i" from 0 to (count bestellungen)-1 do {
   (bestellungen select _i) params ["_auftragsnummer","_bestelldatum","_liefertermin","_auftraggeber","_waren_ids","_bearbeitungsstatus"];
-  if !(_bearbeitungsstatus IN ["storniert","quittiert","abgeschrieben"]) then {
-    _index = _bestellungen lbAdd format ["Bstl. %1 vom: %2.%3.%4   /   Lieferdatum: %5.%6.%7   /   Gez. %8", _auftragsnummer, str (_bestelldatum select 2), str (_bestelldatum select 1), str (_bestelldatum select 0), str (_liefertermin select 2), str (_liefertermin select 1), str (_liefertermin select 0), _auftraggeber];
+  if !(_bearbeitungsstatus IN ["storno","received","reported lost"]) then {
+    _index = _bestellungen lbAdd format ["Order %1 from: %2.%3.%4   /   DoD: %5.%6.%7   /   Sig. %8", _auftragsnummer, str (_bestelldatum select 2), str (_bestelldatum select 1), str (_bestelldatum select 0), str (_liefertermin select 2), str (_liefertermin select 1), str (_liefertermin select 0), _auftraggeber];
     _bestellungen lbSetPictureRight [_index, "\rhsusf\addons\rhsusf_a2port_air\data\mapico\icon_c130j_CA.paa"];
     _bestellungen lbSetValue [_index, _i];
   } else {
-    _index = _archiv lbAdd format ["Bstl: %1", text str _auftragsnummer];
+    _index = _archiv lbAdd format ["Order: %1", text str _auftragsnummer];
     _archiv lbSetPictureRight [_index, "\rhsusf\addons\rhsusf_a2port_air\data\mapico\icon_c130j_CA.paa"];
     _archiv lbSetValue [_index, _i];
-		_archiv lbSetToolTip [_index, format ["Lieferung %5 am %1.%2.%3 durch %4", (_bestelldatum select 2), (_bestelldatum select 1), (_bestelldatum select 0), _auftraggeber, _bearbeitungsstatus]];
+		_archiv lbSetToolTip [_index, format ["Ordered %5 on the %1.%2.%3 by %4", (_bestelldatum select 2), (_bestelldatum select 1), (_bestelldatum select 0), _auftraggeber, _bearbeitungsstatus]];
 		lbSort [_archiv,"ASC"];
   };
 };

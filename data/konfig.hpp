@@ -119,7 +119,7 @@ Bestellbare = [
     "Fuel",
     "\z\ace\addons\refuel\ui\icon_module_refuel.paa",
     [
-      [1,"FlexibleTank_01_sand_F","\z\ace\addons\refuel\ui\icon_refuel_interact.paa","Fuel Tank",4,[]]
+      [1,"FlexibleTank_01_forest_F","\z\ace\addons\refuel\ui\icon_refuel_interact.paa","Fuel Tank",4,[]]
     ]
   ],
   [

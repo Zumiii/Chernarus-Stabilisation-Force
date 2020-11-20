@@ -50,21 +50,21 @@ if (lbSize _bestellungen > 0) then {
   _details ctrlEnable true;
 
   //Prüfe, ob Storno möglich
-  if !(_bearbeitungsstatus IN ["verladen","versendet","geliefert"]) then {
+  if !(_bearbeitungsstatus IN ["loaded","sent","delivered"]) then {
     _storn ctrlEnable true;
     buttonSetAction [1614, format ["closeDialog 0; [player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "stornieren", _value, str (name player)]];
   } else {
     _storn ctrlEnable false;
   };
   //Prüfe, ob Abschreiben möglich
-  if (_bearbeitungsstatus isEqualTo "geliefert") then {
+  if (_bearbeitungsstatus isEqualTo "delivered") then {
     _abschr ctrlEnable true;
     buttonSetAction [1610, format ["closeDialog 0; [player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "abschreiben", _value, str (name player)]];
   } else {
     _abschr ctrlEnable false;
   };
   //Prüfe, ob Quittieren möglich
-  if (_bearbeitungsstatus isEqualTo "geliefert") then {
+  if (_bearbeitungsstatus isEqualTo "delivered") then {
     _quitt ctrlEnable true;
     buttonSetAction [1613, format ["closeDialog 0; [player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "quittieren", _value, str (name player)]];
   } else {

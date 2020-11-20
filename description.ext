@@ -827,7 +827,7 @@ class Params {
 		title = "Zeitansatz pro Stadt (cirka)";
 		texts[] = {"Eine Stunde","Zwo Stunden","Drei Stunden","Vier Stunden","Fünf Stunden","Sechs Stunden"};
 		values[] = {1, 2, 3, 4, 5, 6};
-		default = 6;
+		default = 4;
 	};
 
 };
