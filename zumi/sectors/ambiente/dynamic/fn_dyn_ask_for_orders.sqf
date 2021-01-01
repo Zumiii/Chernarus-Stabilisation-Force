@@ -70,29 +70,11 @@ private _order = if (_neuziel isEqualTo [0,0,0]) then {
 };
 
 
-if (isNil "zumi_stellungen") exitWith {
-  [(_positions call BIS_fnc_SelectRandom), _order];
-};
 
 if !(_active) exitWith {
-  _return = if (_art IN ["tak", "miliz"]) then {
-    private _optionen = zumi_stellungen select {alive (_x select 0)};
-    _exit = if (count _optionen > 0) then {
-      private _weights = [];
-      private _destinations = [];
-      {
-        _weights pushBack (_x select 4);
-        _destinations pushBack (_x select 5);
-      } forEach _optionen;
-      [_destinations selectRandomWeighted _weights, _order];
-    } else {
-      [(_positions call BIS_fnc_SelectRandom), _order];
-    };
-    _exit;
-  } else {
-    [(_positions call BIS_fnc_SelectRandom), _order];
-  };
-  _return;
+
+  [(_positions call BIS_fnc_SelectRandom), _order];
+
 };
 
 
@@ -103,7 +85,7 @@ if (!(isNull _grpID)) then {
 
 
 _return = if (_art IN ["tak", "miliz", "mil"]) then {
-  private _optionen = zumi_stellungen select {alive (_x select 0)};
+  private _optionen = if (count zumi_stellungen > 0) then {zumi_stellungen select {alive (_x select 0)}} else {[]};
   _temp = if (count _optionen > 0) then {
     private _weights = [];
     private _destinations = [];

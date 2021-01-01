@@ -40,7 +40,7 @@ for "_i" from 0 to (count commy_sectors) - 1 do {
 };
 
 
-[villages] spawn zumi_fnc_villages_loop;
+[villages] call zumi_fnc_villages_loop;
 
 [phase, villages] call zumi_fnc_init_dyn;
 

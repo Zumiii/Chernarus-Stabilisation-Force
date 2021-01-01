@@ -1,3 +1,5 @@
+DEBUG = false;
+
 
 missionended = false;
 //Dynamic Groups
@@ -31,11 +33,11 @@ publicVariable "Bestellbare";
 
 private _inidbi = ["new", "us"] call OO_INIDBI;
 
-
+zumi_stellungen = [];
 //Missionsphase ermitteln
 Phase = ["read", ["Missionspersistenz", "Phase", -1]] call _inidbi;
 if (Phase < 0) then {
-  Phase = ["Phase", 5] call BIS_fnc_getParamValue;
+  Phase = 5;
 };
 publicVariable "Phase";
 
@@ -44,7 +46,7 @@ publicvariable "tasknummer";
 
 max_spawns = ["read", ["Missionspersistenz", "max_spawns", 6]] call _inidbi;
 
-DEBUG = false;
+
 
 restart_nummer  = ["read", ["Missionspersistenz", "restart_nummer", 0]] call _inidbi;
 restart_nummer = restart_nummer + 1;

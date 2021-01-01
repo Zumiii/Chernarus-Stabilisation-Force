@@ -21,15 +21,13 @@ for "_i" from 0 to ((count _villages) - 1) do {
 _spannung = _spannung  / (count _villages);
 
 _return = [_phase, _spannung, (count _villages)] call zumi_fnc_dyn_zusammensetzung;
-
-
 dyn_array = [];
 patcounter = 0;
 
 
 _positions = [];
 for "_i" from 0 to (count villages)-1 do {
-  _pos = [((villages select _i) select 2), 500, 1, 1, 150, 1.5, 0.45, false, true] call zumi_fnc_rnd_pos;
+  _pos = [((villages select _i) select 2), ((villages select _i) select 9), 1, 1, 150, 1.5, 0.45, false, true] call zumi_fnc_rnd_pos;
 	if !(_pos isEqualTo []) then {
 		_positions pushBack _pos;
 	};

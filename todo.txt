@@ -68,24 +68,6 @@ Bestellbare Sachen überarbeiten
 };
 
 
-Parameters:
-	0: OBJECT - object action is attached to
-	1: STRING - action title text shown in action menu
-	2: STRING or CODE - idle icon shown on screen; if CODE is used the code needs to return the path to icon
-	3: STRING or CODE - progress icon shown on screen; if CODE is used the code needs to return the path to icon
-	4: STRING - condition for the action to be shown; special variables passed to the script code are _target (unit to which action is attached to) and _this (caller/executing unit)
-	5: STRING - condition for action to progress; if false is returned action progress is halted; arguments passed into it are: _target, _caller, _id, _arguments
-	6: CODE - code executed on start; arguments passed into it are [target, caller, ID, arguments]
-		0: OBJECT - target (_this select 0) - the object which the action is assigned to
-		1: OBJECT - caller (_this select 1) - the unit that activated the action
-		2: NUMBER - ID (_this select 2) - ID of the activated action (same as ID returned by addAction)
-		3: ARRAY - arguments (_this select 3) - arguments given to the script if you are using the extended syntax
-	7: CODE - code executed on every progress tick; arguments [target, caller, ID, arguments, currentProgress]; max progress is always 24
-	8: CODE - code executed on completion; arguments [target, caller, ID, arguments]
-	9: CODE - code executed on interrupted; arguments [target, caller, ID, arguments]
-	10: ARRAY - arguments passed to the scripts
-	11: NUMBER - action duration; how much time it takes to complete the action
-	12: NUMBER - priority; actions are arranged in descending order according to this value
-	13: BOOL - remove on completion (default: true)
-	14: BOOL - show in unconscious state (default: false)
-	15: BOOL - show on screen; if false action needs to be selected from action menu to appear on screen (default: true)
+[[29,true,[4000.7,8835.31,0.668976],[10460.7,5803.78,0],["LOP_CHR_Civ_Ural_Open",EAST,[],"c_car","ColorCIV","terr"],O Alpha 1-1,[O Alpha 1-1:1],[[10460.7,5803.78,0],[0,""]]]]
+
+[[10460.7,5803.78,0],[0,""]

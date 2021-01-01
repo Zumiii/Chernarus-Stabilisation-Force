@@ -5,7 +5,7 @@ params [
   "_befehl"
 ];
 
-_befehl params [["_wp_pos", _ziel], ["_wp_details", []]];
+_befehl params [["_wp_pos", [0,0,0]], ["_wp_details", []]];
 _wp_details params [["_do_until", cba_missionTime], ["_script", ""]];
 
 [_grp] call CBA_fnc_clearWaypoints;
@@ -69,4 +69,8 @@ switch _art do {
   default {
     [leader _grp, _ziel, 0, _waypointtype, _behaviour, "YELLOW", "Limited", "COLUMN", _waypointstatement] call CBA_fnc_addWaypoint;
   };
+};
+
+if (debug) then {
+  systemChat format ["Entsende %1 nach %2 mit Auftrag %3 mit %4 Haltung und %5 Skript", _grp, _ziel, _waypointtype, _behaviour, _waypointstatement];
 };
