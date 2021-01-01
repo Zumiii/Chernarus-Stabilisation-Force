@@ -9,6 +9,7 @@ params [["_unit", objNull], ["_modus", 1]];
 
 if ((isNull _unit) || (!alive _unit)) exitWith {};
 
+if !(local _unit) exitWith {};
 
 _gibt_auf = true;
 

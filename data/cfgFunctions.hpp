@@ -54,15 +54,6 @@ class zumi_fncs {
 		class produziere_intel;
 	};
 
-	class jammer {
-		file = "zumi\jammer";
-		class calculate_power;
-		class customSignalFnc;
-		class handleSignalReturn;
-		class remoteStopSpeaking;
-		class getSignalOutput;
-	};
-
 	class villages {
 		file = "zumi\sectors\ambiente\villages";
 		class decorate;
@@ -162,6 +153,8 @@ class zumi_fncs {
 	class sector_related_tasks {
 		file = "tasks\sector_related";
 		class humanitarian;
+		class humanitarian_task;
+		class ameliorate_conditions;
 		class tension;
 		class warlord;
 		class defending;

@@ -34,6 +34,9 @@ private _unit = _grp createUnit ["rhsusf_airforce_jetpilot", [0,0,0], [], 0, "CA
 _unit setSkill 1;
 _unit allowFleeing 0;
 _unit moveInDriver _lieferungscontainer;
+_unit assignAsDriver _lieferungscontainer;
+_lieferungscontainer allowCrewInImmobile true;
+_lieferungscontainer setUnloadInCombat [false, false];
 _lieferungscontainer setDir ([getPos _lieferungscontainer, (getMarkerpos "respawn_west")] call bis_fnc_dirTo);
 _lieferungscontainer setVelocity [70*(sin (getDir _lieferungscontainer)), 70*(cos (getDir _lieferungscontainer)), 0];
 [_lieferungscontainer, 10] call ace_cargo_fnc_setSpace;
@@ -44,7 +47,17 @@ clearWeaponCargoGlobal _lieferungscontainer;
 clearItemCargoGlobal _lieferungscontainer;
 _lieferungscontainer landAt 0;
 
+_lieferungscontainer addEventHandler ["Landing", {
+	params ["_plane", "_airportID", "_isCarrier"];
+  _plane AllowDamage false;
+}];
 
+_lieferungscontainer addEventHandler ["LandedStopped", {
+	params ["_plane", "_airportID"];
+  _plane AllowDamage true;
+  _plane engineOn false;
+  _plane setFuel 0;
+}];
 
 for "_i" from 1 to (count _waren_ids) do {
   (_waren_ids select (_i-1)) params ["_kategorie","_element"];
@@ -81,18 +94,31 @@ for "_i" from 1 to (count _waren_ids) do {
   _behaelter setVariable ["nr", (count lagerbestand) + 1];
 };
 
+
+
+(bestellungen select (_auftragsnummer - 1)) set [5, "delivered"];
+
+
 //The plane will be deleted, once a foreman confirms the payload
 [
 	{
 		params ["_args","_handle"];
     _args params ["_plane","_pilot", "_order"];
-    if ((_order IN Bestellungen) || (!isTouchingGround _plane) || !(unitReady _pilot)) exitWith {};
+    if (!alive _plane) exitWith {
+      [_handle] call CBA_fnc_removePerFrameHandler;
+			order_in_progress = false;
+	    publicVariable "order_in_progress";
+			[_pilot] call cba_fnc_deleteEntity;
+    };
+    if ((_order IN bestellungen) || (fuel _plane > 0)) exitWith {};
+    [_handle] call CBA_fnc_removePerFrameHandler;
     [_plane, _pilot] call cba_fnc_deleteEntity;
     order_in_progress = false;
     publicVariable "order_in_progress";
+
 	},
 	15,
-	[_lieferungscontainer, _unit, _auftrag]
+	[_lieferungscontainer, _unit, (bestellungen select (_auftragsnummer - 1))]
 ] call CBA_fnc_addPerFrameHandler;
 
 

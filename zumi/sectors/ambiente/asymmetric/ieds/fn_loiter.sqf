@@ -1,5 +1,7 @@
 params ["_unit"];
 
+if !(local _unit) exitWith {};
+
 private _target = [_unit] call zumi_fnc_hit_and_run;
 
 if ((count _target) > 0) then {

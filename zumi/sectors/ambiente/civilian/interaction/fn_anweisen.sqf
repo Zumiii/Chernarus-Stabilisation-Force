@@ -7,6 +7,7 @@
 
 params ["_unit", "_player", "_id", "_anweisung"];
 
+if !(local _unit) exitWith {};
 
 [_unit] call CBA_fnc_clearWaypoints;
 _unit enableAI "MOVE";

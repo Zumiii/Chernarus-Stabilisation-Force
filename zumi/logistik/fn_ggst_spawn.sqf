@@ -56,9 +56,9 @@ if (count _cargo > 0) then {
     };
   };
   if !(_mags isEqualTo []) then {
-    for "_i" from 0 to (count (_mags select 0))-1 do {
-      _objekt addMagazineAmmoCargo [(_mags select _i) select 0, 1, (_mags select _i) select 1];
+    for "_i" from 0 to (count _mags)-1 do {
       //_objekt addMagazineCargoGlobal [(_mags select 0) select _i, (_mags select 1) select _i];
+      _objekt addMagazineAmmoCargo [(_mags select _i) select 0, 1, (_mags select _i) select 1];
     };
   };
   if !(_items isEqualTo [[],[]]) then {
@@ -72,22 +72,20 @@ if (count _cargo > 0) then {
       _objekt addBackpackCargoGlobal [_klasse, 1];
       if !(_weparray isEqualTo []) then {
         for "_j" from 0 to (count _weparray)-1 do {
-          (_weparray select _j) params ["_weaponClass", "_suppressor", "_laser", "_optics", "_magazine", "_bipod"];
           _bp = (((everyContainer _objekt) select _i) select 1);
-          _bp addWeaponWithAttachmentsCargoGlobal [(_weparray select _j), 1];
+          _bp addWeaponWithAttachmentsCargoGlobal  [(_weparray select _j), 1];
         };
       };
       if !(_magarray isEqualTo []) then {
-        for "_j" from 0 to (count (_magarray select 0))-1 do {
+        for "_j" from 0 to (count _magarray)-1 do {
           _bp = (((everyContainer _objekt) select _i) select 1);
           _bp addMagazineAmmoCargo [(_magarray select _j) select 0, 1, (_magarray select _j) select 1];
-          //_bp addMagazineCargoGlobal [(_magarray select _j) select 0, (_magarray select _j) select 1];
         };
       };
       if !(_itemarray isEqualTo []) then {
-        for "_j" from 0 to (count (_itemarray select 0))-1 do {
+        for "_j" from 0 to (count _itemarray)-1 do {
           _bp = (((everyContainer _objekt) select _i) select 1);
-          _bp addItemCargoGlobal [((_itemarray select _j) select 0),((_itemarray select _j) select 1)];
+          _bp addItemCargoGlobal [(_itemarray select _j), 1];
         };
       };
     };

@@ -9,7 +9,7 @@ if ((count _spielerinfo) < 1) exitWith {};
 _spielerinfo params ["_loadout","_medical","_rechte","_pos","_timestamp", "_name", ["_insignia", ""], ["_vehicle", [-1, ""]]];
 _vehicle params ["_veh","_role", "_turretindex"];
 _medical params ["_isDeadPlayer","_isUnconscious", ["_durst", 0], ["_appetit", 0]];
-_rechte params ["_arzt", "_pio", "_eod", ["_pilot", 0], ["_pzbes", 0], ["_logistiker", 0], ["_keys", []], ["_waka", 0]];
+_rechte params ["_arzt", "_pio", "_eod", ["_pilot", 0], ["_pzbes", 0], ["_logistiker", 0], ["_keys", []], ["_waka", 0], ["_commander", 0]];
 
 
 private _player = player;
@@ -23,8 +23,13 @@ _player setVariable ["323_panzer", _pzbes, true];
 _player setVariable ["323_logistiker", _logistiker, true];
 _player setVariable ["323_keys", _keys, true];
 _player setVariable ["323_waka", _waka, true];
+_player setVariable ["entscheidungsbefugnis", _commander, true];
+
+
 _player setVariable ["acex_field_rations_thirst", _durst, true];
 _player setVariable ["acex_field_rations_hunger", _appetit, true];
+
+
 
 /*
 if (_befragt < 1) exitWith {
@@ -70,16 +75,7 @@ if (_isUnconscious) then {
 
 
 if (_befragt > 1) then {
-  //Der Spieler darf, wenn er einen Disconnect in den letzten 10 Minuten hatte, an Ort und Stelle sein
-  if ((_restart < restart_nummer) && ((_player distance2d zumi_taskpos) < 1000)) then {
-    hint "You were to close to the AO and spawn in Base therefor";
-  } else {
-    if ((cba_missiontime > (_time + 600)) && ((_player distance2d zumi_taskpos) < 1000)) then {
-      hint "You were to close to the AO and disconnected for ten minutes, you spawned in Base therefor";
-    } else {
-      _player setPosATL _pos;
-    };
-  };
+  _player setPosATL _pos;
 };
 
 
@@ -102,6 +98,8 @@ switch (typeOf _player) do {
   {
     params ["_p", "_ins"];
     [_p, _ins] call BIS_fnc_setUnitInsignia;
+    ["InitializePlayer", [_p, true]] call BIS_fnc_dynamicGroups;
+
   },
   [_player, _insignia],
   1

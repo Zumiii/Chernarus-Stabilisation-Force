@@ -43,8 +43,8 @@ if (count _parachuters > 0) then {
 		_unit moveInCargo _frachtmaschine;
 	} forEach _parachuters;
 };
-_cargogrp setVariable ["befehl", [_zielkoordinate, "eintreffen", 600]];
-_cargogrp setVariable ["truppengattung","fallschirmjaeger"];
+_cargogrp setVariable ["befehl", [_zielkoordinate, "eintreffen", 600], true];
+_cargogrp setVariable ["truppengattung","fallschirmjaeger", true];
 
 [
   {

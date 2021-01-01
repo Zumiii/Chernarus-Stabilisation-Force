@@ -72,7 +72,7 @@ if (count _cargo > 0) then {
     };
   };
   if !(_mags isEqualTo []) then {
-    for "_i" from 0 to (count (_mags select 0))-1 do {
+    for "_i" from 0 to (count _mags)-1 do {
       //_veh addMagazineCargoGlobal [(_mags select 0) select _i, (_mags select 1) select _i];
       _veh addMagazineAmmoCargo [(_mags select _i) select 0, 1, (_mags select _i) select 1];
     };

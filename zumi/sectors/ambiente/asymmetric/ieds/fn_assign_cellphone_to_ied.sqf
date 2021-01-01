@@ -7,6 +7,9 @@
 
 params ["_unit", "_explosive", "_magazineClass"];
 
+if !(local _unit) exitWith {};
+
+
 // Config is the last item in the list of passed in items.
 private _config = (_this select 3) select (count (_this select 3) - 1);
 

@@ -4,10 +4,10 @@
 
 */
 
-if !isServer exitWith {};
 
 params [["_positions", []], ["_grpID", grpNull], ["_veh", []], ["_element", []], ["_befehl", []], ["_active", false]];
 _element params [["_fzg", []], ["_side", "east"], ["_fullcrew", []], ["_markertype", []], ["_markercolor", []], ["_art", []]];
+
 
 //Process Unit, assign order
 
@@ -98,11 +98,11 @@ if !(_active) exitWith {
 
 //Set Orders if active
 if (!(isNull _grpID)) then {
-  _grpID setVariable ["has_orders", _order select 0];
+  _grpID setVariable ["has_orders", _order select 0, true];
 };
 
 
-_return = if (_art IN ["tak", "miliz"]) then {
+_return = if (_art IN ["tak", "miliz", "mil"]) then {
   private _optionen = zumi_stellungen select {alive (_x select 0)};
   _temp = if (count _optionen > 0) then {
     private _weights = [];

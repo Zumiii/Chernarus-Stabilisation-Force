@@ -72,4 +72,4 @@ if (_truppengattung IN ["moerser","rakete","haubitze","steilfeuer"]) then {
 };
 
 //Kommandeur kann hiernach 5 Min nicht mehr befehligen
-_kommandeur setVariable ["letzte_befehlsausgabe", CBA_missiontime + 300];
+_kommandeur setVariable ["letzte_befehlsausgabe", CBA_missiontime + 300, true];

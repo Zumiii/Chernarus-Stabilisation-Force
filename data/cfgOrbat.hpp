@@ -2,23 +2,28 @@
     id = 1;
     idType = 0;
     type = "Infantry";
-    size = "Division";
+    size = "Army";
     side = "west";
     tags[] = {"frequency_allocation"};
-    description = "Troop overview and radio frequency allocation";
-    text = "4th Cavalry Division";
-    textShort = "4th Cavalry Division";
-		texture = __EVAL(MISSIONLOCATION + "pics\4cav.paa");
-		color[] = {1,1,1,1};
-    insignia = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+    description = "Friedenserziwngender Einsatz unter Führung eines internationalen Kontignentes zum Schutze der zivilen Bevölkerung von Chernarus";
+    text = "CFOR";
+    textShort = "Mission";
+    insignia = __EVAL(MISSIONLOCATION + "pics\cfor.paa");
+    texture = __EVAL(MISSIONLOCATION + "pics\cfor.paa");
+    color[] = {1,1,1,1};
+    commander = "Hawthorn";
+    commanderRank = "General";
     //colorinsignia[] = {1,1,1,1};
 		class company {
 			type = "HQ";
-			text = "Chief in Command";
+			text = "Kommando";
 			tags[] = {"company"};
 			textShort = "Overlord";
-			size = "Company";
+			size = "Division";
 			side = "west";
+      description = "Befehlshabender Offizier";
+      commander = "Williamson";
+      commanderRank = "Major";
 	    class infantry_net {
 	      id = 1;
 	      idType = 0;
@@ -26,23 +31,45 @@
 	      size = "Platoon";
 	      side = "west";
 	      tags[] = {"infantry_net"};
-	      description = "The platoon standard radio is the AN/PRC-117F";
+	      description = "Das standardmässige Zugfunkgerät ist die SEM-70";
 	      text = "30 MHz";
 	      textShort = "Alpha";
-				insignia = "\idi\acre\addons\sys_prc117f\Data\PRC117F_ico.paa";
-
-				class squad_net_alpha_one {
+				insignia = "\idi\acre\addons\sys_sem70\data\ui\SEM70_icon.paa";
+        commander = "Karrenbauer";
+        commanderRank = "Captain";
+        /*
+        class keiler {
+					id = 1;
+					idType = 0;
+					type = "Infantry";
+					size = "Squad";
+					side = "west";
+					tags[] = {"squad_net_keiler"};
+					description = "https://www.twitch.tv/horkmaster92";
+					textShort = "Keiler";
+					text = "AN/PRC-152 on Channel 1";
+					insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+          texture = __EVAL(MISSIONLOCATION + "pics\keiler.paa");
+          color[] = {1,1,1,1};
+          commander = "Horkmaster";
+          commanderRank = "Sergeant";
+        };
+        */
+        class squad_net_alpha_one {
 					id = 1;
 					idType = 0;
 					type = "Infantry";
 					size = "Squad";
 					side = "west";
 					tags[] = {"squad_net_alpha_one"};
-					description = "The squad standard radio is the AN/PRC-152";
+					description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 					textShort = "Alpha 1";
-					text = "Channel 1";
-					insignia = "\idi\acre\addons\sys_prc152\Data\PRC152c_ico.paa";
-
+					text = "46 MHz";
+					insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+          texture = __EVAL(MISSIONLOCATION + "pics\banner92.paa");
+          color[] = {1,1,1,1};
+          commander = "Von Bergen";
+          commanderRank = "Lieutenant";
 					class squad_net_alpha_one_1 {
 						id = 1;
 						idType = 0;
@@ -50,10 +77,12 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_one_1"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 1-1";
-						text = "Block 1, Channels 1-8";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "47 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+            texture = __EVAL(MISSIONLOCATION + "pics\banner92.paa");
+            color[] = {1,1,1,1};
 					};
 
 					class squad_net_alpha_one_2 {
@@ -63,10 +92,12 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_one_2"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 1-2";
-						text = "Block 1, Channels 9-16";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "48 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+            texture = __EVAL(MISSIONLOCATION + "pics\banner92.paa");
+            color[] = {1,1,1,1};
 					};
 
 					class squad_net_alpha_one_3 {
@@ -76,23 +107,12 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_one_3"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 1-3";
-						text = "Block 2, Channels 1-8";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
-					};
-
-					class squad_net_alpha_one_4 {
-						id = 4;
-						idType = 0;
-						type = "Recon";
-						size = "fireteam";
-						side = "west";
-						tags[] = {"squad_net_alpha_one_4"};
-						description = "The fireteam standard radio is the AN/PRC-343";
-						textShort = "Alpha 1-4";
-						text = "Block 2, Channels 9-16";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "49 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+            texture = __EVAL(MISSIONLOCATION + "pics\banner92.paa");
+            color[] = {1,1,1,1};
 					};
 
 				};
@@ -104,11 +124,17 @@
 					size = "Squad";
 					side = "west";
 					tags[] = {"squad_net_alpha_two"};
-					description = "The squad standard radio is the AN/PRC-152";
+					description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 					textShort = "Alpha 2";
-					text = "Channel 2";
-					insignia = "\idi\acre\addons\sys_prc152\Data\PRC152c_ico.paa";
-
+					text = "50 MHz";
+					insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+          commander = "Mishkar";
+          commanderRank = "Lieutenant";
+          texture = __EVAL(MISSIONLOCATION + "pics\PzGrenBtl402_Logo.paa");
+          color[] = {1,1,1,1};
+          assets[] = {
+            Redd_Marder_1A5_Flecktarn
+          };
 					class squad_net_alpha_two_1 {
 						id = 1;
 						idType = 0;
@@ -116,10 +142,16 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_two_1"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 2-1";
-						text = "Block 3, Channels 1-8";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "51 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+            texture = __EVAL(MISSIONLOCATION + "pics\PzGrenBtl402_Logo.paa");
+            color[] = {1,1,1,1};
+            assets[] = {
+              Redd_Marder_1A5_Flecktarn
+            };
+
 					};
 
 					class squad_net_alpha_two_2 {
@@ -129,10 +161,16 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_two_2"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 2-2";
-						text = "Block 3, Channels 9-16";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "52 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+            texture = __EVAL(MISSIONLOCATION + "pics\PzGrenBtl402_Logo.paa");
+            color[] = {1,1,1,1};
+            assets[] = {
+              Redd_Marder_1A5_Flecktarn
+            };
+
 					};
 
 					class squad_net_alpha_two_3 {
@@ -142,23 +180,16 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_two_3"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 2-3";
-						text = "Block 4, Channels 1-8";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
-					};
+						text = "53 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+            texture = __EVAL(MISSIONLOCATION + "pics\PzGrenBtl402_Logo.paa");
+            color[] = {1,1,1,1};
+            assets[] = {
+              Redd_Marder_1A5_Flecktarn
+            };
 
-					class squad_net_alpha_two_4 {
-						id = 4;
-						idType = 0;
-						type = "MechanizedInfantry";
-						size = "fireteam";
-						side = "west";
-						tags[] = {"squad_net_alpha_two_4"};
-						description = "The fireteam standard radio is the AN/PRC-343";
-						textShort = "Alpha 2-4";
-						text = "Block 4, Channels 9-16";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
 					};
 
 				};
@@ -170,11 +201,12 @@
 					size = "Squad";
 					side = "west";
 					tags[] = {"squad_net_alpha_two"};
-					description = "The squad standard radio is the AN/PRC-152";
+					description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 					textShort = "Alpha 3";
-					text = "Channel 3";
-					insignia = "\idi\acre\addons\sys_prc152\Data\PRC152c_ico.paa";
-
+					text = "54 MHz";
+					insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
+          commander = "Birkenmeier";
+          commanderRank = "Lieutenant";
 					class squad_net_alpha_three_1 {
 						id = 1;
 						idType = 0;
@@ -182,12 +214,10 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_three_1"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 3-1";
-						text = "Block 5, Channels 1-8";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
-            commander = "F3u3rvogel";
-            commanderRank = "Sergeant";
+						text = "55 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
 					};
 
 					class squad_net_alpha_three_2 {
@@ -197,10 +227,10 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_three_2"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 3-2";
-						text = "Block 5, Channels 9-16";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "56 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
 					};
 
 					class squad_net_alpha_three_3 {
@@ -210,10 +240,10 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_three_3"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 3-3";
-						text = "Block 6, Channels 1-8";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "57 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
 					};
 
 					class squad_net_alpha_three_4 {
@@ -223,10 +253,10 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"squad_net_alpha_three_4"};
-						description = "The fireteam standard radio is the AN/PRC-343";
+						description = "Das standardmässige Gruppenfunkgerät ist die SEM-52 SL";
 						textShort = "Alpha 3-4";
-						text = "Block 6, Channels 9-16";
-						insignia = "\idi\acre\addons\sys_prc343\Data\static\prc343_icon.paa";
+						text = "58 MHz";
+						insignia = "\idi\acre\addons\sys_sem52sl\data\ui\SEM52sl_icon.paa";
 					};
 
 				};
@@ -240,11 +270,12 @@
 	      size = "Platoon";
 	      side = "west";
 	      tags[] = {"air_net"};
-	      description = "The platoon standard radio is the AN/PRC-117F";
+	      description = "Das standardmässige Zugfunkgerät ist die SEM-70";
 	      text = "32/33 MHz";
 	      textShort = "Bravo";
-				insignia = "\idi\acre\addons\sys_prc117f\Data\PRC117F_ico.paa";
-
+				insignia = "\idi\acre\addons\sys_sem70\data\ui\SEM70_icon.paa";
+        commander = "Malinowksy";
+        commanderRank = "Captain";
 				class air_net_helicopter {
 					id = 1;
 		      idType = 0;
@@ -252,10 +283,10 @@
 		      size = "Squad";
 		      side = "west";
 		      tags[] = {"air_net_helicopter"};
-		      description = "The platoon standard radio is the AN/PRC-117F";
+		      description = "Das standardmässige Zugfunkgerät ist die SEM-70";
 		      text = "32 MHz";
 		      textShort = "Bravo 1";
-					insignia = "\idi\acre\addons\sys_prc117f\Data\PRC117F_ico.paa";
+					insignia = "\idi\acre\addons\sys_sem70\data\ui\SEM70_icon.paa";
 
 					class air_net_helicopter_bravo_one_1 {
 						id = 1;
@@ -264,7 +295,7 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"air_net_helicopter_bravo_one_1"};
-						insignia = "\rhsusf\addons\rhsusf_a2port_air\data\mapico\Icon_ch47f_CA.paa";
+						insignia = "\rhsusf\addons\rhsusf_ch53\data\ui\ch53_icon_ca.paa";
 						text = "Aviation Support";
 						textShort = "Bravo 1-1";
 					};
@@ -278,7 +309,7 @@
 						tags[] = {"air_net_helicopter_bravo_one_2"};
 						textShort = "Bravo 1-2";
 						text = "Cavalry";
-						insignia = "\rhsusf\addons\rhsusf_a2port_air\data\mapico\Icon_uh60m_CA.paa";
+						insignia = "\rhsusf\addons\rhsusf_a2port_air2\data\mapico\Icon_UH1Y_CA.paa";
 					};
 
 					class air_net_helicopter_bravo_one_3 {
@@ -288,7 +319,7 @@
 						size = "fireteam";
 						side = "west";
 						tags[] = {"air_net_helicopter_bravo_one_3"};
-						insignia = "\rhsusf\addons\rhsusf_a2port_air\data\mapico\Icon_ah64d_CA.paa";
+						insignia = "\rhsusf\addons\rhsusf_a2port_air2\data\mapico\icomap_ah1z_ca.paa";
 						textShort = "Bravo 1-3";
 						text = "Cavalry";
 					};
@@ -302,10 +333,10 @@
 		      size = "Squad";
 		      side = "west";
 		      tags[] = {"air_net_jet"};
-		      description = "The platoon standard radio is the AN/PRC-117F";
+		      description = "Das standardmässige Zugfunkgerät ist die SEM-70";
 		      text = "33 MHz";
 		      textShort = "Bravo 2";
-					insignia = "\idi\acre\addons\sys_prc117f\Data\PRC117F_ico.paa";
+					insignia = "\idi\acre\addons\sys_sem70\data\ui\SEM70_icon.paa";
 
 					class air_net_jet_bravo_two_1 {
 						id = 1;
@@ -342,10 +373,15 @@
 	      size = "Platoon";
 	      side = "west";
 	      tags[] = {"tank_net"};
-	      description = "The platoon standard radio is the AN/PRC-117F";
+	      description = "Das standardmässige Zugfunkgerät ist die SEM-70";
 	      text = "31 MHz";
 	      textShort = "Charlie";
-				insignia = "\idi\acre\addons\sys_prc117f\Data\PRC117F_ico.paa";
+				insignia = "\idi\acre\addons\sys_sem70\data\ui\SEM70_icon.paa";
+        commander = "Gutknecht";
+        commanderRank = "Captain";
+        assets[] = {
+          BWA3_Leopard2_Fleck
+        };
 				class tank_net_charlie_one {
 					id = 1;
 					idType = 0;
@@ -354,10 +390,9 @@
 					side = "west";
 					tags[] = {"tank_net_charlie_one"};
 					textShort = "Charlie 1";
-					text = "M1A1 TUSK";
-					insignia = "\rhsusf\addons\rhsusf_m1a1\icons\M1A1AIMTUSKI.paa";
+					text = "31 MHz";
 					assets[] = {
-						rhsusf_m1a1aim_tuski_d
+						BWA3_Leopard2_Fleck
 					};
 				};
 
@@ -369,10 +404,9 @@
 					side = "west";
 					tags[] = {"tank_net_charlie_two"};
 					textShort = "Charlie 2";
-					text = "M1A1 TUSK";
-					insignia = "\rhsusf\addons\rhsusf_m1a1\icons\M1A1AIMTUSKI.paa";
+					text = "31 MHz";
 					assets[] = {
-						rhsusf_m1a1aim_tuski_d
+						BWA3_Leopard2_Fleck
 					};
 				};
 
@@ -384,27 +418,12 @@
 					side = "west";
 					tags[] = {"tank_net_charlie_three"};
 					textShort = "Charlie 3";
-					text = "M1A2 TUSK";
-					insignia = "\rhsusf\addons\rhsusf_m1a1\icons\M1A1AIMTUSKI.paa";
+					text = "31 MHz";
 					assets[] = {
-						rhsusf_m1a2sep1tuskiid_usarmy
+						BWA3_Leopard2_Fleck
 					};
 				};
 
-				class tank_net_charlie_four {
-					id = 4;
-					idType = 0;
-					type = "Armored";
-					size = "fireteam";
-					side = "west";
-					tags[] = {"tank_net_charlie_four"};
-					textShort = "Charlie 4";
-					text = "M1A2 TUSK";
-					insignia = "\rhsusf\addons\rhsusf_m1a1\icons\M1A1AIMTUSKI.paa";
-					assets[] = {
-						rhsusf_m1a2sep1tuskiid_usarmy
-					};
-				};
 
 	    };
 

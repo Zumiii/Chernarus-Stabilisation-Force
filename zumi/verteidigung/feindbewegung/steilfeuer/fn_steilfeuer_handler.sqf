@@ -16,15 +16,8 @@ params [
 
 */
 
-_finished = false;
-for "_i" from 0 to (count zumi_maintasks) - 1 do {
-	(zumi_maintasks select _i) params ["_taskname","_description_kurz","_description_lang","_seite","_marker","_taskstate","_position","_hud","_symbol"];
-	if ((_taskname isEqualTo _task) && (_taskstate IN ["failed","succeeded","canceled"])) exitWith {
-		_finished = true;
-	};
-};
+if (_task call BIS_fnc_taskCompleted) exitwith {};
 
-if (_finished) exitwith {};
 
 If (zumi_steilfeuerbefehle isEqualTo []) exitWith {
   //Loope erneut
@@ -120,7 +113,7 @@ If (_batterien isEqualTo []) exitwith {
 
 private _wasys = selectRandom _batterien;
 //Es wird höchstens alle 3 Minuten gefeuert
-_wasys setVariable ["zuletzt_gefeuert", CBA_missiontime + 180];
+_wasys setVariable ["zuletzt_gefeuert", CBA_missiontime + 180, true];
 
 //Falls mir ein Fehler unterläuft bei der Munitionswahl
 private _geschosstypen = getArtilleryAmmo [_wasys];

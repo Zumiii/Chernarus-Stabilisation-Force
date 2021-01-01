@@ -42,7 +42,7 @@ publicVariable "Phase";
 tasknummer = 1;
 publicvariable "tasknummer";
 
-max_spawns = ["read", ["Missionspersistenz", "max_spawns", 10]] call _inidbi;
+max_spawns = ["read", ["Missionspersistenz", "max_spawns", 6]] call _inidbi;
 
 DEBUG = false;
 
@@ -64,6 +64,16 @@ if (count _temp < 1) then {
 };
 average_players_when_not_empty = _temp call BIS_fnc_arithmeticMean;
 
+
+/*////////////////////////////////////////
+/ Bezüglich KI - Command                        /
+////////////////////////////////////////*/
+
+zumi_warfare  = ["read", ["Missionspersistenz", "zumi_warfare", [[], [], [], [], []]]] call _inidbi;
+
+zumi_strategy  = ["read", ["Missionspersistenz", "zumi_strategy", [1, 1, 1, "aggressive", "fight militia"]]] call _inidbi;
+
+
 /*////////////////////////////////////////
 / Bezüglich Umwelt                       /
 ////////////////////////////////////////*/
@@ -80,10 +90,10 @@ timestamp = ("getTimeStamp" call _inidbi);
 
 
 //Beschädigte Häuser
-haus_schaden = ["read", ["Missionspersistenz", "Einsturzgefahr", 0]] call _inidbi;
+houses_damaged = ["read", ["Missionspersistenz", "houses_damaged", 0]] call _inidbi;
 
 //Zerstörte Häuser
-haus_kaputt = ["read", ["Missionspersistenz", "Einsturz", 0]] call _inidbi;
+houses_ruined = ["read", ["Missionspersistenz", "houses_ruined", 0]] call _inidbi;
 
 //Ruinen - Positionen
 ruinen = ["read", ["Missionspersistenz", "Ruinen", []]] call _inidbi;
@@ -97,20 +107,18 @@ ieds_defused = ["read", ["Missionspersistenz", "Defused", 0]] call _inidbi;
 //Gesprengte IEDs
 ieds_gesprengt = ["read", ["Missionspersistenz", "Detonated", 0]] call _inidbi;
 
+losses = ["read", ["Missionspersistenz", "losses", [0,0,0,0]]] call _inidbi;
+east_losses = losses select 0;
+west_losses = losses select 1;
+ind_losses = losses select 2;
+civ_losses = losses select 3;
+
 /*////////////////////////////////////////
 / Bezüglich Logistik, Basisbau, Fahrzeuge/
 ////////////////////////////////////////*/
 
 
-//Fortify - Budget abrufen
-acex_fortify_budget_west = ["read", ["Missionspersistenz", "Fortifybudget", 500]] call _inidbi;
-publicVariable "acex_fortify_budget_west";
-[west, acex_fortify_budget_west, befestigungsobjekte] call acex_fortify_fnc_registerObjects;
 
-fortify_objekte_temp = [];
-//Platzierte Fortify - Objekte abrufen
-fortify_objekte = ["read", ["Missionspersistenz", "Fortifyobjekte", []]] call _inidbi;
-[fortify_objekte] call zumi_fnc_fortify_spawn;
 
 
 //Im Einsatz stehende Fahrzeuge abrufen
@@ -131,6 +139,15 @@ if (count Fahrzeuge > 0) then {
 };
 publicVariable "Fahrzeuge_Temp";
 
+//Fortify - Budget abrufen
+acex_fortify_budget_west = ["read", ["Missionspersistenz", "Fortifybudget", 500]] call _inidbi;
+publicVariable "acex_fortify_budget_west";
+[west, acex_fortify_budget_west, befestigungsobjekte] call acex_fortify_fnc_registerObjects;
+
+fortify_objekte_temp = [];
+//Platzierte Fortify - Objekte abrufen
+fortify_objekte = ["read", ["Missionspersistenz", "Fortifyobjekte", []]] call _inidbi;
+[fortify_objekte] call zumi_fnc_fortify_spawn;
 
 //Vorhandene Gütercontainer etc. abrufen (Nummerierte Objekte)
 lagerbestand = ["read", ["Lager", "Lagerbestand", []]] call _inidbi;
@@ -155,18 +172,62 @@ if ((count _bestellungen) > 0) then {
 };
 publicVariable "bestellungen";
 
+//Villages
+[] call zumi_fnc_init_villages;
+
 //Starte Tasks
 [] call zumi_fnc_maintask_master;
 
+addMissionEventHandler ["HandleDisconnect", {
+	params ["_unit", "_id", "_uid", "_name"];
+  private _inidbi = ["new", "us"] call OO_INIDBI;
+  ["write", ["Spielerliste",
+    //Eintragsname
+    _uid,
+    [
+      //LOADOUT
+      [getUnitLoadout [_unit, false]] call acre_api_fnc_filterUnitLoadout,
+      //MEDIZINISCHES
+      [
+        _unit getVariable ["isDeadPlayer", false],
+        _unit getVariable ["ACE_isUnconscious", false],
+        parseNumber ([(_unit getVariable ["acex_field_rations_thirst", 0]), 1, 4] call CBA_fnc_formatNumber),
+        parseNumber ([(_unit getVariable ["acex_field_rations_hunger", 0]), 1, 4] call CBA_fnc_formatNumber)
+      ],
+      [
+        _unit getVariable ["ace_medical_medicClass", 0],
+        _unit getVariable ["ACE_IsEngineer", 0],
+        _unit getVariable ["ACE_isEOD", false],
+        _unit getVariable ["323_pilot", 0],
+        _unit getVariable ["323_panzer", 0],
+        _unit getVariable ["323_logistiker", 0],
+        _unit getVariable ["323_keys", []],
+        _unit getVariable ["323_waka", 1],
+        _unit getVariable ["entscheidungsbefugnis", 0]
+      ],
+      getPosATL _unit,
+      [restart_nummer, cba_missiontime],
+      _name,
+      (_unit getVariable ["BIS_fnc_setUnitInsignia_class", ""]),
+      (_unit getVariable ["vehicle", [-1, "", []]]),
+      format ["Spieler getrennt: %1", timestamp]
+    ]
+  ]] call _inidbi;
+	false;
+}];
 
 addMissionEventHandler ["BuildingChanged", {
     params ["_buildingOld", "_buildingNew", "_isRuin"];
     (boundingBoxReal _buildingOld) params ["_a","_b"];
     _rad = (sizeOf (typeOf _buildingOld)) / 2;
+    //Find closest Sector to building
+    _closest_sector = [commy_sectors, {-(_buildingOld distance2d _x)}, objNull] call CBA_fnc_selectBest;
     if (_isRuin) then {
-      ["zumi_sanktion", [linearConversion [4, 25, _rad, -1, -5, true]]] call CBA_fnc_localEvent;
+      ["zumi_sanktion", [linearConversion [4, 25, _rad, -1, -5, true], commy_sectors find _closest_sector, true]] call CBA_fnc_localEvent;
+      houses_ruined = houses_ruined + 1;
     } else {
-      ["zumi_sanktion", [linearConversion [4, 25, _rad, -0.5, -1.5, true]]] call CBA_fnc_localEvent;
+      ["zumi_sanktion", [linearConversion [4, 25, _rad, -0.5, -1.5, true], commy_sectors find _closest_sector, true]] call CBA_fnc_localEvent;
+      houses_damaged = houses_damaged + 1;
     };
     if (count zumi_misc > 0) then {
       {
@@ -187,18 +248,6 @@ addMissionEventHandler ["BuildingChanged", {
     };
 }];
 
-//Killcounter
-addMissionEventHandler ["EntityKilled", {
-  params ["_killed", "_killer", "_instigator"];
-  _killed setVariable ["tod", cba_missiontime];
-  if (!isPlayer _killer) exitWith {};
-  if (_killed isKindOf "Goat_random_F") exitWith {
-    ["zumi_sanktion", [-1, (_killed getVariable ["id", -1])]] call CBA_fnc_localEvent;
-  };
-  if (side _killed == civilian) then {
-    ["zumi_sanktion", [-5, (_killed getVariable ["id", -1])]] call CBA_fnc_localEvent;
-  };
-}];
 
 
 //Starte repetitives Cleanup
@@ -211,7 +260,6 @@ addMissionEventHandler ["EntityKilled", {
   [],
   60
 ] call CBA_fnc_waitAndExecute;
-
 
 
 //Serverseitig fertig

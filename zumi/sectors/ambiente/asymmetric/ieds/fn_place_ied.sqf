@@ -1,7 +1,10 @@
 params ["_unit", "_position", ["_ladung", "SatchelCharge_Remote_Mag"], ["_triggertype", "DeadmanSwitch"], ["_handy", false], ["_triggering", false]];
 
+if !(local _unit) exitWith {};
+
 _explosive = [_unit, _unit modelToWorldVisual [0,0.5, 0], random 360, _ladung, _triggertype, []] call ace_explosives_fnc_placeExplosive;
 zumi_ieds pushBack _explosive;
+publicVariable "zumi_ieds";
 
 if (debug) then {
   systemChat str _code;

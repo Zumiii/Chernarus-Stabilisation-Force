@@ -11,7 +11,12 @@
 
 params [["_units", []], ["_modus", 1]];
 
+
+
 if (count _units < 1) exitWith {};
+
+_group = (_units select 0) call CBA_fnc_getGroup;
+if !(local _group) exitWith {};
 
 _alive = (_units call CBA_fnc_getAlive) select {!(_x getVariable ["ace_captives_isSurrendering", false])};
 if (count _alive < 1) exitWith {};

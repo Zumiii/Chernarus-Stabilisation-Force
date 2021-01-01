@@ -39,15 +39,8 @@ _mot_depots = zumi_stellungen select {((alive (_x select 0)) && ((_x select 3) i
 
 */
 
-_finished = false;
-for "_i" from 0 to (count zumi_maintasks) - 1 do {
-	(zumi_maintasks select _i) params ["_taskname","_description_kurz","_description_lang","_seite","_marker","_taskstate","_position","_hud","_symbol"];
-	if ((_taskname isEqualTo _task) && (_taskstate IN ["failed","succeeded","canceled"])) exitWith {
-		_finished = true;
-	};
-};
+if (_task call BIS_fnc_taskCompleted) exitwith {};
 
-if (_finished) exitwith {};
 
 /*
 

@@ -13,7 +13,7 @@ _whitelist  = ["read", ["Whitelist", "Logistiker", []]] call _inidbi;
 
 
 if ({_x isEqualTo (getPlayerUID _player)} count _whitelist < 1) exitWith {
-  "You are not authorized!" remoteExecCall ["hint", _player];
+  "You are not authorized to do that!" remoteExecCall ["hint", _player];
 };
 
 switch _button do {
@@ -26,7 +26,7 @@ switch _button do {
     (bestellungen select _value) set [3, _name];
     (bestellungen select _value) set [1, date];
     ["write", ["Missionspersistenz", format ["bstl_%1", count bestellungen], [count bestellungen, date, (bestellungen select _value) select 2, _name, (bestellungen select _value) select 4, "reported lost"]]] call _inidbi;
-    "Lieferung abgeschrieben" remoteExecCall ["hint", _player];
+    "Delivery reported as lost" remoteExecCall ["hint", _player];
   };
   case "quittieren" : {
     _inidbi = ["new", "us"] call OO_INIDBI;
@@ -34,7 +34,7 @@ switch _button do {
     (bestellungen select _value) set [3, _name];
     (bestellungen select _value) set [1, date];
     ["write", ["Missionspersistenz", format ["bstl_%1", count bestellungen], [count bestellungen, date, (bestellungen select _value) select 2, _name, (bestellungen select _value) select 4, "received"]]] call _inidbi;
-    "Lieferung quittiert" remoteExecCall ["hint", _player];
+    "Delivery reported as received" remoteExecCall ["hint", _player];
   };
   case "stornieren" : {
     "This is currently not implemented" remoteExecCall ["hint", _player];

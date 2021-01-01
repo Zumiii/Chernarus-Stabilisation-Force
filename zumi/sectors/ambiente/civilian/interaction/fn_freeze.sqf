@@ -2,10 +2,12 @@
 
 params ["_player","_unit"];
 
+if !(local _unit) exitWith {};
+
 if (isNull driver _unit || (!alive (driver _unit)) || (_unit getVariable ["kooperiert",false])) exitWith {};
 
 if (_unit getVariable ["combattant", false]) exitWith {
-  [_unit, "gestureHib" ,1] call ace_common_fnc_doGesture;
+  [_unit, "gestureHib" , 1] call ace_common_fnc_doGesture;
 };
 
 private ["_veh","_driver"];
@@ -29,9 +31,9 @@ if ((vehicle _unit) iskindOf "Landvehicle") then {
   {
     [
       {
-        if (isNull (_this select 1) || !alive (_this select 1) || !((_this select 0) getVariable ["kooperiert", false])) exitWith {};
-        (_this select 1) enableAI "MOVE";
-        (_this select 1) setVariable ["kooperiert", false, true];
+        if (isNull (_this select 0) || !alive (_this select 0) || !((_this select 0) getVariable ["kooperiert", false])) exitWith {};
+        (_this select 0) enableAI "MOVE";
+        (_this select 0) setVariable ["kooperiert", false, true];
       },
       [(_this select 1)],
       5

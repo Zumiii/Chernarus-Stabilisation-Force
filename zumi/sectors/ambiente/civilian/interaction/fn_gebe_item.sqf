@@ -7,6 +7,8 @@
 
 params ["_unit", "_player", "_id", "_item"];
 
+if !(local _unit) exitWith {};
+
 private _removed = [_player, _item] call CBA_fnc_removeItem;
 if !(_removed) exitWith {
   ["zumi_hinweis", ["You do not have any of this!", false, 8, 1], _player] call CBA_fnc_targetEvent;

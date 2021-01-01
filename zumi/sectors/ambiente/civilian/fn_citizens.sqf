@@ -247,6 +247,7 @@ _unit setVariable ["story", 10, true];
 _array = _unit call CBA_fnc_getNearestBuilding;
 _array params ["_building", "_buildingPositions"];
 _unit setVariable ["house", _building, true];
+_unit setVariable ["id", _id];
 private _renitenz = switch (true) do {
   case (_security < 0.25) : {
     ([[0,1,2,3], 1] call CBA_fnc_selectRandomArray) select 0;
@@ -280,6 +281,66 @@ switch (floor random _needs) do {
   };
   default {};
 };
+
+_unit setVariable ["has_humanitarian_task", true, true];
+_unit setVariable ["can_turn_in_humanitarian", false, true];
+private _aktion = ["Needs","What is the supply situation?",["\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_CA.paa","#cc2900"],{
+  params ["_t","_p","_actionparams"];
+  _actionparams params ["_id","_humanitarian_situation"];
+  if (_humanitarian_situation >= 100) exitWith {
+    hint "The chieftain tells you that he and his people are fine at the moment.";
+  };
+  _t setVariable ["has_humanitarian_task", false, false];
+  _t setVariable ["can_turn_in_humanitarian", true, true];
+  [_id] remoteExecCall ["zumi_fnc_humanitarian_task", 2];
+  hint "The chieftain tells you that he needs humanitarian goods.";
+},{(alive _target) && (_target getVariable ["has_humanitarian_task", false])},{},[_id, _humanitarian]] call zumi_fnc_interaction_create;
+_jip_str = ["zumi_interaction_add_to_object", [_unit, _aktion, 0, ["ACE_MainActions","Humanitär"]]] call CBA_fnc_globalEventJIP;
+[_jip_str, _unit ] call CBA_fnc_removeGlobalEventJIP;
+
+_insertChildren = {
+  params ["_target", "_player", "_params"];
+  _params params ["_id"];
+  // Add children to this action
+  private _actions = [];
+  {
+      private _childStatement = {
+        params ["_target", "_player", "_params"];
+        _params params ["_item", "_id"];
+        private _size = ([_item] call ace_cargo_fnc_getSizeItem);
+        [_id, _size, _player, _target, _item] remoteExecCall ["zumi_fnc_ameliorate_conditions", 2];
+      };
+      private _action = [format ["%1", [configFile >> "cfgVehicles" >> (typeOf _x)  >> "displayName", "String", "Supplies"] call CBA_fnc_getConfigEntry], _x, "", _childStatement, {true}, {}, [_x, _id],"",4,[false, false, false, false, false], {
+        params ["_target", "_player", "_params", "_actionData"];
+        _params params ["_item", "_id"];
+        // Modify the action - index 1 is the display name, 2 is the icon...
+        _actionData set [1, format ["%1", [configFile >> "cfgVehicles" >> (typeOf _item)  >> "displayName", "String", "Supplies"] call CBA_fnc_getConfigEntry]];
+      }
+    ] call zumi_fnc_interaction_create;
+      _actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
+  } forEach (
+    nearestObjects [_target,
+      [
+        "Land_PaperBox_01_small_closed_brown_F",
+        "Land_PaperBox_01_small_closed_brown_F",
+        "Land_PaperBox_01_small_stacked_F",
+        "Land_WaterBottle_01_stack_F",
+        "Land_Portable_generator_F",
+        "WaterPump_01_forest_F",
+        "Land_CinderBlocks_F",
+        "Land_Bricks_V1_F",
+        "Land_WoodenPlanks_01_pine_F"
+    ], 25, false]
+  );
+  _actions
+};
+private _aktion = ["Needs","Offer",["\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_CA.paa","#cc2900"],{
+  params ["_t","_p","_actionparams"];
+  _actionparams params ["_id"];
+},{(alive _target) && (_target getVariable ["can_turn_in_humanitarian", false])},_insertChildren,[_id]] call zumi_fnc_interaction_create;
+_jip_str = ["zumi_interaction_add_to_object", [_unit, _aktion, 0, ["ACE_MainActions","Humanitär"]]] call CBA_fnc_globalEventJIP;
+[_jip_str, _unit ] call CBA_fnc_removeGlobalEventJIP;
+
 
 //Intel
 _jip_str = ["zumi_interaction_add_to_object", [_unit, _intel, 0, ["ACE_MainActions"]]] call CBA_fnc_globalEventJIP;
@@ -365,16 +426,6 @@ private _aktion = ["Bandage","Give a packing bandage","\z\ace\addons\medical_tre
 
 _jip_str = ["zumi_interaction_add_to_object", [_unit, _aktion, 0, ["ACE_MainActions","Humanitär"]]] call CBA_fnc_globalEventJIP;
 [_jip_str, _unit ] call CBA_fnc_removeGlobalEventJIP;
-
-private _aktion = ["Needs","What is the supply situation?",["\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_CA.paa","#cc2900"],{
-  params ["_t","_p","_actionparams"];
-  _actionparams params ["_id","_item"];
-  hint "Bad";
-},{alive _target},{},[_id]] call zumi_fnc_interaction_create;
-
-_jip_str = ["zumi_interaction_add_to_object", [_unit, _aktion, 0, ["ACE_MainActions","Humanitär"]]] call CBA_fnc_globalEventJIP;
-[_jip_str, _unit ] call CBA_fnc_removeGlobalEventJIP;
-
 
 private _aktion = ["Crowd","How are your people?",["\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_CA.paa",""],{
   params ["_t","_p","_actionparams"];

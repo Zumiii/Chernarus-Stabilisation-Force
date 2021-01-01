@@ -17,16 +17,7 @@ params [
 
 */
 
-_finished = false;
-for "_i" from 0 to (count zumi_maintasks) - 1 do {
-	(zumi_maintasks select _i) params ["_taskname","_description_kurz","_description_lang","_seite","_marker","_taskstate","_position","_hud","_symbol"];
-	if ((_taskname isEqualTo _task) && (_taskstate IN ["failed","succeeded","canceled"])) exitWith {
-		_finished = true;
-	};
-};
-
-
-if (_finished) exitwith {};
+if (_task call BIS_fnc_taskCompleted) exitwith {};
 
 If (count zumi_befehle < 1) exitWith {
   if (debug) then {
@@ -134,7 +125,7 @@ If (_entsendbare isEqualTo []) exitwith {
 };
 
 private _entsendete = (_entsendbare call bis_fnc_selectRandom);
-_entsendete setVariable ["befehl", [_zielkoordinate, _auftrag, _dauer]];
+_entsendete setVariable ["befehl", [_zielkoordinate, _auftrag, _dauer], true];
 [_entsendete, _zielkoordinate, _auftrag, _dauer, _Target] call zumi_fnc_befehl_erhalten;
 
 if (debug) then {

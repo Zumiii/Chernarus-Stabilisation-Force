@@ -7,6 +7,7 @@
 
 params ["_unit", "_player", "_id", "_frage"];
 
+if !(local _unit) exitWith {};
 
 //_unit setVariable ["informant", 0, true];
 if (_unit getVariable ["combattant", false]) exitWith {

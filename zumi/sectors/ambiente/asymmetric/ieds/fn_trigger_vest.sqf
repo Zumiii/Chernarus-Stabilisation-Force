@@ -1,6 +1,6 @@
-if !isServer exitWith {};
-
 params ["_unit", "_position", "_mode", "_targets", "_target", "_handle"];
+
+if !(local _unit) exitWith {};
 
 [_handle] call CBA_fnc_removePerFrameHandler;
 [_unit] call CBA_fnc_clearWaypoints;

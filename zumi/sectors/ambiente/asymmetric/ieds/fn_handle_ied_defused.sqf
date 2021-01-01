@@ -4,6 +4,7 @@ params ["_ied","_pio"];
 
 if (_ied in zumi_ieds) then {
   zumi_ieds deleteAt (zumi_ieds find _ied);
+  publicVariable "zumi_ieds";
   _id = (_ied getVariable ["id", -1]);
   if (_id >= 0) then {
     ((villages select _id) select 3) set [2, false];

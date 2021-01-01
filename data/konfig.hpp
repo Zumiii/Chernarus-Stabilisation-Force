@@ -23,7 +23,8 @@ befestigungsobjekte = [
   ["Land_HBarrier_5_F", 2500],
   ["Land_HBarrier_1_F", 500],
   ["ACE_Wheel", 25],
-  ["ACE_Track", 25]
+  ["ACE_Track", 25],
+  ["ACE_ConcertinaWireCoil", 25]
 ];
 
 zumi_carbombs = [
@@ -51,7 +52,8 @@ Bestellbare = [
       [2,"RHS_M2StaticMG_D","","M2 (High)",2,[]],
       [3,"RHS_M2StaticMG_MiniTripod_D","","M2 (Low)",2,[]],
       [4,"RHS_TOW_TriPod_D","","TOW",2,[]],
-      [5,"RHS_MK19_TriPod_D","","MK19",2,[]]
+      [5,"RHS_MK19_TriPod_D","","MK19",2,[]],
+      [6,"RHS_M252_USMC_WD","","M252",2,[]]
     ]
   ],
   [
@@ -86,10 +88,7 @@ Bestellbare = [
     "\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa",
     [
       [1,"ACE_Box_Misc","\z\ace\addons\sandbag\data\m_sandbag_ca.paa","Empty Sandbags",2,[["ACE_Sandbag_empty",50]]],
-      [2,"ACE_Wheel","\z\ace\addons\repair\ui\tire_ca.paa","Tire",1,[]],
-      [3,"ACE_Track","\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa","Track",2,[]],
-      [4,"ACE_ConcertinaWireCoil","\A3\Ui_f\data\GUI\Cfg\KeyframeAnimation\IconControlPoint_CA.paa","Wirefence coil",1,[]],
-      [5,"Box_NATO_Equip_F","\A3\Weapons_F\Items\data\UI\gear_Toolkit_CA.paa","Tools",2,[["ACE_EntrenchingTool",4],["ACE_DefusalKit",4],["ToolKit",4],["ACE_Fortify",4],["ACE_wirecutter",2]]]
+      [2,"Box_NATO_Equip_F","\A3\Weapons_F\Items\data\UI\gear_Toolkit_CA.paa","Tools",2,[["ACE_EntrenchingTool",4],["ACE_DefusalKit",4],["ToolKit",4],["ACE_Fortify",4],["ACE_wirecutter",2]]]
     ]
   ],
   [
@@ -130,11 +129,18 @@ Bestellbare = [
     ]
   ],
   [
-    "Food",
-    "\z\ace\addons\disarming\ui\potato_ca.paa",
+    "Food & Humanitarian",
+    "\z\acex\addons\field_rations\ui\icon_survival.paa",
     [
       [1,"Land_PaperBox_01_small_closed_brown_F","\z\acex\addons\field_rations\ui\item_canteen_co.paa","Canteens",2,[["ACE_Canteen", 40]]],
-      [2,"Land_PaperBox_01_small_closed_brown_F","\z\acex\addons\field_rations\ui\item_mre_type2_co.paa","MREs",2,[["ACE_MRE_BeefStew", 40]]]
+      [2,"Land_PaperBox_01_small_closed_brown_F","\z\acex\addons\field_rations\ui\item_mre_type2_co.paa","MREs",2,[["ACE_MRE_BeefStew", 40]]],
+      [3,"Land_PaperBox_01_small_stacked_F","\z\acex\addons\field_rations\ui\icon_hud_hungerstatus.paa","Pallet of foodboxes",5,[]],
+      [4,"Land_WaterBottle_01_stack_F","\z\acex\addons\field_rations\ui\icon_hud_thirststatus.paa","Pallet of stacked waterbottles",5,[]],
+      [5,"Land_Portable_generator_F","\z\ace\addons\refuel\ui\icon_refuel_interact.paa","Portable Generator",2,[]],
+      [6,"WaterPump_01_forest_F","\z\acex\addons\field_rations\ui\icon_water_tap.paa","Water pump",10,[]],
+      [7,"Land_CinderBlocks_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Pallet of cinder blocks",5,[]],
+      [8,"Land_Bricks_V1_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Pallet of bricks",5,[]],
+      [9,"Land_WoodenPlanks_01_pine_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Stack of pine planks",10,[]]
     ]
   ],
   [
@@ -319,125 +325,146 @@ feindkraft_arsenal = [
 Armory =  [
   //0 - Ami Loadouts
   [
-    ["USMC Roles", "\A3\ui_f\data\map\markers\flags\usa_ca.paa"],
+    ["Deutschland (Fleck)", "\A3\ui_f\data\map\markers\flags\Germany_ca.paa"],
     //Loadouts der Rollen hier unten in selben Format einfügen
     [
-
       [
-        ["Squad Leader", getText (configfile >> "CfgWeapons" >> "ACRE_PRC152" >> "picture")],
-        [["rhs_weap_m4a1_carryhandle_grip3","","","rhsusf_acc_acog",[],[],"rhsusf_acc_grip3"],[],["rhsusf_weap_m1911a1","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_squadleader",[["rhsusf_lwh_helmet_marpatwd_headset_blk",1],["SmokeShellBlue",1,1],["SmokeShellRed",1,1],["rhsusf_mag_7x45acp_MHP",2,6],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30],["HandGrenade",1,1],["SmokeShell",1,1],["ACRE_PRC152",1]]],[],"rhs_8point_marpatwd","rhs_googles_black",["ACE_Vector","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]]
-      ],
-			[
-        ["Team Leader", getText (configfile >> "CfgWeapons" >> "rhs_weap_m4a1_carryhandle_m203" >> "picture")],
-        [["rhs_weap_m4a1_carryhandle_m203","","","rhsusf_acc_acog",[],[],""],[],["rhsusf_weap_m1911a1","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_teamleader",[["rhsusf_lwh_helmet_marpatwd_headset_blk",1],["SmokeShellBlue",1,1],["SmokeShellRed",1,1],["rhsusf_mag_7x45acp_MHP",2,6],["rhs_mag_30Rnd_556x45_M855A1_Stanag",6,30],["HandGrenade",1,1],["SmokeShell",1,1],["ACRE_PRC152",1]]],["rhsusf_assault_eagleaiii_coy",[["rhs_mag_M441_HE",6,1],["rhs_mag_M433_HEDP",4,1],["1Rnd_SmokeRed_Grenade_shell",2,1]]],"rhs_8point_marpatwd","rhs_googles_black",["ACE_Vector","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]]
+        ["Schütze (G36A1)", getText (configfile >> "CfgWeapons" >> "BWA3_G36A2" >> "picture")],
+        [["hlc_rifle_G36A1","","","",[],[],""],[],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_schtz",[["ACE_EntrenchingTool",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["hlc_30rnd_556x45_EPR_G36",7,30]]],[],"PBW_muetze2_fleck","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
       ],
       [
-        ["Rifleman", getText (configfile >> "CfgWeapons" >> "rhs_weap_m16a4" >> "picture")],
-        [["rhs_weap_m16a4","","","rhsusf_acc_acog",[],[],""],[],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_rifleman",[["rhsusf_lwh_helmet_marpatwd",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30],["HandGrenade",2,1],["SmokeShell",2,1]]],[],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]]
+        ["Schütze (G36A1 mit AG40)", getText (configfile >> "CfgWeapons" >> "BWA3_G36A2_AG40" >> "picture")],
+        [["hlc_rifle_G36A1AG36","","","",[],[],""],[],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_schtz",[["ACE_EntrenchingTool",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["hlc_30rnd_556x45_EPR_G36",7,30],["1Rnd_HE_Grenade_shell",6,1],["1Rnd_SmokeRed_Grenade_shell",2,1]]],[],"PBW_muetze2_fleck","",["BWA3_Vector","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
       ],
       [
-        ["Pointman (M72A7)", getText (configfile >> "CfgWeapons" >> "rhs_weap_m72a7" >> "picture")],
-        [["rhs_weap_m4","","","rhsusf_acc_compm4",[],[],""],["rhs_weap_m72a7","","","",["rhs_m72a7_mag",1],[],""],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_rifleman",[["rhsusf_lwh_helmet_marpatwd",1],["HandGrenade",2,1],["SmokeShell",1,1],["ACE_M84",1,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30]]],[],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
+        ["Schütze (G36A1 mit Panzerfaust)", getText (configfile >> "CfgWeapons" >> "BWA3_PzF3" >> "picture")],
+        [["hlc_rifle_G36A1","","","BWA3_optic_RSAS",[],[],""],["BWA3_PzF3","","","",["BWA3_PzF3_Tandem",1],[],""],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_schtz",[["ACE_EntrenchingTool",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["hlc_30rnd_556x45_EPR_G36",7,30]]],[],"PBW_muetze2_fleck","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
       ],
       [
-        ["Rifleman (AT4)", getText (configfile >> "CfgWeapons" >> "rhs_weap_M136" >> "picture")],
-        [["rhs_weap_m16a4","","","rhsusf_acc_compm4",[],[],""],["rhs_weap_M136","","","",["rhs_m136_mag",1],[],""],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_rifleman",[["rhsusf_lwh_helmet_marpatwd",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30],["HandGrenade",2,1],["SmokeShell",2,1]]],[],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]]
+        ["Schütze (G36A1 mit Bunkerfaust)", getText (configfile >> "CfgWeapons" >> "BWA3_Bunkerfaust" >> "picture")],
+        [["hlc_rifle_G36A1","","","",[],[],""],["BWA3_Bunkerfaust","","","",["BWA3_PzF3_DM32",1],[],""],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_schtz",[["ACE_EntrenchingTool",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["hlc_30rnd_556x45_EPR_G36",7,30]]],[],"PBW_muetze2_fleck","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
       ],
       [
-        ["Machine gunner (SAW)", getText (configfile >> "CfgWeapons" >> "rhs_weap_m249_pip" >> "picture")],
-        [["rhs_weap_m249_pip","","","rhsusf_acc_ELCAN",[],[],""],[],["rhsusf_weap_m9","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_mg",[["rhsusf_lwh_helmet_marpatwd",1],["HandGrenade",2,1],["SmokeShell",2,1],["rhsusf_100Rnd_556x45_soft_pouch_coyote",1,200],["rhsusf_mag_15Rnd_9x19_FMJ",3,15]]],["rhsusf_assault_eagleaiii_coy",[["ACE_EntrenchingTool",1],["rhsusf_100Rnd_556x45_soft_pouch_coyote",3,200]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
+        ["Schütze (MG3)", getText (configfile >> "CfgWeapons" >> "BWA3_MG3" >> "picture")],
+        [["BWA3_MG3","","","",[],[],""],[],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_mg",[["ACE_EntrenchingTool",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["BWA3_120Rnd_762x51",3,50]]],[],"PBW_muetze2_fleck","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
       ],
       [
-        ["Machine gunner (M240)", getText (configfile >> "CfgWeapons" >> "rhs_weap_m240B" >> "picture")],
-        [["rhs_weap_m240B","","","",["rhsusf_100Rnd_762x51_m80a1epr",100],[],""],[],["rhsusf_weap_m9","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACRE_PRC343",1]]],["rhsusf_spc_mg",[["rhsusf_lwh_helmet_marpatwd",1],["HandGrenade",2,1],["SmokeShell",2,1],["rhsusf_mag_15Rnd_9x19_FMJ",3,15],["rhsusf_100Rnd_762x51_m80a1epr",1,100]]],["rhsusf_assault_eagleaiii_coy",[["ACE_EntrenchingTool",1],["rhsusf_100Rnd_762x51_m80a1epr",3,100]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
+        ["Schütze (MG4)", getText (configfile >> "CfgWeapons" >> "BWA3_MG4" >> "picture")],
+        [["BWA3_MG4","","","",[],[],""],[],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_mg",[["ACE_EntrenchingTool",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["BWA3_200Rnd_556x45",2,200]]],[],"PBW_muetze2_fleck","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
       ],
       [
-        ["Auto-Rifleman (M27 IAR)", getText (configfile >> "CfgWeapons" >> "rhs_weap_m27iar" >> "picture")],
-        [["rhs_weap_m27iar","","","rhsusf_acc_su230",[],[],"rhsusf_acc_grip1"],[],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_iar",[["rhsusf_lwh_helmet_marpatwd",1],["HandGrenade",2,1],["SmokeShell",2,1],["rhs_mag_30Rnd_556x45_M855A1_PMAG",7,30]]],["rhsusf_assault_eagleaiii_coy",[["ACE_EntrenchingTool",1],["rhs_mag_100Rnd_556x45_M855A1_cmag",4,100]]],"rhs_8point_marpatwd","rhs_googles_black",["ACE_VectorDay","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
-      ],
-      [
-        ["DMR", getText (configfile >> "CfgWeapons" >> "rhs_weap_m14ebrri" >> "picture")],
-        [["rhs_weap_m14ebrri","","","rhsusf_acc_leupoldmk4",[],[],"rhsusf_acc_harris_bipod"],[],["rhsusf_weap_m9","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_sniper",[["rhsusf_lwh_helmet_marpatwd",1],["HandGrenade",2,1],["SmokeShell",2,1],["20Rnd_762x51_Mag",5,20],["rhsusf_mag_15Rnd_9x19_FMJ",2,15]]],[],"rhs_8point_marpatwd","rhs_googles_black",["ACE_VectorDay","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
-      ],
-      [
-        ["CFR Bravo", "\z\ace\addons\medical_gui\ui\cross_T_9.paa"],
-        [["rhs_weap_m4a1_carryhandle_grip3","","","rhsusf_acc_eotech_552",[],[],"rhsusf_acc_grip3"],[],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_corpsman",[["rhsusf_lwh_helmet_marpatwd",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30],["HandGrenade",2,1],["SmokeShell",2,1]]],["rhsusf_assault_eagleaiii_coy",[["ACE_surgicalKit",1],["ACE_quikclot",15],["ACE_elasticBandage",5],["ACE_adenosine",2],["ACE_epinephrine",10],["ACE_morphine",10],["ACE_packingBandage",20],["ACE_tourniquet",4],["ACE_salineIV",6],["ACE_splint",8]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]],
+        ["Gruppenführer", getText (configfile >> "CfgWeapons" >> "ACRE_SEM52SL" >> "picture")],
+        [["hlc_rifle_G36A1","","","",[],[],""],[],["BWA3_P8","","BWA3_acc_LLM01_irlaser","",[],[],""],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_grpfhr",[["ACE_EntrenchingTool",1],["ACRE_SEM52SL",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["hlc_30rnd_556x45_EPR_G36",7,30],["BWA3_DM32_Blue",1,1],["BWA3_DM32_Purple",1,1],["BWA3_DM32_Yellow",1,1],["BWA3_DM32_Red",1,1],["BWA3_15Rnd_9x19_P8",2,15]]],[],"PBW_muetze2_fleck","",["BWA3_Vector","","","",[],[],""],["ItemMap","BWA3_ItemNaviPad","","ItemCompass","ItemWatch",""]],
         true
       ],
       [
-        ["Radioman", getText (configfile >> "CfgWeapons" >> "ACRE_PRC117F" >> "picture")],
-        [["rhs_weap_m4a1_carryhandle_grip3","","","rhsusf_acc_ACOG",[],[],"rhsusf_acc_grip3"],[],[],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_rifleman",[["rhsusf_lwh_helmet_marpatwd",1],["ACRE_PRC152",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30],["HandGrenade",1,1],["SmokeShell",2,1]]],["rhsusf_assault_eagleaiii_coy",[["ACRE_PRC117F",1]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]]
+        ["Gruppenfunker", getText (configfile >> "CfgWeapons" >> "ACRE_SEM70" >> "picture")],
+        [["BWA3_G36A2","","","BWA3_optic_RSAS",[],[],""],[],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_schtz",[["ACE_EntrenchingTool",1],["ACRE_SEM52SL",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["hlc_30rnd_556x45_EPR_G36",7,30]]],["BWA3_FieldPack_fleck",[["ACRE_SEM70",1]]],"PBW_muetze2_fleck","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]]
+      ],
+      [
+        ["Einsatzersthelfer Bravo", "\z\ace\addons\medical_gui\ui\cross_T_9.paa"],
+        [["BWA3_G36A2","","","BWA3_optic_RSAS",[],[],""],[],[],["PBW_Uniform3_fleck",[["BWA3_Beret_Jaeger",1],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["ACE_morphine",1],["ACE_tourniquet",2],["ACE_packingBandage",6],["ACE_epinephrine",1],["ACE_EarPlugs",1],["ACE_quikclot",6],["ACE_CableTie",1],["BWA3_G_Combat_clear",1]]],["pbw_splitter_sani",[["ACE_EntrenchingTool",1],["BWA3_DM25",2,1],["BWA3_DM51A1",2,1],["hlc_30rnd_556x45_EPR_G36",7,30]]],["BWA3_Kitbag_Fleck_Medic",[["ACE_quikclot",20],["ACE_elasticBandage",10],["ACE_adenosine",2],["ACE_epinephrine",10],["ACE_morphine",10],["ACE_packingBandage",20],["ACE_surgicalKit",1],["ACE_tourniquet",4],["ACE_salineIV",6],["ACE_salineIV_250",1],["ACE_salineIV_500",1]]],"PBW_muetze2_fleck","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+        true
+      ],
+      [
+        ["Kampfmittelräumer", getText (configfile >> "CfgWeapons" >> "rhs_altyn_bala" >> "picture")],
+        [[],[],["ACE_VMM3","","","",[],[],""],["PBW_Uniform3_fleck",[["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["V_PlateCarrierIAGL_oli",[["ACE_DefusalKit",1],["ACE_EntrenchingTool",1],["ACE_SpraypaintGreen",1],["ACE_Clacker",1],["ACE_M26_Clacker",1],["rhs_altyn_visordown",1],["DemoCharge_Remote_Mag",2,1]]],[],"PBW_muetze1_fleck","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+        true
       ],
       [
         ["Pilot", getText (configfile >> "CfgWeapons" >> "H_PilotHelmetHeli_B" >> "picture")],
         [["rhsusf_weap_MP7A2","","","",["rhsusf_mag_40Rnd_46x30_FMJ",0],[],""],[],[],["U_B_HeliPilotCoveralls",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1],["rhsusf_mag_40Rnd_46x30_FMJ",1,40]]],["V_TacVest_blk",[["ACRE_PRC152",1],["rhsusf_ANPVS_15",1],["rhsusf_mag_40Rnd_46x30_FMJ",5,40],["SmokeShellBlue",1,1],["B_IR_Grenade",1,1]]],[],"H_PilotHelmetHeli_B","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]],
-        true
-      ],
-      [
-        ["Sapper", getText (configfile >> "CfgWeapons" >> "rhs_weap_M590_8RD" >> "picture")],
-        [["rhs_weap_M590_8RD","","","",[],[],""],[],["ACE_VMM3","","","",[],[],""],["rhs_uniform_FROG01_wd",[["ACRE_PRC343",1],["ACE_quikclot",6],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",6],["ACE_tourniquet",2],["ACE_EarPlugs",1],["ACE_CableTie",3],["ACE_Canteen",1],["ACE_MRE_BeefStew",1]]],["rhsusf_spc_rifleman",[["rhsusf_lwh_helmet_marpatwd",1],["ACE_DefusalKit",1],["ACE_Clacker",1],["HandGrenade",1,1],["SmokeShell",1,1],["rhsusf_8Rnd_00Buck",3,8],["rhsusf_8Rnd_Slug",3,8]]],["rhsusf_assault_eagleaiii_coy",[["ACE_EntrenchingTool",1],["ACE_wirecutter",1],["ACE_Fortify",1],["ToolKit",1],["ClaymoreDirectionalMine_Remote_Mag",1,1],["rhsusf_8Rnd_Slug",3,8],["rhsusf_8Rnd_00Buck",3,8],["DemoCharge_Remote_Mag",2,1]]],"rhs_8point_marpatwd","rhs_googles_black",["Binocular","","","",[],[],""],["ItemMap","","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]],
         true
       ]
     ]
   ],
   //2 - Backpacks
   [
-    ["USMC Backpacks", getText (configfile >> "CfgVehicles" >> "rhsusf_assault_eagleaiii_coy" >> "picture")],
-    [
+		["Rucksäcke", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck" >> "picture")],
+		//Rucksackloadouts hier unten in selben Format einfügen
+		[
+			[
+				["Rucksack (Schütze)", getText (configfile >> "CfgVehicles" >> "BWA3_AssaultPack_Fleck" >> "picture")],
+				["BWA3_AssaultPack_Fleck",[["ACE_Canteen",1],["ACE_EntrenchingTool",1],["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["hlc_30rnd_556x45_EPR_G36",8]]]
+			],
+			[
+				["Rucksack (1x SEM 70)", getText (configfile >> "CfgWeapons" >> "ACRE_SEM70" >> "picture")],
+				["BWA3_FieldPack_fleck",[["ACRE_SEM70",1]]]
+			],
+			[
+				["Rucksack (4x SEM 52)", getText (configfile >> "CfgWeapons" >> "ACRE_SEM52SL" >> "picture")],
+				["BWA3_FieldPack_fleck",[["ACRE_SEM52SL",4]]]
+			],
+			[
+				["Rucksack (MG3)", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck" >> "picture")],
+				["BWA3_Kitbag_Fleck",[["ACE_Canteen",1],["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["BWA3_120Rnd_762x51",4],["ACE_SpareBarrel",1]]]
+			],
+			[
+				["Rucksack (MG3 Gurte)", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck" >> "picture")],
+				["BWA3_Kitbag_Fleck",[["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["Redd_Mg3_Belt_100_fake",3]]]
+			],
+			[
+				["Rucksack (MG4)", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck" >> "picture")],
+				["BWA3_Kitbag_Fleck",[["ACE_Canteen",1],["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["BWA3_200Rnd_556x45",3]]]
+			],
+			[
+				["Rucksack (Feldküche)", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck" >> "picture")],
+				["BWA3_Kitbag_Fleck",[["ACE_Canteen",12],["ACE_MRE_MeatballsPasta",12]]]
+			],
+			[
+				["Rucksack (Sanitätsmaterial)", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck_Medic" >> "picture")],
+				["BWA3_Kitbag_Fleck_Medic",[["ACE_packingBandage",20],["ACE_elasticBandage",10],["ACE_morphine",10],["ACE_epinephrine",10],["ACE_tourniquet",4],["ACE_adenosine",2],["ACE_salineIV_250",1],["ACE_salineIV_500",1],["ACE_salineIV",6],["ACE_quikclot",20],["ACE_surgicalKit",1]]]
+			],
+			[
+				["Rucksack (Pionier)", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck" >> "picture")],
+				["BWA3_Kitbag_Fleck",[["ACE_Fortify",1],["ACE_wirecutter",1],["ACE_Sandbag_empty",6],["ACE_SpraypaintGreen",2],["ToolKit",1]]]
+			],
+			[
+				["Rucksack (Sprengmittel)", getText (configfile >> "CfgVehicles" >> "BWA3_Kitbag_Fleck" >> "picture")],
+				["BWA3_Kitbag_Fleck",[["ACE_DefusalKit",1],["ACE_EntrenchingTool",1],["SatchelCharge_Remote_Mag",1,1],["ClaymoreDirectionalMine_Remote_Mag",2,1],[["ACE_VMH3","","","",[],[],""],1]]]
+			],
+			[
+				["Milan (Rohr)", getText (configfile >> "CfgVehicles" >> "Redd_Milan_Static_Barrel" >> "picture")],
+				["Redd_Milan_Static_Barrel",[]]
+			],
+			[
+				["Milan (Dreibein)", getText (configfile >> "CfgVehicles" >> "Redd_Milan_Static_Tripod" >> "picture")],
+				["Redd_Milan_Static_Tripod",[]]
+			],
+			[
+				["Mörser (Rohr)", getText (configfile >> "CfgVehicles" >> "Redd_Tank_M120_Tampella_Barrel" >> "picture")],
+				["Redd_Tank_M120_Tampella_Barrel",[]]
+			],
+			[
+				["Mörser (Bodenplatte)", getText (configfile >> "CfgVehicles" >> "Redd_Tank_M120_Tampella_Tripod" >> "picture")],
+				["Redd_Tank_M120_Tampella_Tripod",[]]
+			],
       [
-        ["Backpack (Rifleman)", getText (configfile >> "CfgMagazines" >> "rhs_mag_30Rnd_556x45_M855A1_Stanag" >> "picture")],
-        ["rhsusf_assault_eagleaiii_coy",[["ACE_Canteen",1],["ACE_EntrenchingTool",1],["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["rhs_mag_30Rnd_556x45_M855A1_Stanag",12]]]
-      ],
-      [
-        ["Backpack (LMG)", getText (configfile >> "CfgMagazines" >> "rhsusf_100Rnd_556x45_soft_pouch_coyote" >> "picture")],
-        ["rhsusf_assault_eagleaiii_coy",[["ACE_Canteen",1],["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["rhsusf_100Rnd_556x45_soft_pouch_coyote",2],["ACE_SpareBarrel",1]]]
-      ],
-      [
-        ["Backpack (MMG)", getText (configfile >> "CfgMagazines" >> "rhsusf_100Rnd_762x51_m80a1epr" >> "picture")],
-        ["rhsusf_assault_eagleaiii_coy",[["ACE_Canteen",1],["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["rhsusf_100Rnd_762x51_m80a1epr",4],["ACE_SpareBarrel",1]]]
-      ],
-      [
-        ["Backpack (Food)", getText (configfile >> "CfgWeapons" >> "ACE_MRE_MeatballsPasta" >> "picture")],
-        ["rhsusf_assault_eagleaiii_coy",[["ACE_Canteen",12],["ACE_MRE_MeatballsPasta",12]]]
-      ],
-      [
-        ["Backpack (CFR)", getText (configfile >> "CfgWeapons" >> "ACE_surgicalKit" >> "picture")],
-        ["rhsusf_assault_eagleaiii_coy",[["ACE_packingBandage",20],["ACE_elasticBandage",10],["ACE_morphine",10],["ACE_epinephrine",10],["ACE_tourniquet",4],["ACE_adenosine",2],["ACE_salineIV_250",1],["ACE_salineIV_500",1],["ACE_salineIV",6],["ACE_quikclot",20],["ACE_surgicalKit",1]]]
-      ],
-      [
-        ["Backpack (Sapper)", getText (configfile >> "CfgWeapons" >> "ToolKit" >> "picture")],
-        ["rhsusf_assault_eagleaiii_coy",[["ACE_Fortify",1],["ACE_wirecutter",1],["ACE_Sandbag_empty",6],["ACE_SpraypaintGreen",2],["ToolKit",1]]]
-      ],
-      [
-        ["Backpack (Ordnance)", getText (configfile >> "CfgMagazines" >> "ClaymoreDirectionalMine_Remote_Mag" >> "picture")],
-        ["rhsusf_assault_eagleaiii_coy",[["ACE_DefusalKit",1],["ACE_EntrenchingTool",1],["SatchelCharge_Remote_Mag",1,1],["ClaymoreDirectionalMine_Remote_Mag",2,1],[["ACE_VMH3","","","",[],[],""],1]]]
-      ],
-      [
-        ["Mark 19 (Gun)", getText (configfile >> "CfgVehicles" >> "RHS_Mk19_Gun_Bag" >> "picture")],
-        ["RHS_Mk19_Gun_Bag",[]]
-      ],
-      [
-        ["Mark 19 (Tripod)", getText (configfile >> "CfgVehicles" >> "RHS_Mk19_Tripod_Bag" >> "picture")],
-        ["RHS_Mk19_Tripod_Bag",[]]
-      ],
-      [
-        ["M2 (Gun)", getText (configfile >> "CfgVehicles" >> "RHS_M2_Gun_Bag" >> "picture")],
-        ["RHS_M2_Gun_Bag",[]]
-      ],
-      [
-        ["M2 (Mini-Tripod)", getText (configfile >> "CfgVehicles" >> "RHS_M2_MiniTripod_Bag" >> "picture")],
-        ["RHS_M2_MiniTripod_Bag",[]]
-      ],
-      [
-        ["M2 (Tripod)", getText (configfile >> "CfgVehicles" >> "RHS_M2_Tripod_Bag" >> "picture")],
-        ["RHS_M2_Tripod_Bag",[]]
-      ],
-      [
-        ["No Backpack", ""],
-        []
-      ]
-    ]
-  ]
+				["GraMaWa (Waffe)", getText (configfile >> "CfgVehicles" >> "rnt_gmw_static_barell" >> "picture")],
+				["rnt_gmw_static_barell",[]]
+			],
+			[
+				["GraMaWa (Lafette)", getText (configfile >> "CfgVehicles" >> "rnt_gmw_static_tripod" >> "picture")],
+				["rnt_gmw_static_tripod",[]]
+			],
+			[
+				["MG3 (Waffe)", getText (configfile >> "CfgVehicles" >> "rnt_mg3_static_barell" >> "picture")],
+				["rnt_mg3_static_barell",[]]
+			],
+			[
+				["MG3 (Lafette)", getText (configfile >> "CfgVehicles" >> "rnt_mg3_static_tripod" >> "picture")],
+				["rnt_mg3_static_tripod",[]]
+			],
+			[
+				["MG3 (Patronengurte)", getText (configfile >> "cfgMagazines" >> "Redd_Mg3_Belt_100_fake" >> "picture")],
+				["BWA3_Kitbag_Fleck",[["ACE_Humanitarian_Ration",1],["ACE_MRE_MeatballsPasta",1],["ACE_WaterBottle",2],["Redd_Mg3_Belt_100_fake",3]]]
+			],
+			[
+				["Kein Rucksack", ""],
+				[]
+			]
+		]
+	]
 ];
 
 

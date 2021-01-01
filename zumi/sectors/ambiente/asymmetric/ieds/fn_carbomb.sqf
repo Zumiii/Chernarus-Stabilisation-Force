@@ -18,6 +18,7 @@ if (count _array > 0 && _carbomb) then {
 	_ied setVariable ["id", _id];
 	east revealmine _ied;
 	zumi_ieds pushBack _ied;
+	publicVariable "zumi_ieds";
 	//Fahrzeug aussuchen und Klasse feststellen
 	_car = (_array call BIS_fnc_SelectRandom);
 	_type = typeOf _car;

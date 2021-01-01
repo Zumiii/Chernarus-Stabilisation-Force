@@ -1,7 +1,8 @@
-if !isServer exitWith {};
+
 
 params ["_unit","_position","_bomb"];
 
+if !(local _unit) exitWith {};
 
 _view = [_unit, _bomb, 200] call zumi_fnc_sneaky;
 if (count _view >= 2) then {

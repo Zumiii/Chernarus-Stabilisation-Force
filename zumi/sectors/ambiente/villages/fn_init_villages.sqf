@@ -44,5 +44,5 @@ for "_i" from 0 to (count commy_sectors) - 1 do {
 
 [phase, villages] call zumi_fnc_init_dyn;
 
-[] call zumi_fnc_patrol;
+//[] call zumi_fnc_patrol;
 //[] call zumi_fnc_attack;

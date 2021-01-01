@@ -1,5 +1,7 @@
 params ["_unit", "_code", ["_duck", false]];
 
+if !(local _unit) exitWith {};
+
 [
   {
     params ["_u", "_d"];

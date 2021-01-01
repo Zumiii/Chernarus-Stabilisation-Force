@@ -7,28 +7,21 @@
 
 if !isServer exitWith {};
 
-params [
-  "_koords",
-  "_name",
-	"_tasknr",
-  "_timelimit",
-  ["_optional", ""]
-];
+  params [
+    "_task",
+    "_koords",
+    "_timelimit",
+  	"_tasknr"
+  ];
+
 
 /*
   Task erstellen und an Spielerschaft zuweisen
 */
 
-[
-	format ["Auftrag%1.%2", Auftrags_Id, _tasknr],
-	localize "STR_ZOPS_P1_T4_TITEL",
-	format [localize "STR_ZOPS_P1_T4_NOTIZ", _name, ([_timelimit] call CBA_fnc_formatElapsedTime)],
-	format [localize "STR_ZOPS_P1_T4_TITEL", _name],
-	"created",
-	//_koords,
-  [],
-  "attack"
-] call zumi_fnc_add_sidetask;
+[true, ["cqb", _task], "cqb", objNull, "CREATED", -1, true, "getin", true] call bis_fnc_taskCreate;
+
+
 
 
 /*
@@ -41,26 +34,26 @@ _rad = floor linearConversion [1, 5, _feindkraft, 100, 400, true];
 [
 	{
 		params ["_args","_handle"];
-    _args params ["_pos","_zeitansatz", "_tasknr", "_rad", "_taskid"];
+    _args params ["_pos","_zeitansatz", "_tasknr", "_rad"];
     if (cba_missionTime >= _zeitansatz) exitWith {
       ["zumi_sanktion", floor linearConversion [0, 30, count ([] call cba_fnc_players), 1 , 10, true]] call CBA_fnc_ServerEvent;
-      [format ["Auftrag%1.%2", _taskid, _tasknr], "failed"] call zumi_fnc_task_updaten;
+      ["cqb","FAILED"] call BIS_fnc_taskSetState;
       [_handle] call CBA_fnc_removePerFrameHandler;
       grundtasks set [_tasknr, -1];
     };
     if (skip || fertig) exitWith {
-      [format ["Auftrag%1.%2", _taskid, _tasknr], "canceled"] call zumi_fnc_task_updaten;
+      ["cqb","CANCELED"] call BIS_fnc_taskSetState;
       [_handle] call CBA_fnc_removePerFrameHandler;
       grundtasks set [_tasknr, -1];
     };
 		if (count ([_pos, _rad, [east]] call zumi_fnc_nahe_ki) < 1) then {
-      [format ["Auftrag%1.%2", _taskid, _tasknr], "succeeded"] call zumi_fnc_task_updaten;
+      ["cqb","SUCCEEDED"] call BIS_fnc_taskSetState;
     	[_handle] call CBA_fnc_removePerFrameHandler;
       grundtasks set [_tasknr, 1];
 		};
 	},
 	15,
-	[_koords, cba_missionTime + _timelimit, _tasknr, _rad, Auftrags_Id]
+	[_koords, cba_missionTime + _timelimit, _tasknr, _rad]
 ] call CBA_fnc_addPerFrameHandler;
 
 

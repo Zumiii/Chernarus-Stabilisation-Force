@@ -3,12 +3,33 @@
 - Kräfte auch mal in Gebäude setzen für einen Hinterhalt
 
 Prüfen:
-Cycle as first waypoint has no sense
-
-Fortify umnutzen für Logistiksystem
 
 Spawngesamtkonzept überdenken
-
 Feind ist zu verzettelt
 
-Sektorenkontrolle ändern
+
+Bearbeiten von Lieferungen wird dummerweise noch auf dem Client ausgeführt. Whitelist Prüfung rausnehmen wäre ein ansatz
+
+
+Grosser Plan:
+Sektorenkontrolle und Taskzuweisung ändern
+
+Schritte für weniger Serverlast:
+
+  Reduziere Spawndistanz der Dynamischen und Anzahl gleichzeitiger Spawns
+  Ermögliche irgendwie, dass einige Städte verlassen wurden, damit kann Performance geschont werden
+    Kennzeichne diese Orte
+    oder Lasse Hinweis da
+
+  Ändere Feindspawn - Konzept generell, weg von Ortsgebundenheit eventuell hin zu "festen" Punkten über mehrere Restarts, wobei die KI von dort aus agiert?
+
+
+TODO:
+- Anhalten Geste kegelförmig usw
+
+Bugs:
+- Headless hörte auf, Einheiten abzunehmen
+- Wegpunkte scheinen noch immer nicht korrekt zugewiesen zu werden
+
+Unknown:
+- Cycle as first waypoint has no sense beim Dynamischen

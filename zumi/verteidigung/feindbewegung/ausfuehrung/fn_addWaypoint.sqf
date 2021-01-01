@@ -42,6 +42,7 @@ params [
 ];
 
 _group = _group call CBA_fnc_getGroup;
+if !(local _group) exitWith {};
 _position = _position call CBA_fnc_getPos;
 
 // addWaypoint expects ASL when a negative radius is provided for exact placement

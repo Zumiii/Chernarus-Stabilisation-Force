@@ -1679,7 +1679,7 @@ class lagerverwaltung_dialog
 		class lieferplan_titel: RscText
 		{
 			idc = 2204;
-			text = "Delivery plan";
+			text = "Overview";
 			x = 0.396875 * safezoneW + safezoneX;
 			y = 0.269 * safezoneH + safezoneY;
 			w = 0.055 * safezoneW;

@@ -9,15 +9,8 @@ if !isServer exitWith {};
 
 params ["_position", "_taskname"];
 
-_finished = false;
-for "_i" from 0 to (count zumi_maintasks) - 1 do {
-	(zumi_maintasks select _i) params ["_task","_description_kurz","_description_lang","_seite","_marker","_taskstate","_position","_hud","_symbol"];
-	if ((_taskname isEqualTo _task) && (_taskstate IN ["failed","succeeded","canceled"])) exitWith {
-		_finished = true;
-	};
-};
+if (_task call BIS_fnc_taskCompleted) exitwith {};
 
-if (_finished) exitwith {};
 
 //Aktualisiere lebende Kommandeure
 zumi_kommandeure = zumi_kommandeure select {(alive _x)};

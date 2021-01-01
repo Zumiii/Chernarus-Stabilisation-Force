@@ -1,5 +1,7 @@
 params ["_unit"];
 
+if !(local _unit) exitWith {};
+
 private _pos = [_unit] call cba_fnc_getPos;
 
 private _targets = _unit nearTargets 300;

@@ -24,6 +24,8 @@ _return = [_phase, _spannung, (count _villages)] call zumi_fnc_dyn_zusammensetzu
 
 
 dyn_array = [];
+patcounter = 0;
+
 
 _positions = [];
 for "_i" from 0 to (count villages)-1 do {

@@ -8,11 +8,10 @@ respawnDelay	= 10;
 respawnVehicleDelay = 3;
 respawnDialog	= 1;
 respawnOnStart	= 0;
-//respawnTemplates[] = {"MenuInventory","MenuPosition"};
 enablePlayerAddRespawn = 1;
 DisabledAI		= 1;
 joinUnassigned	= 0;
-enableDebugConsole[] = { "76561197983120042", "76561198127929402" };
+enableDebugConsole[] = { "76561197983120042", "76561198127929402", "76561198127929402" , "76561198032399157"};
 showGPS			= 1;
 showCompass		= 1;
 showWatch		= 1;
@@ -20,11 +19,11 @@ cba_settings_hasSettingsFile = 1;
 
 
 
-author		= "[FschJgBtl 323]  Zumi";
+author		= "[PzGrenBtl 402]  Zumi";
 OnLoadName	= "Operation ""CFOR""";
-OnLoadMission	= "Its time for immersion!";
-overviewText	= "Zumis persistent Patrol Ops";
-
+OnLoadMission	= "Immersion plx!";
+overviewText	= "Zumis persistente Patrol Ops";
+loadScreen = "pics\cfor.paa";
 
 __EXEC (MISSIONLOCATION = __FILE__ select [0, count __FILE__ - 15])
 class cfgOrbat {
@@ -32,23 +31,11 @@ class cfgOrbat {
 };
 
 class Header {
-	maxPlayers = 28;
+	maxPlayers = 30;
 	minPlayers = 1;
 	gameType = Patrol;
 };
 
-class CfgMusic {
-	tracks[] = {};
-	class us_theme {
-		 name = "us_theme";
-		 sound[] = {"\sounds\us_theme.ogg", db + 5, 1.0};
-	};
-	class nine_lashes_intro {
-		 name = "nine_lashes_intro";
-		 sound[] = {"\sounds\nine_lashes_intro.ogg", db + 5, 1.0};
-	};
-
-};
 
 class CfgSounds {
 	sounds[] = {};
@@ -77,136 +64,6 @@ class CfgSounds {
 	  sound[] = {"sounds\akbar_2.ogg", 25, 1, 100};
 	  titles[] = {0,""};
 	};
-	class us_beach4 {
-	  name = "us_beach4";
-	  sound[] = {"sounds\us_beach4.ogg", 25, 1, 50};
-	  titles[] = {0,""};
-	};
-	class us_beach5 {
-	  name = "us_beach5";
-	  sound[] = {"sounds\us_beach5.ogg", 25, 1, 50};
-	  titles[] = {0,""};
-	};
-  class us_beach6 {
-    name = "us_beach6";
-    sound[] = {"sounds\us_beach6.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_ceasefire0 {
-    name = "us_ceasefire0";
-    sound[] = {"sounds\us_ceasefire0.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_ceasefire1 {
-    name = "us_ceasefire1";
-    sound[] = {"sounds\us_ceasefire1.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_dropweapons0 {
-    name = "us_dropweapons0";
-    sound[] = {"sounds\us_dropweapons0.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_dropweapons1 {
-    name = "us_dropweapons1";
-    sound[] = {"sounds\us_dropweapons1.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_c4teamplanted {
-	  name = "us_c4teamplanted";
-	  sound[] = {"sounds\us_c4teamplanted.ogg", 25, 1, 50};
-	  titles[] = {0,""};
-	};
-	class us_c4teamplanted2 {
-	  name = "us_c4teamplanted2";
-	  sound[] = {"sounds\us_c4teamplanted2.ogg", 25, 1, 50};
-	  titles[] = {0,""};
-	};
-  class us_gogogo0 {
-	  name = "us_gogogo0";
-	  sound[] = {"sounds\us_gogogo0.ogg", 25, 1, 50};
-	  titles[] = {0,""};
-	};
-  class us_gogogo1 {
-	  name = "us_gogogo1";
-	  sound[] = {"sounds\us_gogogo1.ogg", 25, 1, 50};
-	  titles[] = {0,""};
-	};
-  class us_holdposition {
-    name = "us_holdposition";
-    sound[] = {"sounds\us_holdposition.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_mgahead {
-    name = "us_mgahead";
-    sound[] = {"sounds\us_mgahead.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_backup0 {
-    name = "us_backup";
-    sound[] = {"sounds\us_backup1.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_backup1 {
-    name = "us_backup1";
-    sound[] = {"sounds\us_backup1.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_backup2 {
-    name = "us_backup2";
-    sound[] = {"sounds\us_backup2.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_objectivesecure {
-    name = "us_objectivesecure";
-    sound[] = {"sounds\us_objectivesecure.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_prepare {
-    name = "us_prepare";
-    sound[] = {"sounds\us_prepare.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_medic {
-    name = "us_medic";
-    sound[] = {"sounds\us_medic.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_medic2 {
-    name = "us_medic2";
-    sound[] = {"sounds\us_medic2.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_movewithtank3 {
-    name = "us_movewithtank3";
-    sound[] = {"sounds\us_movewithtank3.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_spreadout {
-    name = "us_spreadout";
-    sound[] = {"sounds\us_spreadout.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_takecover {
-    name = "us_takecover";
-    sound[] = {"sounds\us_takecover.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_tankahead {
-    name = "us_tankahead";
-    sound[] = {"sounds\us_tankahead.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_usebazooka3 {
-    name = "us_usebazooka3";
-    sound[] = {"sounds\us_usebazooka3.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
-  class us_wegothim {
-    name = "us_wegothim";
-    sound[] = {"sounds\us_wegothim.ogg", 25, 1, 50};
-    titles[] = {0,""};
-  };
 	class feld_telefon {
 		 name = "feld_telefon";
 		 sound[] = {"sounds\feld_telefon.ogg", 20, 1, 50};
@@ -220,23 +77,174 @@ class CfgNotifications {
 };
 
 
-class CfgRespawnInventory {
-	#include "data\cfgRespawnInventory.hpp"
-};
-
-
 class CfgFunctions {
 	#include "data\cfgFunctions.hpp"
 };
 
-class CfgRoles {
-    class Rifleman_Test {
-        displayName = "101st Airborne Division";//Name of the role, displayed in the respawn menu
-        icon = "\WW2\Assets_t\Characters\Americans_t\WW2_Badges\US_Badg_101st_ca.paa";//Icon shown next to the role name in the respawn screen
-    };
+//Placeholder
+class CfgTaskDescriptions {
+	class humanitarian {
+		title		= "PRT";
+		description	= "Humanitäre Handlungen";
+		marker		= "";
+	};
+	class tension {
+		title		= "Gefahrenlage";
+		description	= "Allgemeine Spannung";
+		marker		= "";
+	};
+	class warlords {
+		title		= "Warlords";
+		description	= "Anführer der abtrünnigen Militärs";
+		marker		= "";
+	};
+	class attack {
+		title		= "Angreifen";
+		description	= "Angriffsziel";
+		marker		= "";
+	};
+	class luftabwehr {
+		title		= "Luftabwehr";
+		description	= "Feindliche Flak";
+		marker		= "";
+	};
+	class kommunikationssysteme {
+		title		= "Funknetz";
+		description	= "Feindliche Kommunikationsanlagen";
+		marker		= "";
+	};
+	class cqb {
+		title		= "CQB";
+		description	= "Orts- und Häuserkampf";
+		marker		= "";
+	};
+	class offiziere {
+		title		= "Offiziere";
+		description	= "Zu neutralisierende Ziele";
+		marker		= "";
+	};
+	class aga_1	{
+		title		= "AGA I";
+		description	= "Allgemeine Grundausbildung 1/4";
+		marker		= "";
+	};
+	class aga_1_1	{
+		title		= "Erster Teil";
+		description	= "Formaldienst";
+		marker		= "";
+	};
+	class aga_1_2	{
+		title		= "Zweiter Teil";
+		description	= "Karte & Kompass";
+		marker		= "";
+	};
+	class aga_1_3	{
+		title		= "Dritter Teil";
+		description	= "Einsatzersthelfer Bravo";
+		marker		= "";
+	};
+  class aga_2	{
+    title		= "AGA II";
+    description	= "Allgemeine Grundausbildung 2/4";
+    marker		= "";
+  };
+	class aga_2_1	{
+    title		= "Erster Teil";
+    description	= "Schiesslehre";
+    marker		= "";
+  };
+	class aga_2_2	{
+    title		= "Zweiter Teil";
+    description	= "Schiessen mit Handwaffen: G36";
+    marker		= "";
+  };
+	class aga_2_3	{
+    title		= "Dritter Teil";
+    description	= "Schiessen mit Handwaffen: P8";
+    marker		= "";
+  };
+	class aga_2_4	{
+    title		= "Vierter Teil";
+    description	= "Der Panzervernichtungstrupp";
+    marker		= "";
+  };
+  class aga_3	{
+		title		= "AGA III";
+		description	= "Allgemeine Grundausbildung 3/4";
+		marker		= "";
+	};
+	class aga_3_1	{
+		title		= "Erster Teil";
+		description	= "Gefechtsdienst aller Truppen zu Lande";
+		marker		= "";
+	};
+  class aga_4	{
+		title		= "AGA IV";
+		description	= "Allgemeine Grundausbildung 4/4";
+		marker		= "";
+	};
+	class aga_4_1	{
+		title		= "Erster Teil";
+		description	= "Fernmeldedienst aller Truppen";
+		marker		= "";
+	};
+};
+
+class CfgTaskEnhancements {
+	enable       = 1; // 0: disable new task features (default), 1: enable new task features & add new task markers and task widgets into the map
+	3d           = 1; // 0: do not use new 3D markers (default), 1: replace task waypoints with new 3D markers
+	3dDrawDist   = 1500; // 3d marker draw distance (default: 2000)
+	share        = 1; // 0: do not count assigned players (default), 1: count how many players have the task assigned
+	propagate    = 1; // 0: do not propagate (default), 1: propagate shared tasks to subordinates
+};
+
+class CfgTaskTypes {
+	class formaldienst {
+		icon	= "\german_headgear\ui\pbw_feldmuetze_fleck.paa";
+		icon3D	= "\german_headgear\ui\pbw_feldmuetze_fleck.paa";
+	};
+	class karte_kompass {
+		icon	= "\z\ace\addons\maptools\UI\maptool_item.paa";
+		icon3D	= "\z\ace\addons\maptools\UI\maptool_item.paa";
+	};
+	class eeh_b {
+		icon	= "\z\ace\addons\medical_treatment\ui\packingBandage_ca.paa";
+		icon3D	= "\z\ace\addons\medical_treatment\ui\packingBandage_ca.paa";
+	};
+	class schiesslehre {
+		icon	= "\german_vests\UI\pbw_koppel_all.paa";
+		icon3D	= "\german_vests\UI\pbw_koppel_all.paa";
+	};
+	class g36	{
+		icon	= "\hlc_wp_g36\tex\ui\Gear_G36A1_ca.paa";
+		icon3D	= "\hlc_wp_g36\tex\ui\Gear_G36A1_ca.paa";
+	};
+	class p8 {
+		icon	= "\bwa3_p8\ui\bwa3_p8_x_ca.paa";
+		icon3D	= "\bwa3_p8\ui\bwa3_p8_x_ca.paa";
+	};
+	class pzf3 {
+		icon	= "\bwa3_pzf3\ui\bwa3_pzf3_x_ca.paa";
+		icon3D	= "\bwa3_pzf3\ui\bwa3_pzf3_x_ca.paa";
+	};
+	class gefechtsdienst {
+		icon	= "\german_headgear\ui\pbw_fleck.paa";
+		icon3D	= "\german_headgear\ui\pbw_fleck.paa";
+	};
+	class fernmeldedienst {
+		icon	= "\idi\acre\addons\sys_sem52sl\data\ui\sem52sl_icon.paa";
+		icon3D	= "\idi\acre\addons\sys_sem52sl\data\ui\sem52sl_icon.paa";
+	};
 };
 
 class cfgUnitInsignia {
+
+	class keiler {
+		displayName = "Keiler";
+		author = "Zumi";
+		texture = "pics\keiler.paa";
+		textureVehicle = "";
+	};
 
 	class overlord {
 		displayName = "Overlord (Colonel)";

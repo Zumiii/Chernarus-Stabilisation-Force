@@ -7,6 +7,8 @@
 
 params ["_unit"];
 
+if !(local _unit) exitWith {};
+
 _return = 0;
 {
   private _armor = [configfile >> "CfgWeapons" >> (headgear _x) >> "ItemInfo" >> "HitpointsProtectionInfo" >> "Head" >> "Armor", "NUMBER", 0] call CBA_fnc_getConfigEntry;

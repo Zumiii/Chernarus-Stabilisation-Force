@@ -1,6 +1,8 @@
 
 params ["_unit", "_position", ["_mode",0]];
 
+if !(local _unit) exitWith {};
+
 [_unit] call CBA_fnc_clearWaypoints;
 
 [

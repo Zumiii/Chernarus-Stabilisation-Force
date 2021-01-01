@@ -294,7 +294,17 @@ for "_i" from 1 to _anzahl_kommandeure_in_haus do {
 	_offi setSkill ["commanding", commanding];
   zumi_soldaten pushBack _grp;
   [_offi] call zumi_fnc_kommandant_registrieren;
-  [_grp, _dorfkern, radius/2, 1, false, true] call CBA_fnc_taskDefend;
+  private _buildings = (nearestObjects [_dorfkern, ["Building"], radius/2]) select {count (_x buildingPos -1) > 0};
+  if (count _buildings > 1) then {
+    private _remainings = [_dorfkern, nil, (units _grp), radius/2, 2, false, true] call ace_ai_fnc_garrison;
+    if (count _remainings > 0) then {
+      {
+        [_x, _dorfkern, radius, 1, 0.5, 0] call CBA_fnc_taskDefend;
+      } forEach _remainings;
+    };
+  } else {
+    [_grp, _dorfkern, radius, 1, 0.5, 0] call CBA_fnc_taskDefend;
+  };
 };
 
 private _grp = createGroup east;
@@ -309,7 +319,17 @@ _warlord setSkill ["reloadSpeed", reloadSpeed];
 _warlord setSkill ["commanding", commanding];
 zumi_soldaten pushBack _grp;
 [_warlord] call zumi_fnc_kommandant_registrieren;
-[_grp, _dorfkern, radius/2, 1, false, true] call CBA_fnc_taskDefend;
+private _buildings = (nearestObjects [_dorfkern, ["Building"], radius/2]) select {count (_x buildingPos -1) > 0};
+if (count _buildings > 1) then {
+  private _remainings = [_dorfkern, nil, (units _grp), radius/2, 2, false, true] call ace_ai_fnc_garrison;
+  if (count _remainings > 0) then {
+    {
+      [_x, _dorfkern, radius, 1, 0.5, 0] call CBA_fnc_taskDefend;
+    } forEach _remainings;
+  };
+} else {
+  [_grp, _dorfkern, radius, 1, 0.5, 0] call CBA_fnc_taskDefend;
+};
 
 
 /*
@@ -400,9 +420,16 @@ for "_i" from 1 to ((ceil random (_anzahl_in_haus select 1)) max (_anzahl_in_hau
   {
     _units pushBack _x;
   } forEach (units _grp);
-  private _remainings = [_dorfkern, nil, (units _grp), radius/2, 2, false, true] call ace_ai_fnc_garrison;
-  if (count _remainings > 0) then {
-    [(_remainings select 0), _dorfkern, radius, 1, 0.5, 0] call CBA_fnc_taskDefend
+  private _buildings = (nearestObjects [_dorfkern, ["Building"], radius/2]) select {count (_x buildingPos -1) > 0};
+  if (count _buildings > 1) then {
+    private _remainings = [_dorfkern, nil, (units _grp), radius/2, 2, false, true] call ace_ai_fnc_garrison;
+    if (count _remainings > 0) then {
+      {
+        [_x, _dorfkern, radius, 1, 0.5, 0] call CBA_fnc_taskDefend;
+      } forEach _remainings;
+    };
+  } else {
+    [_grp, _dorfkern, radius, 1, 0.5, 0] call CBA_fnc_taskDefend;
   };
 };
 

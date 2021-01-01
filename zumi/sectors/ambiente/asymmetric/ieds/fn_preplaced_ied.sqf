@@ -13,6 +13,7 @@ if !(_position isequalTo []) then {
   civilian revealmine _ied;
   _ied setVariable ["id", _id];
   zumi_ieds pushBack _ied;
+  publicVariable "zumi_ieds";
   if (_triggerman) then {
     _grp = createGroup east;
     private _unit = _grp createUnit ["LOP_CHR_Civ_Random", [0,0,0], [], 0, "CAN_COLLIDE"];

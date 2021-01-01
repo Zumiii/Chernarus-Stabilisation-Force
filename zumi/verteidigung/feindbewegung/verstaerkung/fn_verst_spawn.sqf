@@ -121,8 +121,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -168,8 +168,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -215,8 +215,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -268,8 +268,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -313,8 +313,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -362,8 +362,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -411,8 +411,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -468,8 +468,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -525,8 +525,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -578,8 +578,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 1200]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 1200], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -626,8 +626,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 120]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 120], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -671,8 +671,8 @@ switch _typ do {
 
 		*/
 
-		_grp setVariable ["befehl", [_pos, "eintreffen", 120]];
-		_grp setVariable ["truppengattung", _typ];
+		_grp setVariable ["befehl", [_pos, "eintreffen", 120], true];
+		_grp setVariable ["truppengattung", _typ, true];
 
 		/*
 
@@ -698,7 +698,7 @@ switch _typ do {
 		    if ((((leader _grp) distance2d _taskpos) <= _distanz) || (CBA_missiontime >= _zeitstempel + 1800)) exitWith {
 					[_handle] call CBA_fnc_removePerFrameHandler;
 					[_grp, getPos (leader _grp)] call zumi_fnc_befehl_erfragen;
-					_grp setVariable ["befehl", []];
+					_grp setVariable ["befehl", [], true];
 				};
 			},
 			5,

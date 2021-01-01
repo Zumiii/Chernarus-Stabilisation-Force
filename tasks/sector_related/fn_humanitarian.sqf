@@ -10,7 +10,7 @@ if !isServer exitWith {};
 
 tasknummer = tasknummer + 1;
 publicVariable "tasknummer";
-  
+
 //Task-ID setzen (tasknummer)
 Auftrags_Id = format ["%1", tasknummer + 2];
 //Der Auftrag ist weder fertig noch geskippt
@@ -30,7 +30,7 @@ _zeitansatz = ((["Zeitansatz", 3] call BIS_fnc_getParamValue) * 3600) - 300; //5
 */
 
 [
-  format ["Operation%1", Auftrags_Id],
+  format ["Auftrag%1.%2", Auftrags_Id, 999],
   localize "STR_ZOPS_HUMANITARIAN_TITEL",
   format [localize "STR_ZOPS_HUMANITARIAN_NOTIZ", ([_zeitansatz] call CBA_fnc_formatElapsedTime), [dayTime, "HH:MM"] call BIS_fnc_timeToString],
   [west, civilian, resistance, east],

@@ -28,7 +28,7 @@ if !(_befehl isEqualTo []) then {
     {
       params ["_grp","_zielkoordinate"];
       if ({alive _x} count (units _grp) == 0 || (isNull _grp)) exitWith {};
-      _grp setvariable ["befehl", []];
+      _grp setvariable ["befehl", [], true];
       [_grp, _zielkoordinate] call zumi_fnc_befehl_erfragen;
     },
     [_grp, (_grp call CBA_fnc_getPos)],

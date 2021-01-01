@@ -40,9 +40,9 @@ _bestellungen pushBack _nr;
 
 ["write", ["Missionspersistenz", "Bestellungen", _bestellungen]] call _inidbi;
 
-bestellungen pushBack [_nr, date, date, name _player, _items, "sent"];
+bestellungen pushBack [_nr, date, date, [_player] call ace_common_fnc_getName, _items, "sent"];
 publicVariable "bestellungen";
-["write", ["Missionspersistenz", format ["bstl_%1", _nr], [_nr, date, date, name _player, _items, "sent"]]] call _inidbi;
+["write", ["Missionspersistenz", format ["bstl_%1", _nr], [_nr, date, date, [_player] call ace_common_fnc_getName, _items, "sent"]]] call _inidbi;
 
 order_in_progress = true;
 publicVariable "order_in_progress";
@@ -50,5 +50,5 @@ publicVariable "order_in_progress";
 [
   zumi_fnc_deliver_init,
   [],
-  5
+  3
 ] call CBA_fnc_waitAndExecute;

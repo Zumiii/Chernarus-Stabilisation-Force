@@ -1,10 +1,14 @@
 
 private ["_unit","_trap","_bpos","_pos","_view","_asl_unit","_asl_unit_z","_hideouts","_unitpos"];
 
+
+
 _unit = _this select 0; // Einheit, deren Sicht auf Objekt gepr�ft werden soll
 _trap = _this select 1; // Objekt, das in Beobacht-Reichweite liegen soll
 _pos = getPos _trap; // Objektposition
 _rad = _this select 2; // Radius von Geb�udepositionen
+
+if !(local _unit) exitWith {};
 
 _bpos = [];
 {

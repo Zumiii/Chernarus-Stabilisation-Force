@@ -2,6 +2,8 @@
 
 params ["_unit", "_position", ["_mode", 0]];
 
+if !(local _unit) exitWith {};
+
 private ["_charge","_charges"];
 
 removeAllWeapons _unit;

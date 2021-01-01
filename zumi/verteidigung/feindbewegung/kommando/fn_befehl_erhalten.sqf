@@ -8,6 +8,8 @@
 
 params ["_grp", "_zielkoordinate", ["_auftrag","verlegen"], ["_dauer",-1], ["_target", objNull], ["_radius", 75]];
 
+if !(local _grp) exitWith {};
+
 //Lösche alten Wegpunkt
 [leader _grp] call CBA_fnc_clearWaypoints;
 //Falls sie eine Garnison waren, abziehen

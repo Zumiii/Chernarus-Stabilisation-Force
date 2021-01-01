@@ -40,33 +40,33 @@ if (lbSize _bestellungen > 0) then {
   //Prüfe, ob Verzögerung möglich. Das geht nur mindestens 24h vorher
   if (((dateToNumber date) < ((dateToNumber _liefertermin) -  (1 / 365))) && (_jahr <= (_liefertermin select 0))) then {
     _verz ctrlEnable true;
-    buttonSetAction [1612, format ["closeDialog 0; [player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "verzoegern", _value, str (name player)]];
+    buttonSetAction [1612, format ["closeDialog 0; [player, %1, %2, %3] remoteExecCall ['zumi_fnc_lieferung_bearbeiten', 2];", str "verzoegern", _value, str (name player)]];
   } else {
     buttonSetAction [1612, ""];
   };
 
   //Prüfen aktivieren
-  buttonSetAction [1611, format ["[player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "details", _value, str (name player)]];
+  buttonSetAction [1611, format ["[player, %1, %2, %3] remoteExecCall ['zumi_fnc_lieferung_bearbeiten', 2];", str "details", _value, str (name player)]];
   _details ctrlEnable true;
 
   //Prüfe, ob Storno möglich
   if !(_bearbeitungsstatus IN ["loaded","sent","delivered"]) then {
     _storn ctrlEnable true;
-    buttonSetAction [1614, format ["closeDialog 0; [player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "stornieren", _value, str (name player)]];
+    buttonSetAction [1614, format ["closeDialog 0; [player, %1, %2, %3] remoteExecCall ['zumi_fnc_lieferung_bearbeiten', 2];", str "stornieren", _value, str (name player)]];
   } else {
     _storn ctrlEnable false;
   };
   //Prüfe, ob Abschreiben möglich
-  if (_bearbeitungsstatus isEqualTo "delivered") then {
+  if (_bearbeitungsstatus IN ["delivered"]) then {
     _abschr ctrlEnable true;
-    buttonSetAction [1610, format ["closeDialog 0; [player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "abschreiben", _value, str (name player)]];
+    buttonSetAction [1610, format ["closeDialog 0; [player, %1, %2, %3] remoteExecCall ['zumi_fnc_lieferung_bearbeiten', 2];", str "abschreiben", _value, str (name player)]];
   } else {
     _abschr ctrlEnable false;
   };
   //Prüfe, ob Quittieren möglich
-  if (_bearbeitungsstatus isEqualTo "delivered") then {
+  if (_bearbeitungsstatus IN ["delivered"]) then {
     _quitt ctrlEnable true;
-    buttonSetAction [1613, format ["closeDialog 0; [player, %1, %2, %3] call zumi_fnc_lieferung_bearbeiten;", str "quittieren", _value, str (name player)]];
+    buttonSetAction [1613, format ["closeDialog 0; [player, %1, %2, %3] remoteExecCall ['zumi_fnc_lieferung_bearbeiten', 2];", str "quittieren", _value, str (name player)]];
   } else {
     _quitt ctrlEnable false;
   };

@@ -6,6 +6,8 @@
 
 params ["_unit", "_player", "_id", "_kontrollhandlung"];
 
+if !(local _unit) exitWith {};
+
 if (_unit getVariable ["combattant", false]) exitWith {
   [_unit, "gestureHib" ,1] call ace_common_fnc_doGesture;
 };

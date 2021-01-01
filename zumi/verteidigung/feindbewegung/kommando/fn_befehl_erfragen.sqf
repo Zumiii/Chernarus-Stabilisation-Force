@@ -31,6 +31,8 @@
 
 params ["_grp","_position"];
 
+if !(local _grp) exitWith {};
+
 _grp setvariable ["befehl", []];
 
 //Schicke Gruppe für 10 Minuten auf Patrouille, wenn Funknetz zusammengebrochen ist und oder Offiziere tot sind

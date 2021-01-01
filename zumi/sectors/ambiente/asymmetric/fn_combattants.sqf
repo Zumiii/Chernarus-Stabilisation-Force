@@ -47,7 +47,7 @@ _situation params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
   };
 
 
-} forEach (_grps select {((leader _x) getVariable ["story", 1]) == 10});
+} forEach (_grps select {((leader _x) getVariable ["story", 1]) != 10});
 
 if ((random (linearconversion [0, 100, _tension, 0, 1, true])) < 0.5) exitWith {
   _grps;

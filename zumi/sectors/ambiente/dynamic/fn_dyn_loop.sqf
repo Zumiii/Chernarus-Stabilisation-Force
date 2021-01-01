@@ -4,7 +4,6 @@
 if !isServer exitWith {};
 
 
-patcounter = 0;
 
 params ["_positions","_dynarray"];
 
@@ -49,7 +48,7 @@ for "_i" from 0 to (count _dynarray)-1 do {
       if ((patcounter <= max_spawns) && !((_posi isFlatEmpty [12, -1, 0.35, 3]) isEqualto []) && ({(_posi distance2d (_x select 2)) < 25} count (_dynarray select {!((_x select 2) isEqualTo _posi)}) < 1)) then {
         (_dynarray select _i) set [1, true];
         _spwn = [_posi, _ziel, _fzg, _side, _fullcrew, _art, _befehl] call zumi_fnc_dyn_spawn;
-        [(_spwn select 0), _ziel, _art, _befehl] call zumi_fnc_dyn_wegpunkt;
+        [(_spwn select 0), _ziel, _art, _befehl] remoteExecCall ["zumi_fnc_dyn_wegpunkt", (_spwn select 0)];
         (_dynarray select _i) set [5, (_spwn select 0)];
         (_dynarray select _i) set [6, (_spwn select 1)];
         patcounter = patcounter + 1;
