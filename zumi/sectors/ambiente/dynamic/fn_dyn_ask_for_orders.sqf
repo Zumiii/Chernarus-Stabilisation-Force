@@ -101,7 +101,7 @@ _return = if (_art IN ["tak", "miliz", "mil"]) then {
       private _inteldetails = [_pos_and_dir select 0, _desc, _marker, "ColorEast"];
       (leader _grpID) setVariable ["intel", [["Enemy patrol orders", format ["That patrol has been ordered to guard %1 in map grid %2. It is now marked on the map.", _desc, mapGridPosition (_pos_and_dir select 0)],""], _inteldetails, true, [configFile >> "CfgVehicles" >> (typeOf _structure) >> "Editorpreview", "STRING", "a3\structures_f_epc\Items\Documents\Data\document_secret_01_co.paa"] call CBA_fnc_getConfigEntry, west, [west], _index]];
     };
-    _destination;
+    [_destination, _order];
   } else {
     [(_positions call BIS_fnc_SelectRandom), _order];
   };
