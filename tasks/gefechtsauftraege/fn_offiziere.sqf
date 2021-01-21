@@ -22,7 +22,7 @@ if !isServer exitWith {};
 */
 
 
-[true, ["offiziere", _task], "offiziere", objNull, "CREATED", -1, true, "kill", true] call bis_fnc_taskCreate;
+[true, [format ["%1_offiziere", _task], _task], "offiziere", objNull, "CREATED", -1, true, "kill", true] call bis_fnc_taskCreate;
 
 
 /*

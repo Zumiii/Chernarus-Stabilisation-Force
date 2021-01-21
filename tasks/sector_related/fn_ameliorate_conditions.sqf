@@ -17,6 +17,7 @@ if (_currentSituation + _amelioration >= 100) exitWith {
   ["zumi_hinweis", ["The chieftain took what his people needed and thanks you!", false, 8, 1], _player] call CBA_fnc_targetEvent;
   ["zumi_sanktion", [_size, _id, true]] call CBA_fnc_serverEvent;
   deleteVehicle _item;
+  
 };
 
 ["zumi_hinweis", ["The chieftain thanks you, but he can still need some more!", false, 8, 1], _player] call CBA_fnc_targetEvent;

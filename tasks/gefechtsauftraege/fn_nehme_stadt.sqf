@@ -19,7 +19,7 @@ if !isServer exitWith {};
   Task erstellen und an Spielerschaft zuweisen
 */
 
-[true, ["cqb", _task], "cqb", objNull, "CREATED", -1, true, "getin", true] call bis_fnc_taskCreate;
+[true, [format ["%1_cqb", _task], _task], "cqb", objNull, "CREATED", -1, true, "getin", true] call bis_fnc_taskCreate;
 
 
 

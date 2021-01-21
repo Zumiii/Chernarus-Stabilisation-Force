@@ -143,7 +143,7 @@ if ((count lagerbestand_Temp) > 0) then {
   private ["_veh","_verladen","_san", "_rep", "_cargo","_containers","_weps","_mags","_items","_refueler","_ammotruck","_id"];
   for "_i" from 0 to (count lagerbestand_Temp) - 1 do {
     (lagerbestand_Temp select _i) params ["_id","_veh"];
-    if (alive _veh) then {
+    if !(isNull _veh) then {
       _verladen = _veh getVariable ["verladen", 0];
       _san = _veh getVariable ["ace_medical_medicClass",0];
       _rep = _veh getVariable ["ace_isRepairVehicle",0];
@@ -192,8 +192,8 @@ if ((count lagerbestand_Temp) > 0) then {
 //Bestellungen
 if ((count bestellungen) > 0) then {
   _bestellungen = [];
-  for "_i" from 1 to (count bestellungen) do {
-    (bestellungen select (_i - 1)) params ["_auftragsnummer","_bestelldatum","_liefertermin","_auftraggeber","_waren_ids","_bearbeitungsstatus"];
+  for "_i" from 0 to (count bestellungen)-1 do {
+    (bestellungen select _i) params ["_auftragsnummer","_bestelldatum","_liefertermin","_auftraggeber","_waren_ids","_bearbeitungsstatus"];
     ["write", ["Missionspersistenz", format ["bstl_%1", _auftragsnummer], [_auftragsnummer, _bestelldatum, _liefertermin, _auftraggeber, _waren_ids, _bearbeitungsstatus]]] call _inidbi;
     _bestellungen pushBack _auftragsnummer;
   };

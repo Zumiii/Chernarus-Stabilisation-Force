@@ -18,7 +18,7 @@ params [
   Task erstellen und an Spielerschaft zuweisen
 */
 
-[true, ["luftabwehr", _task], "luftabwehr", objNull, "CREATED", -1, true, "plane", true] call bis_fnc_taskCreate;
+[true, [format ["%1_luftabwehr", _task], _task], "luftabwehr", objNull, "CREATED", -1, true, "plane", true] call bis_fnc_taskCreate;
 /*
   Prüfschleife und Taskbeendigung
 */

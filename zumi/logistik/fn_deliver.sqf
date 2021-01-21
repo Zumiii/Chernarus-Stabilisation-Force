@@ -75,10 +75,12 @@ for "_i" from 1 to (count _waren_ids) do {
   [_jip_str, _behaelter] call CBA_fnc_removeGlobalEventJIP;
 
   //Entleere Objektinventar
-  clearBackpackCargoGlobal _behaelter;
-  clearMagazineCargoGlobal _behaelter;
-  clearWeaponCargoGlobal _behaelter;
-  clearItemCargoGlobal _behaelter;
+	if !(_cargo isEqualto []) then {
+  	clearBackpackCargoGlobal _behaelter;
+  	clearMagazineCargoGlobal _behaelter;
+  	clearWeaponCargoGlobal _behaelter;
+  	clearItemCargoGlobal _behaelter;
+	};
   {
     _behaelter addItemCargoGlobal [_x select 0, _x select 1];
   } forEach _cargo;
@@ -97,7 +99,8 @@ for "_i" from 1 to (count _waren_ids) do {
 
 
 (bestellungen select (_auftragsnummer - 1)) set [5, "delivered"];
-
+publicVariable "bestellungen";
+_auftrag set [5, "delivered"];
 
 //The plane will be deleted, once a foreman confirms the payload
 [
@@ -118,7 +121,7 @@ for "_i" from 1 to (count _waren_ids) do {
 
 	},
 	15,
-	[_lieferungscontainer, _unit, (bestellungen select (_auftragsnummer - 1))]
+	[_lieferungscontainer, _unit, _auftrag]
 ] call CBA_fnc_addPerFrameHandler;
 
 

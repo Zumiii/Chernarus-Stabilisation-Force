@@ -45,110 +45,112 @@ zumi_carbombs = [
 
 Bestellbare = [
   [
-    "Deployable Weapons",
+    "Werfer und Lafetten",
     "\A3\Weapons_F\Data\UI\icon_at_CA.paa",
     [
-      [1,"RHS_Stinger_AA_pod_D","","Stinger Pad",2,[]],
-      [2,"RHS_M2StaticMG_D","","M2 (High)",2,[]],
-      [3,"RHS_M2StaticMG_MiniTripod_D","","M2 (Low)",2,[]],
-      [4,"RHS_TOW_TriPod_D","","TOW",2,[]],
-      [5,"RHS_MK19_TriPod_D","","MK19",2,[]],
-      [6,"RHS_M252_USMC_WD","","M252",2,[]]
+      [1,"BWA3_Box_Launchers","\bwa3_pzf3\ui\bwa3_pzf3_x_ca.paa","Panzerfaust 3",2,[["BWA3_PzF3_Tandem_Loaded",2]]],
+      [2,"BWA3_Box_Launchers","\bwa3_rgw90\ui\bwa3_rgw90_x_ca.paa","RGW 90",2,[["BWA3_RGW90_Loaded",2]]],
+      [3,"BWA3_Box_Launchers","\rhsusf\addons\rhsusf_weapons\icons\w_fim92_ca.paa","FIM92 Stinger",2,[["rhs_weap_fim92",2]]],
+      [4,"Redd_Milan_Static","\A3\Static_F_Gamma\data\UI\gear_StaticTurret_AT_CA.paa","Milan Werfer",2,[]],
+      [5,"Redd_Tank_M120_Tampella","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","M120 Mörser",2,[]],
+      [6,"BWA3_Box_Launchers","\bwa3_pzf3\ui\bwa3_pzf3_bunkerfaust_x_ca.paa","Bunkerfaust",2,[["BWA3_Bunkerfaust_Loaded",2]]],
+      [7,"rnt_gmw_static",getText (configfile >> "CfgVehicles" >> "rnt_gmw_static_barell" >> "picture"),"GraMaWa",2,[]],
+      [8,"rnt_mg3_static",getText (configfile >> "CfgVehicles" >> "rnt_mg3_static_barell" >> "picture"),"MG3",2,[]]
     ]
   ],
   [
-    "Signaling",
+    "Leucht- und Signalmittel",
     "\A3\ui_f\data\map\vehicleicons\iconStaticSearchlight_ca.paa",
     [
-      [1,"ACE_Box_Chemlights","","Chemlights",2,[["ACE_Chemlight_White", 20],["Chemlight_blue", 5],["Chemlight_green", 5],["Chemlight_red", 5]]],
-      [2,"ACE_Box_Chemlights","","Flares (Handheld)",2,[["ACE_HandFlare_White", 20],["ACE_HandFlare_Red", 5],["ACE_HandFlare_Yellow", 5],["ACE_HandFlare_Green", 5]]],
-      [3,"ACE_Box_Chemlights","","Flares (Underbarell)",2,[["UGL_FlareWhite_F", 30],["UGL_FlareRed_F", 5],["UGL_FlareGreen_F", 5],["UGL_FlareCIR_F", 5]]],
-      [4,"ACE_Box_Chemlights","", "IR Grenades",2,[["B_IR_Grenade", 40]]]
+      [1,"ACE_Box_Chemlights","\z\ace\addons\chemlights\UI\ace_chemlight_white_x_ca.paa","Chemlights",2,[["ACE_Chemlight_White", 20],["Chemlight_blue", 5],["Chemlight_green", 5],["Chemlight_red", 5]]],
+      [2,"ACE_Box_Chemlights","\A3\Weapons_F\Data\UI\gear_flare_green_ca.paa","Fackeln",2,[["ACE_HandFlare_White", 20],["ACE_HandFlare_Red", 5],["ACE_HandFlare_Yellow", 5],["ACE_HandFlare_Green", 5]]],
+      [3,"ACE_Box_Chemlights","\A3\Weapons_F\Data\UI\gear_UGL_Flare_Green_CA.paa","Flares (ULG)",2,[["UGL_FlareWhite_F", 30],["UGL_FlareRed_F", 5],["UGL_FlareGreen_F", 5],["UGL_FlareCIR_F", 5]]],
+      [4,"ACE_Box_Chemlights","\A3\Weapons_F_EPB\Ammo\Data\UI\gear_B_IRStrobe_CA.paa", "IR Grenades",2,[["B_IR_Grenade", 40]]],
+      [5,"BWA3_Box_Support","\bwa3_p2a1\ui\bwa3_p2a1_x_ca.paa","Signalpistole P2A1",2,[["BWA3_P2A1",10]]]
+
     ]
   ],
   [
-    "Ammunition",
+    "Munition",
     "\A3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa",
     [
-      [1,"ACE_Box_Ammo","","M855A1 Stanag",2,[["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],["rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red",30]]],
-      [2,"ACE_Box_Ammo","","SCAR 762x51",2,[["rhs_mag_20Rnd_SCAR_762x51_m80a1_epr",20],["rhs_mag_20Rnd_SCAR_762x51_m62_tracer",20]]],
-      [3,"ACE_Box_Ammo","","SR25 762x51",2,[["rhsusf_20Rnd_762x51_SR25_m118_special_Mag",20], ["rhsusf_20Rnd_762x51_SR25_m62_Mag",20]]],
-      [4,"ACE_Box_Ammo","","Shotgun Shells",2,[["rhsusf_8Rnd_FRAG",30],["rhsusf_8Rnd_SLUG",30]]],
-      [5,"ACE_Box_Ammo","","M24 762x51",2,[["rhsusf_5Rnd_762x51_m118_special_Mag",50]]],
-      [6,"ACE_Box_Ammo","","M14 762x51",2,[["rhsusf_20Rnd_762x51_m118_special_Mag",20],["rhsusf_20Rnd_762x51_m62_Mag",20]]],
-      [7,"ACE_Box_Ammo","","M249 556x45",2,[["rhsusf_200Rnd_556x45_box",4],["rhsusf_200rnd_556x45_mixed_box",4],["rhsusf_100Rnd_556x45_soft_pouch_ucp",8],["rhsusf_100Rnd_556x45_mixed_soft_pouch_ucp",8]]],
-      [8,"ACE_Box_Ammo","","M240 762x51",2,[["rhsusf_100Rnd_762x51_m80a1epr",4],["rhsusf_100Rnd_762x51_m62_tracer",4],["rhsusf_50Rnd_762x51_m80a1epr",8],["rhsusf_50Rnd_762x51_m62_tracer",8]]],
-      [9,"ACE_Box_Ammo","","M1911 7x45acp",2,[["rhsusf_mag_7x45acp_MHP",40]]],
-      [10,"ACE_Box_Ammo","","M9 9x19",2,[["rhsusf_mag_15Rnd_9x19_FMJ",20],["rhsusf_mag_15Rnd_9x19_JHP",20]]],
-      [11,"ACE_Box_Ammo","","Glock 9x19",2,[["rhsusf_mag_17Rnd_9x19_FMJ",20],["rhsusf_mag_17Rnd_9x19_JHP",20]]]
+      [1,"BWA3_Box_Ammo","\hlc_wp_g36\tex\ui\m_g36_EPR_ca.paa","G36 556x45",2,[["hlc_30rnd_556x45_EPR_G36", 40],["hlc_30rnd_556x45_Tracers_G36", 20]]],
+      [2,"BWA3_Box_Ammo","\bwa3_p8\ui\bwa3_p8_mag_x_ca.paa","P8 9x19",2,[["BWA3_15Rnd_9x19_P8", 60]]],
+      [3,"BWA3_Box_Ammo","\bwa3_mg4\ui\bwa3_mg4_mag_x_ca.paa","MG4 556x45",2,[["BWA3_200Rnd_556x45", 20],["BWA3_200Rnd_556x45_Tracer", 10]]],
+      [4,"BWA3_Box_Ammo","\bwa3_mg3\ui\bwa3_mg3_mag_x_ca.paa","MG3 762x51",2,[["BWA3_120Rnd_762x51", 20],["BWA3_120Rnd_762x51_Tracer", 10]]],
+      [5,"Item_rnt_mg3_kasten_fake","\redd_vehicles_main\data\rnt_munkasten_mg3_ca","MG3 Gurtkasten",1,[]],
+      [6,"Item_rnt_gmw_kasten_fake","\redd_vehicles_main\data\rnt_munkasten_gmw_ca","GNW Gurtkasten",1,[]],
+      [7,"Box_NATO_AmmoOrd_F","\A3\Static_F_Gamma\data\UI\gear_StaticTurret_AT_CA.paa","Milan Raketen",2,[["Redd_Milan_Mag", 4]]]
     ]
   ],
   [
-    "Utilities",
+    "Werkzeuge",
     "\A3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa",
     [
-      [1,"ACE_Box_Misc","\z\ace\addons\sandbag\data\m_sandbag_ca.paa","Empty Sandbags",2,[["ACE_Sandbag_empty",50]]],
-      [2,"Box_NATO_Equip_F","\A3\Weapons_F\Items\data\UI\gear_Toolkit_CA.paa","Tools",2,[["ACE_EntrenchingTool",4],["ACE_DefusalKit",4],["ToolKit",4],["ACE_Fortify",4],["ACE_wirecutter",2]]]
+      [1,"ACE_Box_Misc","\z\ace\addons\sandbag\data\m_sandbag_ca.paa","Sandsäcke (leer)",2,[["ACE_Sandbag_empty",50]]],
+      [2,"Box_NATO_Equip_F","\A3\Weapons_F\Items\data\UI\gear_Toolkit_CA.paa","Werkzeugkiste",2,[["ACE_EntrenchingTool",4],["ACE_DefusalKit",4],["ToolKit",4],["ACE_Fortify",4],["ACE_wirecutter",2]]]
     ]
   ],
   [
-    "Explosives",
+    "Sprengmittel",
     "\A3\ui_f\data\igui\cfg\simpleTasks\types\mine_ca.paa",
     [
-      [1,"Box_NATO_AmmoOrd_F","","Demolition Equipment",2,[["SatchelCharge_Remote_Mag",8],["ACE_Clacker", 1],["ACE_M26_Clacker", 1]]],
-      [2,"Box_NATO_AmmoOrd_F","","Frag Grenades",2,[["HandGrenade",50]]],
-      [3,"Box_NATO_AmmoOrd_F","","Smoke Grenades",2,[["SmokeShell",30],["SmokeShellBlue",5],["SmokeShellRed",5],["SmokeShellPurple",5],["SmokeShellYellow",5]]],
-      [4,"Box_NATO_AmmoOrd_F","","AT Mines",2,[["ATMine_Range_Mag",8]]],
-      [5,"Box_NATO_AmmoOrd_F","","Underbarrel Grenades",2,[["rhs_mag_M441_HE",20],["1Rnd_Smoke_Grenade_shell",20],["1Rnd_SmokeRed_Grenade_shell",5],["rhs_mag_M433_HEDP",10],["ACE_HuntIR_M203",5]]],
-      [6,"ACE_Box_82mm_Mo_HE","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mortar shells (HE)",2,[]],
-      [7,"ACE_Box_82mm_Mo_Illum","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mortar shells (Illum)",2,[]],
-      [8,"ACE_Box_82mm_Mo_Smoke","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mortar shells (Smoke)",2,[]],
-      [9,"ACE_Box_82mm_Mo_Combo","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mortar shells (Mixed)",2,[]]
+      [1,"Box_NATO_AmmoOrd_F","\A3\Weapons_f\data\UI\gear_satchel_CA.paa","Sprengladungen",2,[["SatchelCharge_Remote_Mag",8],["ACE_Clacker", 1],["ACE_M26_Clacker", 1]]],
+      [2,"Box_NATO_AmmoOrd_F","\bwa3_handgrenades\ui\bwa3_dm51_x_ca.paa","HE Granaten",2,[["BWA3_DM51A1",50]]],
+      [3,"Box_NATO_AmmoOrd_F","\bwa3_handgrenades\ui\bwa3_dm25_x_ca.paa","Nebeltöpfe",2,[["BWA3_DM25",30],["BWA3_DM32_Blue",5],["BWA3_DM32_Red",5],["BWA3_DM32_Purple",5],["BWA3_DM32_Yellow",5]]],
+      [4,"Box_NATO_AmmoOrd_F","\bwa3_explosives\ui\bwa3_dm31at_x_ca.paa","AT Minen",2,[["BWA3_DM31AT_Mag",8]]],
+      [5,"Box_NATO_AmmoOrd_F","\A3\Weapons_f\Data\ui\gear_UGL_slug_CA.paa","ULG",2,[["rhs_mag_M441_HE",20],["1Rnd_Smoke_Grenade_shell",20],["1Rnd_SmokeRed_Grenade_shell",5],["rhs_mag_M433_HEDP",10],["ACE_HuntIR_M203",5]]],
+      [6,"Redd_Box_120mm_Mo_HE_annz","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mörsergranaten (Annäherungszünder)",2,[]],
+      [7,"Redd_Box_120mm_Mo_HE","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mörsergranaten (Aufschlagzünder)",2,[]],
+      [8,"Redd_Box_120mm_Mo_Illum","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mörsergranaten (Illum)",2,[]],
+      [9,"Redd_Box_120mm_Mo_Combo","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mörsergranaten (Gemischter Satz)",2,[]],
+      [10,"Redd_Box_120mm_Mo_Smoke","\A3\Static_f\Mortar_01\data\UI\Mortar_01_ca.paa","Mörsergranaten (Nebel)",2,[]]
     ]
   ],
   [
-    "Medical",
+    "SanMat",
     "\z\ace\addons\medical_gui\ui\cross_T_9.paa",
     [
-      [1,"ACE_medicalSupplyCrate_advanced","\z\ace\addons\medical_treatment\ui\surgicalKit_ca.paa","Medical Crate",2,[["ACE_elasticBandage",20],["ACE_quikclot",50],["ACE_packingBandage",75],["ACE_tourniquet",20],["ACE_morphine",15],["ACE_epinephrine",15],["ACE_adenosine",5],["ACE_surgicalKit",15],["ACE_personalAidKit",5],["ACE_Splint",12]]],
-      [2,"Land_MetalCase_01_medium_F","\z\ace\addons\medical_treatment\ui\salineIV_ca.paa","IVs",2,[["ACE_salineIV",50],["ACE_salineIV_500",10],["ACE_salineIV_250",10],["ACE_plasmaIV",20],["ACE_plasmaIV_500",10],["ACE_plasmaIV_250",10],["ACE_bloodIV",20],["ACE_bloodIV_500",10],["ACE_bloodIV_250",10]]]
+      [1,"ACE_medicalSupplyCrate_advanced","\z\ace\addons\medical_treatment\ui\surgicalKit_ca.paa","Sanitätskiste",2,[["ACE_elasticBandage",20],["ACE_quikclot",50],["ACE_packingBandage",75],["ACE_tourniquet",20],["ACE_morphine",15],["ACE_epinephrine",15],["ACE_adenosine",5],["ACE_surgicalKit",15],["ACE_personalAidKit",5],["ACE_Splint",12]]],
+      [2,"Land_MetalCase_01_medium_F","\z\ace\addons\medical_treatment\ui\salineIV_ca.paa","Infusionen",2,[["ACE_salineIV",50],["ACE_salineIV_500",10],["ACE_salineIV_250",10],["ACE_plasmaIV",20],["ACE_plasmaIV_500",10],["ACE_plasmaIV_250",10],["ACE_bloodIV",20],["ACE_bloodIV_500",10],["ACE_bloodIV_250",10]]]
     ]
   ],
   [
-    "Fuel",
+    "Treibstoff",
     "\z\ace\addons\refuel\ui\icon_module_refuel.paa",
     [
-      [1,"FlexibleTank_01_forest_F","\z\ace\addons\refuel\ui\icon_refuel_interact.paa","Fuel Tank",4,[]]
+      [1,"FlexibleTank_01_forest_F","\z\ace\addons\refuel\ui\icon_refuel_interact.paa","Benzin-Tank",4,[]]
     ]
   ],
   [
-    "Vehicle Ammo",
+    "Fahrzeugmunition",
     "\z\ace\addons\rearm\ui\icon_module_rearm.paa",
     [
-      [1,"Box_NATO_AmmoVeh_F","\z\ace\addons\rearm\ui\icon_rearm_interact.paa","Ammo container",2,[]]
+      [1,"Box_NATO_AmmoVeh_F","\z\ace\addons\rearm\ui\icon_rearm_interact.paa","Ammo Container",2,[]]
     ]
   ],
   [
-    "Food & Humanitarian",
+    "Essen & Humanitäres",
     "\z\acex\addons\field_rations\ui\icon_survival.paa",
     [
-      [1,"Land_PaperBox_01_small_closed_brown_F","\z\acex\addons\field_rations\ui\item_canteen_co.paa","Canteens",2,[["ACE_Canteen", 40]]],
+      [1,"Land_PaperBox_01_small_closed_brown_F","\z\acex\addons\field_rations\ui\item_canteen_co.paa","Feldflaschen",2,[["ACE_Canteen", 40]]],
       [2,"Land_PaperBox_01_small_closed_brown_F","\z\acex\addons\field_rations\ui\item_mre_type2_co.paa","MREs",2,[["ACE_MRE_BeefStew", 40]]],
-      [3,"Land_PaperBox_01_small_stacked_F","\z\acex\addons\field_rations\ui\icon_hud_hungerstatus.paa","Pallet of foodboxes",5,[]],
-      [4,"Land_WaterBottle_01_stack_F","\z\acex\addons\field_rations\ui\icon_hud_thirststatus.paa","Pallet of stacked waterbottles",5,[]],
-      [5,"Land_Portable_generator_F","\z\ace\addons\refuel\ui\icon_refuel_interact.paa","Portable Generator",2,[]],
-      [6,"WaterPump_01_forest_F","\z\acex\addons\field_rations\ui\icon_water_tap.paa","Water pump",10,[]],
-      [7,"Land_CinderBlocks_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Pallet of cinder blocks",5,[]],
-      [8,"Land_Bricks_V1_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Pallet of bricks",5,[]],
-      [9,"Land_WoodenPlanks_01_pine_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Stack of pine planks",10,[]]
+      [3,"Land_PaperBox_01_small_stacked_F","\z\acex\addons\field_rations\ui\icon_hud_hungerstatus.paa","Pallette Essensrationen",5,[]],
+      [4,"Land_WaterBottle_01_stack_F","\z\acex\addons\field_rations\ui\icon_hud_thirststatus.paa","Pallette Wassersixpacks",5,[]],
+      [5,"Land_Portable_generator_F","\z\ace\addons\refuel\ui\icon_refuel_interact.paa","Tragbarer Generator",2,[]],
+      [6,"WaterPump_01_forest_F","\z\acex\addons\field_rations\ui\icon_water_tap.paa","Wasserpumpe",10,[]],
+      [7,"Land_CinderBlocks_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Pallette Betonblöcke",5,[]],
+      [8,"Land_Bricks_V1_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Pallette Ziegelsteine",5,[]],
+      [9,"Land_WoodenPlanks_01_pine_F","\z\acex\addons\fortify\ui\hammer_ca.paa","Stapel Fichtenholz",10,[]]
     ]
   ],
   [
-    "Optic Devices",
+    "Nachtkampfmittel",
     "\A3\ui_f\data\igui\cfg\simpleTasks\types\scout_ca.paa",
     [
-      [1,"ACE_Box_Misc","","Binoculars",2,[["ACE_Vector",4],["ACE_Yardage450",4],["ACE_MX2A",1],["Laserdesignator",2],["Laserbatteries",2]]],
-      [2,"ACE_Box_Misc","","NVGs",2,[["rhsusf_ANPVS_14",10],["rhsusf_ANPVS_15",10]]]
+      [1,"BWA3_Box_Support","\z\ace\addons\vector\UI\ace_vector_x_ca.paa","Binokkulare",2,[["ACE_Vector",4],["ACE_Yardage450",4],["ACE_MX2A",1],["Laserdesignator",2],["Laserbatteries",2]]],
+      [2,"BWA3_Box_Support","\A3\Weapons_F\Data\UI\gear_nvg_CA.paa","Restlichtverstärker",2,[["rhsusf_ANPVS_15",20]]],
+      [3,"BWA3_Box_Support","\bwa3_attachments\ui\bwa3_llm01_x_ca.paa","Laser - Lichtmodule",2,[["BWA3_acc_LLM01_flash",18],["BWA3_acc_VarioRay_flash",2]]]
     ]
   ]
 ];

@@ -1,10 +1,10 @@
 aiKills		= 0;
 briefing	= 1;
-briefingName = "Persistent Patrol Ops";
+briefingName = "Operation ""CFOR""";
 debriefing	= 1;
 onLoadIntroTime = 1;
 respawn		= "BASE";
-respawnDelay	= 10;
+respawnDelay	= 5;
 respawnVehicleDelay = 3;
 respawnDialog	= 1;
 respawnOnStart	= 0;
@@ -31,9 +31,9 @@ class cfgOrbat {
 };
 
 class Header {
+	gameType = CTI;
 	maxPlayers = 30;
 	minPlayers = 1;
-	gameType = Patrol;
 };
 
 
@@ -98,11 +98,13 @@ class CfgTaskDescriptions {
 		description	= "Anführer der abtrünnigen Militärs";
 		marker		= "";
 	};
+	/*
 	class attack {
 		title		= "Angreifen";
 		description	= "Angriffsziel";
 		marker		= "";
 	};
+	*/
 	class luftabwehr {
 		title		= "Luftabwehr";
 		description	= "Feindliche Flak";
@@ -121,6 +123,11 @@ class CfgTaskDescriptions {
 	class offiziere {
 		title		= "Offiziere";
 		description	= "Zu neutralisierende Ziele";
+		marker		= "";
+	};
+	class Patrouille {
+		title		= "Patrouille";
+		description	= "Ortschaft patrouillieren";
 		marker		= "";
 	};
 	class aga_1	{
@@ -199,6 +206,26 @@ class CfgTaskEnhancements {
 };
 
 class CfgTaskTypes {
+	class village {
+		icon	= "pics\village.paa";
+		icon3D	= "pics\village.paa";
+	};
+	class city {
+		icon	= "pics\city.paa";
+		icon3D	= "pics\city.paa";
+	};
+	class capital {
+		icon	= "pics\capital.paa";
+		icon3D	= "pics\capital.paa";
+	};
+	class factory {
+		icon	= "pics\factory.paa";
+		icon3D	= "pics\factory.paa";
+	};
+	class roadblock {
+		icon	= "pics\roadblock.paa";
+		icon3D	= "pics\roadblock.paa";
+	};
 	class formaldienst {
 		icon	= "\german_headgear\ui\pbw_feldmuetze_fleck.paa";
 		icon3D	= "\german_headgear\ui\pbw_feldmuetze_fleck.paa";
@@ -243,6 +270,13 @@ class cfgUnitInsignia {
 		displayName = "Keiler";
 		author = "Zumi";
 		texture = "pics\keiler.paa";
+		textureVehicle = "";
+	};
+
+	class mp {
+		displayName = "Feldjäger";
+		author = "Zumi";
+		texture = "pics\mp.paa";
 		textureVehicle = "";
 	};
 

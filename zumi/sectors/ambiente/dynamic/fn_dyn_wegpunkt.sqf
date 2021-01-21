@@ -48,6 +48,9 @@ _waypointtype = switch _script do {
   case "SAD" : {
     "SAD"
   };
+  case "MOVE" : {
+    "MOVE"
+  };
   default {
     "MOVE"
   };
@@ -67,7 +70,7 @@ switch _art do {
     [leader _grp, _ziel, 0, _waypointtype, _behaviour, "GREEN", "Limited", "STAG COLUMN", _waypointstatement] call CBA_fnc_addWaypoint;
   };
   default {
-    [leader _grp, _ziel, 0, _waypointtype, _behaviour, "YELLOW", "Limited", "STAG COLUMN", _waypointstatement] call CBA_fnc_addWaypoint;
+    [leader _grp, _ziel, 0, _waypointtype, _behaviour, "YELLOW", "Limited", "COLUMN", _waypointstatement] call CBA_fnc_addWaypoint;
   };
 };
 

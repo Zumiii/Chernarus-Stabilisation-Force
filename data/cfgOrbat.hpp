@@ -24,6 +24,7 @@
       description = "Befehlshabender Offizier";
       commander = "Williamson";
       commanderRank = "Major";
+
 	    class infantry_net {
 	      id = 1;
 	      idType = 0;
@@ -37,14 +38,29 @@
 				insignia = "\idi\acre\addons\sys_sem70\data\ui\SEM70_icon.paa";
         commander = "Karrenbauer";
         commanderRank = "Captain";
-        /*
+        class mp {
+          id = 1;
+          idType = 0;
+          type = "Unknown";
+          size = "Troop";
+          side = "west";
+          tags[] = {"mp"};
+          description = "Das Adminteam";
+          text = "Server-Administration";
+          textShort = "MP";
+          insignia = __EVAL(MISSIONLOCATION + "pics\mp.paa");
+          texture = __EVAL(MISSIONLOCATION + "pics\mp.paa");
+          color[] = {1,1,1,1};
+          commander = "Zumi";
+          commanderRank = "Sergeant";
+        };
         class keiler {
 					id = 1;
 					idType = 0;
 					type = "Infantry";
 					size = "Squad";
 					side = "west";
-					tags[] = {"squad_net_keiler"};
+					tags[] = {"keiler"};
 					description = "https://www.twitch.tv/horkmaster92";
 					textShort = "Keiler";
 					text = "AN/PRC-152 on Channel 1";
@@ -54,7 +70,7 @@
           commander = "Horkmaster";
           commanderRank = "Sergeant";
         };
-        */
+
         class squad_net_alpha_one {
 					id = 1;
 					idType = 0;

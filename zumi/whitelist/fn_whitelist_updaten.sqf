@@ -36,4 +36,4 @@ _key = _spieler getVariable ["323_keys", []];
 
 
 //Aktualisiere alle Buttons für Variablen
-[false, _spieler, _spieler, _medic, _pio, _eod, _pilot, _panzer, _logistiker, _key] call zumi_fnc_whitelistbuttons_updaten;
+[false, player, _spieler, _medic, _pio, _eod, _pilot, _panzer, _logistiker, _key] call zumi_fnc_whitelistbuttons_updaten;

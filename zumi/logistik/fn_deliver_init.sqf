@@ -31,6 +31,7 @@ for "_i" from 1 to (count bestellungen) do {
 
     };
     case "reported lost";
+    case "delivered";
     case "received" : {
       //Lösche Datenbankeintrag
       ["deleteKey", ["Missionspersistenz", format ["bstl_%1", _auftragsnummer]]] call _inidbi;

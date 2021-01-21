@@ -1,51 +1,36 @@
 
 
+Todo Immediate
 
-Architektur für Tasks erstellen
-
-Ort hat drei Stufen, innerhalb deren Tasks erledigt werden können
-
-Ortslage zwischen -15 und +15
-Tasks folgednermassen:
-
-Wenn Ortslage > 5
-  - Verteidigen wenn X
-    --> Erhöht Sicherheit
+  Feind
+  - Mechanik
+  - Positionen
+  - Defense-Task
 
 
-Wenn Ortslage >=-5 && <=5
-  - Wiederaufbau
-    --> Erhöht Humanitäre Lage
+  Resistance
+  - Mechanik
+  - Tasks
 
-  - Humanitäre Hilfe
-    --> Erhöht Humanitäre Lage
+  Patrol-Task
+  - Diminishing Return
 
-  - Patrouille
-    --> Erhöht Sicherheit
+  Decay over Time
 
-  - Gesprächsaufklärung
-    --> Gesprächsaufklärung kann Untertask der Ortschaft auslösen
+  Update für Lage bei Tasks
+
+  Minenpersistenz
 
 
 
-Wenn Ortslage < -5
-  - Angreifen
-    --> Erhöht Sicherheit
+Todo Later
+
+  Bestechen und entschädigen Interaktion
+
+  Soldsystem?
 
 
-
-
-Fncs:
-
-  [taskID, true] call BIS_fnc_deleteTask
-
-  _exists = ["MyTask"] call BIS_fnc_taskExists;
-
-
-
-Mods updaten und Keys fixxen
-
-Bestellbare Sachen überarbeiten
+Notizen
 
 
 [_player] onMapSingleClick {
@@ -67,7 +52,85 @@ Bestellbare Sachen überarbeiten
   ] call CBA_fnc_addPerFrameHandler;
 };
 
+{
 
-[[29,true,[4000.7,8835.31,0.668976],[10460.7,5803.78,0],["LOP_CHR_Civ_Ural_Open",EAST,[],"c_car","ColorCIV","terr"],O Alpha 1-1,[O Alpha 1-1:1],[[10460.7,5803.78,0],[0,""]]]]
+  private _score = _x getVariable ["score", 0];
+  switch (true) do {
 
-[[10460.7,5803.78,0],[0,""]
+    case (_score >= 5) : {
+      /*
+        Blufor
+        - Defend Symbol
+        Die Ortschaft muss verteidigt werden. Nicht patrouillierte Gebiete können in
+        die Hände der Resistance fallen.
+        Angrenzende Gebiete haben teilweise Feindinfos oder Infos zu Resistance-Punkten
+
+
+      */
+      [true, format ["defend_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Verteidigen: %1", (_x getVariable ["name", str _forEachIndex])], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "defend", true] call bis_fnc_taskCreate;
+
+    };
+    case ((_score < 5) && (_score > -5)) : {
+      /*
+        Independent
+        - Zu bestimmendes Symbol
+        Die Ortschaft benötigt humanitäre Hilfe, wenn ihr letztes Gefecht nicht lange her ist (<12 Server-Restarts)
+        Aufbau-Tasks gibt es bei zerstörten Gebäuden in der Zone
+        Sonstige Hilfsgüter braucht es bei schlechter humanitärer Lage
+
+      */
+      [true, format ["prt_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Patrouille: %1", (_x getVariable ["name", str _forEachIndex])], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "danger", true] call bis_fnc_taskCreate;
+
+    };
+    case (_score <= -5) : {
+      /*
+        Attack Symbol
+        Opfor
+        Die Ortschaft wird vom Feind kontrolliert und muss freigekämpft werden
+        Verschiedene Szenarien möglich:
+          1) Feind hat Stellung gehärtet und hat ein MHQ dort
+          2) Feind nutzt das Gebiet als Nachschubposten
+          3) Feind hat das Gebiet lediglich besetzt aber nicht gehärtet
+      */
+      [true, format ["attack_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Erobern: %1", (_x getVariable ["name", str _forEachIndex])], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "attack", true] call bis_fnc_taskCreate;
+    };
+    default {
+
+    };
+
+  };
+
+
+
+
+"ButaneCanister"
+"keys"
+"Laptop_Unfolded"
+"Laptop_Closed"
+"MobilePhone"
+"Money"
+"Money"
+"Money_bunch"
+"Money_roll"
+"money_stack"
+"money_stack_quest"
+"Wallet_ID"
+"SatPhone"
+"SmartPhone"
+
+
+[
+ findDisplay 46,
+ [15000,15000,0],
+ [],
+ [],
+ [],
+ [],
+ 0,
+ false,
+1000,
+ true,
+ "CFOR Mission Overview",
+ false,
+ "\A3\Ui_f\data\logNetworkgos\arma3_white_ca.paa"
+] call BIS_fnc_StrategicMapOpen;

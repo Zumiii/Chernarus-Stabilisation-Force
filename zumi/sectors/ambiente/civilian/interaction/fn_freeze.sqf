@@ -2,7 +2,6 @@
 
 params ["_player","_unit"];
 
-if !(local _unit) exitWith {};
 
 if (isNull driver _unit || (!alive (driver _unit)) || (_unit getVariable ["kooperiert",false])) exitWith {};
 

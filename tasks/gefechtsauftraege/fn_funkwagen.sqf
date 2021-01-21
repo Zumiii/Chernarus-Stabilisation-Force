@@ -21,7 +21,7 @@ if !isServer exitWith {};
   Task erstellen und an Spielerschaft zuweisen
 */
 
-[true, ["kommunikationssysteme", _task], "kommunikationssysteme", objNull, "CREATED", -1, true, "radio", true] call bis_fnc_taskCreate;
+[true, [format ["%1_kommunikationssysteme", _task], _task], "kommunikationssysteme", objNull, "CREATED", -1, true, "radio", true] call bis_fnc_taskCreate;
 /*
   Prüfschleife und Taskbeendigung
 */

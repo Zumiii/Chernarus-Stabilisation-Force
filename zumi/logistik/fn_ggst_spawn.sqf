@@ -29,10 +29,12 @@ if (_objekt isKindOf "StaticWeapon") then {
 };
 
 //Entleere Objektinventar
-clearBackpackCargoGlobal _objekt;
-clearMagazineCargoGlobal _objekt;
-clearWeaponCargoGlobal _objekt;
-clearItemCargoGlobal _objekt;
+if !(_cargo isEqualTo []) then {
+  clearBackpackCargoGlobal _objekt;
+  clearMagazineCargoGlobal _objekt;
+  clearWeaponCargoGlobal _objekt;
+  clearItemCargoGlobal _objekt;
+};
 
 //San, Rep, Cargo, Refueler, Ammo
 _objekt setVariable ["ace_rearm_currentSupply", _ammotruck, true];

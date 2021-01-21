@@ -2,7 +2,6 @@
 
 params ["_player","_unit"];
 
-if !(local _unit) exitWith {};
 
 if (isNull _unit || !alive _unit || _unit getVariable ["ergeben",false]) exitWith {};
 

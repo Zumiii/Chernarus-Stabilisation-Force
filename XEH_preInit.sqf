@@ -40,7 +40,7 @@ if (hasInterface) then {
 
 // SERVER
 if (isServer) then {
-
+  zumi_stellungen = [];
   order_in_progress = false;
   publicVariable "order_in_progress";
 
@@ -161,28 +161,30 @@ if (isServer) then {
         private _deltaT = (CBA_missionTime - _lastUpdateTime)/60; // in minutes
         if (_deltaT == 0) exitWith {};
 
-        private _unitsInSector = allUnits inAreaArray [_center, _radius, _radius, 0, false] select {
-            getPosWorld _x inPolygon _polygon
-        };
-
-        // handle unit's sector info
-        _sector setVariable ["units", _unitsInSector];
-
-        private _arrivedUnits = _unitsInSector - _previousUnitsInSector;
-        private _departedUnits = _previousUnitsInSector - _unitsInSector;
-
-        {
-            _x setVariable ["commy_sector", _sector, true];
-        } forEach _arrivedUnits;
-
-        {
-            if (_x getVariable ["commy_sector", objNull] isEqualTo _sector) then {
-                _x setVariable ["commy_sector", objNull, true];
-            };
-        } forEach (_cleanupQuene - _arrivedUnits);
-
-        _sector setVariable ["cleanupQuene", _departedUnits];
         if (_sector getVariable ["active", false]) then {
+
+          private _unitsInSector = allUnits inAreaArray [_center, _radius, _radius, 0, false] select {
+              getPosWorld _x inPolygon _polygon
+          };
+
+          // handle unit's sector info
+          _sector setVariable ["units", _unitsInSector];
+
+          private _arrivedUnits = _unitsInSector - _previousUnitsInSector;
+          private _departedUnits = _previousUnitsInSector - _unitsInSector;
+
+          {
+              _x setVariable ["commy_sector", _sector, true];
+          } forEach _arrivedUnits;
+
+          {
+              if (_x getVariable ["commy_sector", objNull] isEqualTo _sector) then {
+                  _x setVariable ["commy_sector", objNull, true];
+              };
+          } forEach (_cleanupQuene - _arrivedUnits);
+
+          _sector setVariable ["cleanupQuene", _departedUnits];
+
           // calc new sector score
           {
               private _side = side group _x;

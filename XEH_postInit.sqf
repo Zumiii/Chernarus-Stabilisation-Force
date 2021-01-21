@@ -1,13 +1,4 @@
-/*
-[zumi_fnc_customSignalFnc] call acre_api_fnc_setCustomSignalFunc;
 
-["remoteStopSpeaking",
-	{
-    _this call zumi_fnc_remoteStopSpeaking;
-    _this call acre_sys_core_fnc_remoteStopSpeaking;
-	}
-] call acre_sys_rpc_fnc_addProcedure;
-*/
 if (hasInterface) then {
 
 	[{
@@ -94,9 +85,11 @@ if (hasInterface) then {
     params ["_unit", "_task"];
 		if (_task isEqualTo "") exitWith {};
 		_task = (_unit call BIS_fnc_taskCurrent);
-		if !(([_task] call BIS_fnc_taskType) isEqualTo "attack") exitWith {
+		/*
+		if !(([_task] call BIS_fnc_taskType) isEqualTo "default") exitWith {
 			hint "Das ist noch nicht implementiert!";
 		};
+		*/
     if ((_unit != (leader group _unit)) || ((_unit getVariable ["entscheidungsbefugnis", 0]) < 1)) exitWith {
       hint "Nur befähigte Gruppenführer dürfen Einsatzziele festlegen";
       //Todo: Resette den Currenttask
@@ -150,32 +143,34 @@ if (hasInterface) then {
 
 	["ace_common_playActionNow", {
 	  params ["_player","_anim"];
-		_ct = cursortarget;
-		if (isNull _ct || ([_ct] call ace_common_fnc_isPlayer)) exitWith {};
-		if ((_ct isKindoF "CAManBase" || _ct isKindoF "LandVehicle") && (_ct distance2d _player <= 20) && (alive _ct) && (!isNull driver _ct) && !(driver _ct getVariable ["ace_captives_isHandcuffed", false]) && (_player call CBA_fnc_canUseWeapon) && ((side _ct) IN [civilian, west])) then {
+		if !(_player call CBA_fnc_canUseWeapon) exitwith {};
+		if (_anim isEqualTo "gestureAdvance") exitwith {
+			private _getdoor = ([3] call ace_interaction_fnc_getDoor);
+			_getdoor params [["_house", objNull],["_door", ""]];
+			if (_door != "") then {
+					[_house, "knock", 25] call CBA_fnc_globalSay3d;
+					_array = [_house, _door] call ace_interaction_fnc_getDoorAnimations;
+					_array params [["_animations", []], ["_lockedVariable", []]];
+			};
+		};
+		private _entities = (_player nearEntities [["CAManBase", "LandVehicle"], 25]) select {
+			(!isNull _x) && !([_x] call ace_common_fnc_isPlayer)  && (alive _x) && (!isNull driver _x) && !(driver _x getVariable ["ace_captives_isHandcuffed", false]) && ((side _x) IN [civilian, west]) && ([position _player, getDir _player, 30, position _x] call BIS_fnc_inAngleSector)
+		};
+		{
 		  switch _anim do {
 		    case "ace_gestures_Hold" : {
-					["zumi_anim", [_player, _ct, 0], _ct] call CBA_fnc_targetEvent;
+					["zumi_anim", [_player, _x, 0], _x] call CBA_fnc_targetEvent;
 		    };
 		    case "ace_gestures_HoldStandLowered" : {
-					["zumi_anim", [_player, _ct, 1], _ct] call CBA_fnc_targetEvent;
+					["zumi_anim", [_player, _x, 1], _x] call CBA_fnc_targetEvent;
 		    };
 		    case "ace_gestures_ForwardStandLowered" ;
 		    case "ace_gestures_Forward" : {
-					["zumi_anim", [_player, _ct, 2], _ct] call CBA_fnc_targetEvent;
+					["zumi_anim", [_player, _x, 2], _x] call CBA_fnc_targetEvent;
 		    };
-				case "gestureAdvance" : {
-     			private _getdoor = ([2] call ace_interaction_fnc_getDoor);
-     			_getdoor params [["_house", objNull],["_door", ""]];
-     			if (_door != "") then {
-      				[_house, "knock", 25] call CBA_fnc_globalSay3d;
-      				_array = [_house, _door] call ace_interaction_fnc_getDoorAnimations;
-      				_array params [["_animations", []], ["_lockedVariable", []]];
-     			};
-     		};
 				default {};
 			};
-		 };
+		} forEach _entities;
 	}] call CBA_fnc_addEventHandler;
 
 	["ace_common_playActionNow", {
@@ -256,12 +251,38 @@ if (isServer) then {
 	["zumi_task_assigned",{
     params ["_task", "_taskParent", "_taskpos", "_description", "_unit"];
     _description params ["_desc", "_title", ["_marker", ""]];
-		if (count ([_taskpos, 1500, [west,civilian,east,resistance], ["CAManBase","LandVehicle","Air"]] call zumi_fnc_nahe_spieler) > 0) exitWith {"Im gewünschten Gebiet dürfen aus Gründen der Immersion keine Spieler im Umkreis von 1500 Metern präsent sein..." remoteExecCall ["hint", _unit];};
-    task_running = true;
-    publicVariable "task_running";
-    running_tasks pushbackUnique [_taskParent, _task, _taskpos, _unit, timestamp, restart_nummer];
-    //TODO: Call Missionscript
-		[_task, _taskParent, _taskpos, _description] call zumi_fnc_attack;
+		//Update den Tasktype und löse ggf. Task aus
+		private _sector = (commy_sectors select {(_x getVariable ["center", [0,0,0]]) isEqualTo _taskpos}) select 0;
+		private _score = _sector getVariable ["score", 0];
+		switch (true) do {
+
+	    case (_score >= 5) : {
+				[_task, "defend"] call BIS_fnc_taskSetType;
+				//TODO Defend Task
+				"Das wurde noch nicht implementiert..." remoteExecCall ["hint", _unit];
+	    };
+	    case ((_score < 5) && (_score > -5)) : {
+				[_task, "walk"] call BIS_fnc_taskSetType;
+				[_task, _taskParent, _taskpos, _description, _sector] call zumi_fnc_patrol;
+				task_running = true;
+				publicVariable "task_running";
+				running_tasks pushbackUnique [_taskParent, _task, _taskpos, _unit, timestamp, restart_nummer];
+	    };
+	    case (_score <= -5) : {
+				if (count ([_taskpos, 1500, [west,civilian,east,resistance], ["CAManBase","LandVehicle","Air"]] call zumi_fnc_nahe_spieler) > 0) exitWith {"Im gewünschten Gebiet dürfen aus Gründen der Immersion keine Spieler im Umkreis von 1500 Metern präsent sein..." remoteExecCall ["hint", _unit];};
+				[_task, "attack"] call BIS_fnc_taskSetType;
+				task_running = true;
+				publicVariable "task_running";
+				running_tasks pushbackUnique [_taskParent, _task, _taskpos, _unit, timestamp, restart_nummer];
+				//TODO: Call Missionscript
+				[_task, _taskParent, _taskpos, _description] call zumi_fnc_attack;
+	    };
+	    default {
+
+			};
+
+	  };
+
   }] call CBA_fnc_addEventHandler;
 
 	["zumi_intel_create", {
@@ -414,7 +435,6 @@ if (isServer) then {
 	//Handle Disconnect
 	addMissionEventHandler ["HandleDisconnect", {
 		params ["_p", "_id", "_uid", "_name"];
-		if (_p inArea "Safezone") exitWith {};
 		private _inidbi = ["new", "us"] call OO_INIDBI;
     private _unitLoadout = getUnitLoadout [_p, false];
     ["write", ["Spielerliste",
@@ -641,7 +661,7 @@ if (isServer) then {
 
 	_lagerverwaltung = ["Lagerverwaltung","Logistics Management","\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",{
 		params ["_t","_p","_actionparams"];
-	},{((player getVariable ["323_logistiker", 0]) > 0)},{},[],[0,0,0], 1] call zumi_fnc_interaction_create;
+	},{true},{},[],[0,0,0], 1] call zumi_fnc_interaction_create;
 
 	["zumi_interaction_add_to_object", [lagerlappy, _lagerverwaltung, 0, []]] call CBA_fnc_globalEventJIP;
 
@@ -665,14 +685,14 @@ if (isServer) then {
 	},{true}, {}, [], [0,0,0], 1] call zumi_fnc_interaction_create;
 
 	["zumi_interaction_add_to_object", [laptop, _depot, 0, []]] call CBA_fnc_globalEventJIP;
-
+/*
 	_statistik = ["Statistik", "Besucherzahlen","\A3\ui_f\data\igui\cfg\simpleTasks\types\walk_ca.paa",{
 		params ["_t","_p","_actionparams"];
 		[] call zumi_fnc_show_statistic;
 	},{true}, {}, [], [0,0,0], 1] call zumi_fnc_interaction_create;
 
 	["zumi_interaction_add_to_object", [lagerlappy, _statistik, 0, ["Lagerverwaltung"]]] call CBA_fnc_globalEventJIP;
-
+*/
 /* MISC */
 
 	//TOWING
@@ -685,7 +705,7 @@ if (isServer) then {
 				private _childStatement = {
 					params ["_target", "_player", "_params"];
 					_params params ["_towed"];
-					if (([configFile >> "cfgVehicles" >> (typeOf _target)  >> "Enginepower", "SCALAR", 50] call CBA_fnc_getConfigEntry) <= ([configFile >> "cfgVehicles" >> (typeOf _towed)  >> "Enginepower", "SCALAR", 50] call CBA_fnc_getConfigEntry))  exitWith {
+					if (([configFile >> "cfgVehicles" >> (typeOf _target)  >> "Enginepower", "SCALAR", 50] call CBA_fnc_getConfigEntry) < ([configFile >> "cfgVehicles" >> (typeOf _towed)  >> "Enginepower", "SCALAR", 49] call CBA_fnc_getConfigEntry))  exitWith {
 						["Failed! The towing vehicle must have a stronger engine than the towed...", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa", [1, 1, 1], _player, 2] remoteExecCall ["ace_common_fnc_displayTextPicture", _player];
 					};
 					if ("ACE_rope12" IN (itemCargo _target)) then {
@@ -707,14 +727,15 @@ if (isServer) then {
 			nearestObjects [_target, ["car"], 12, false]) select {
 				(!(_X == _target) &&
 				(isNull (_x getVariable ["towingcable", objNull]) &&
-				([position _target, ((direction _x)) - 180, 30, position _x] call BIS_fnc_inAngleSector)))
+				([position _target, ((direction _x)) - 180, 30, position _x] call BIS_fnc_inAngleSector)) &&
+				(locked _x < 1))
 			}
 		);
 		_actions
 	};
 	private _aktion = ["Hook","Hook",["\z\ace\addons\fastroping\UI\Icon_Module_FRIES_ca.paa",""],{
 		params ["_t","_p","_actionparams"];
-	},{(alive _target) && (isNull (_target getVariable ["towingcable", objNull]))},_insertChildren,[]] call zumi_fnc_interaction_create;
+	},{(alive _target) && (isNull (_target getVariable ["towingcable", objNull])) && (locked _target < 1)}, _insertChildren, []] call zumi_fnc_interaction_create;
 	["zumi_interaction_add_to_class", ["Car", _aktion, 0, ["ACE_MainActions"], true]] call CBA_fnc_globalEventJIP;
 	["zumi_interaction_add_to_class", ["Tank", _aktion, 0, ["ACE_MainActions"], true]] call CBA_fnc_globalEventJIP;
 
@@ -744,7 +765,7 @@ if (isServer) then {
 	};
 	private _aktion = ["Unhook","Unhook",["\z\ace\addons\fastroping\UI\Icon_Module_FRIES_ca.paa",""],{
 		params ["_t","_p","_actionparams"];
-	},{(alive _target) && (!isNull (_target getVariable ["towingcable", objNull]))},_insertChildren,[]] call zumi_fnc_interaction_create;
+	},{(alive _target) && (!isNull (_target getVariable ["towingcable", objNull]))  && (locked _target < 1)}, _insertChildren, []] call zumi_fnc_interaction_create;
 	["zumi_interaction_add_to_class", ["Car", _aktion, 0, ["ACE_MainActions"], true]] call CBA_fnc_globalEventJIP;
 	["zumi_interaction_add_to_class", ["Tank", _aktion, 0, ["ACE_MainActions"], true]] call CBA_fnc_globalEventJIP;
 
@@ -774,7 +795,7 @@ if (isServer) then {
 
 	}] call CBA_fnc_addEventHandler;
 
-	_armory_stage_one = ["waka_stage_one","Armory authorisation","\A3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa",
+	_armory_stage_one = ["waka_stage_one","Grant armory authorisation","\A3\ui_f\data\igui\cfg\simpleTasks\types\armor_ca.paa",
 	  {
 	   params ["_t","_p","_actionparams"];
 		 _t setVariable ["323_waka", 1, true];
@@ -1206,13 +1227,11 @@ Acre Jammer
 	//Weise Zivilist an
 	["zumi_anweisen", {
 		params ["_unit", "_player", "_id", "_anweisung"];
-		if !(local _unit) exitWith {};
 		[_unit, _player, _id, _anweisung] call zumi_fnc_anweisen;
 	}] call CBA_fnc_addEventHandler;
 
 	["zumi_anim", {
 		params ["_player", "_unit", "_fnc"];
-		if !(local _unit) exitWith {};
 		switch _fnc do {
 			case 0 : {
 				[_player, _unit] call zumi_fnc_handsup;

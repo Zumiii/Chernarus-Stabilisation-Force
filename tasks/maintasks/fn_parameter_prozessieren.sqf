@@ -17,63 +17,88 @@ commanding = ["commanding", 1] call BIS_fnc_getParamValue;
 
 
 
-[true, "humanitarian", "humanitarian", objNull, "CREATED", -1, false, "heal", true] call bis_fnc_taskCreate;
-[true, "tension", "tension", objNull, "CREATED", -1, false, "danger", true] call bis_fnc_taskCreate;
-[true, "warlords", "warlords", objNull, "CREATED", -1, false, "target", true] call bis_fnc_taskCreate;
+//[true, "humanitarian", "humanitarian", objNull, "CREATED", -1, false, "heal", true] call bis_fnc_taskCreate;
+//[true, "tension", "tension", objNull, "CREATED", -1, false, "danger", true] call bis_fnc_taskCreate;
+//[true, "warlords", "warlords", objNull, "CREATED", -1, false, "target", true] call bis_fnc_taskCreate;
 {
-  //Hauptangriffsziele
-  [true, format ["attack_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Erobern: %1", (_x getVariable ["name", str _forEachIndex])], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "attack", true] call bis_fnc_taskCreate;
-} forEach (commy_sectors select {(_x getVariable ["score", 0]) <= -5});
-
-{
-
   private _score = _x getVariable ["score", 0];
-  switch (true) do {
+  private _partei = switch (true) do {
 
     case (_score >= 5) : {
-      /*
-        Blufor
-        - Defend Symbol
-        Die Ortschaft muss verteidigt werden. Nicht patrouillierte Gebiete können in
-        die Hände der Resistance fallen.
-        Angrenzende Gebiete haben teilweise Feindinfos oder Infos zu Resistance-Punkten
-
-
-      */
-      [true, format ["defend_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Verteidigen: %1", (_x getVariable ["name", str _forEachIndex])], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "defend", true] call bis_fnc_taskCreate;
-
+      "CFOR-Koalition"
     };
     case ((_score < 5) && (_score > -5)) : {
-      /*
-        Independent
-        - Zu bestimmendes Symbol
-        Die Ortschaft benötigt humanitäre Hilfe, wenn ihr letztes Gefecht nicht lange her ist (<12 Server-Restarts)
-        Aufbau-Tasks gibt es bei zerstörten Gebäuden in der Zone
-        Sonstige Hilfsgüter braucht es bei schlechter humanitärer Lage
-
-      */
-      [true, format ["prt_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Patrouille: %1", (_x getVariable ["name", str _forEachIndex])], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "danger", true] call bis_fnc_taskCreate;
-
+      "Milizen"
     };
     case (_score <= -5) : {
-      /*
-        Attack Symbol
-        Opfor
-        Die Ortschaft wird vom Feind kontrolliert und muss freigekämpft werden
-        Verschiedene Szenarien möglich:
-          1) Feind hat Stellung gehärtet und hat ein MHQ dort
-          2) Feind nutzt das Gebiet als Nachschubposten
-          3) Feind hat das Gebiet lediglich besetzt aber nicht gehärtet
-      */
-      [true, format ["attack_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Erobern: %1", (_x getVariable ["name", str _forEachIndex])], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "attack", true] call bis_fnc_taskCreate;
+      "Chedaken"
     };
     default {
-
+      "Milizen"
     };
 
   };
+  //villages pushBack [_i, false, _center, [_tension, _humanitarian, _ied], 0, [], [], _decoratives, _name, _rad, _polygon, _housepositions, _chiefshouse, -1, timestamp, []];
+  private _tension = (((villages select _forEachIndex) select 3) select 0);
+  private _iedlage = switch (true) do {
+
+    case (_tension >= 55) : {
+      parseText "<t color='#ff3300'>Hoch</t>"
+    };
+    case ((_tension < 55) && (_tension > 20)) : {
+      parseText "<t color='#ffff00'>Mittel</t>"
+    };
+    case (_tension <= 20) : {
+      parseText "<t color='#00ff00'>Niedrig</t>"
+    };
+    default {
+      parseText "<t color='#ff0000'>Hoch</t>"
+    };
+
+  };
+  private _humanitarian = (((villages select _forEachIndex) select 3) select 1);
+  private _humanitaerelage = switch (true) do {
+
+    case (_humanitarian >= 75) : {
+      //parseText "<t color='#00ff00'>Gut</t>"
+      parseText "<t color='#00ff00'>Gut</t>"
+    };
+    case ((_humanitarian < 75) && (_humanitarian > 25)) : {
+      parseText "<t color='#ffff00'>Mittelmässig</t>"
+    };
+    case (_humanitarian <= 25) : {
+      parseText "<t color='#ff3300'>Schlecht</t>"
+    };
+    default {
+      parseText "<t color='#ffff00'>Mittelmässig</t>"
+    };
+
+  };
+  private _auftrag = switch (true) do {
+
+    case (_score >= 5) : {
+      "Halten"
+    };
+    case ((_score < 5) && (_score > -5)) : {
+      "Patrouillieren"
+    };
+    case (_score <= -5) : {
+      "Nehmen"
+    };
+    default {
+      "Patrouillieren"
+    };
+
+  };
+  [true, format ["objekt_%1", (_x getVariable ["name", str _forEachIndex])], [format ["Kontrolliert durch: %1<br/>IED Lage: %2<br/>Humanitäre Lage: %3<br/><br/>Gegenwärtiger Auftrag: %4", _partei, _iedlage, _humanitaerelage, _auftrag], format ["%1", (_x getVariable ["name", str _forEachIndex])], "Testmarker"], (_x getVariable ["center", [0,0,0]]), "CREATED", -1, false, "default", true] call bis_fnc_taskCreate;
+
+  //Todo: Haus des Chefs zeigen
+  //Todo: Letzte Patrouille zeigen
+
+
 
 } forEach commy_sectors;
+
 
 server_init_done = true;
 publicVariable "server_init_done";

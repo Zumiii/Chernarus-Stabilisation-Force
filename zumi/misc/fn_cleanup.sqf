@@ -28,7 +28,7 @@ private _schrott = (
      _spieler pushBack _x;
    };
  } forEach _entities;
-  if (count _spieler == 0) then {
+  if ((count _spieler == 0) && (_x getVariable ["kann_weg", true])) then {
     deleteVehicle _x;
   };
 } forEach _schrott;

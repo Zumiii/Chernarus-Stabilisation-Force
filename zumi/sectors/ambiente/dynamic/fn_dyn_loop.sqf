@@ -7,13 +7,14 @@ if !isServer exitWith {};
 
 params ["_positions","_dynarray"];
 
+_players = [] call cba_fnc_players;
 
 for "_i" from 0 to (count _dynarray)-1 do {
   (_dynarray select _i) params ["_id","_aktiv","_posi","_ziel","_element","_grpID","_veh",["_befehl", []]];
   _element params ["_fzg","_side","_fullcrew","_markertype","_markercolor","_art"];
   if (_aktiv) then {
     (_dynarray select _i) set [2, position (leader _grpID)];
-    if (count ([_posi, 2100, [west,civilian,east,resistance], ["CAManBase","LandVehicle","Helicopter"]] call zumi_fnc_nahe_spieler) == 0) then {
+    if (count ([_posi, 1900, [west,civilian,east,resistance], ["CAManBase","LandVehicle","Helicopter"]] call zumi_fnc_nahe_spieler) == 0) then {
       _grpID call CBA_fnc_deleteEntity;
       _veh call CBA_fnc_deleteEntity;
       (_dynarray select _i) set [1, false];
@@ -42,7 +43,7 @@ for "_i" from 0 to (count _dynarray)-1 do {
       };
     };
   } else {
-    if (count ([_posi, 1900, [west], ["CAManBase","LandVehicle","Helicopter"]] call zumi_fnc_nahe_spieler) >= 1 &&
+    if (count ([_posi, 1700, [west], ["CAManBase","LandVehicle","Helicopter"]] call zumi_fnc_nahe_spieler) >= 1 &&
       (_posi distance2d (getmarkerPos "respawn_west") > 1000) && (count ([_posi, 1600, [west,civilian,east,resistance],["CAManBase","LandVehicle","Air"]] call zumi_fnc_nahe_spieler) == 0)
     ) then {
       if ((patcounter <= max_spawns) && !((_posi isFlatEmpty [12, -1, 0.35, 3]) isEqualto []) && ({(_posi distance2d (_x select 2)) < 25} count (_dynarray select {!((_x select 2) isEqualTo _posi)}) < 1)) then {

@@ -14,56 +14,56 @@ _element params [["_fzg", []], ["_side", "east"], ["_fullcrew", []], ["_markerty
 _befehl params ["_neuziel", "_alter_befehl"];
 
 private _order = if (_neuziel isEqualTo [0,0,0]) then {
-  _alter_befehl params [["_do_until", cba_missionTime], ["_waypointscript", ""]];
+_alter_befehl params [["_do_until", cba_missionTime], ["_waypointscript", ""]];
 
-  //If the order is old, give a new one
-  _temp_order = if (_do_until <= cba_missionTime) then {
-    switch _art do {
-      case "miliz" : {
-        //MOVE, PATROL, can garrison, dountil
-        selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, ""], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
-      };
-      case "tak" : {
-        //MOVE, PATROL, can garrison, dountil
-        selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, ""], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
-      };
-      case "pol" : {
-        //MOVE, PATROL, No garrison, dountil
-        selectRandom [[selectRandom [300, 900, 1200], "PATROL"], [0, ""], [selectRandom [300, 900, 1200], "DEFEND"]]
-      };
-      case "mil" : {
-        selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [0, ""], [selectRandom [900, 1800, 2400], "DEFEND"]]
-      };
-      default {
-        //Move, no script, no garrison, no "do until"
-        [0, ""]
-      };
+//If the order is old, give a new one
+_temp_order = if (_do_until <= cba_missionTime) then {
+  switch _art do {
+    case "miliz" : {
+      //MOVE, PATROL, can garrison, dountil
+      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, "MOVE"], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
     };
-  } else {
-    [_do_until, _waypointscript];
+    case "tak" : {
+      //MOVE, PATROL, can garrison, dountil
+      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, "MOVE"], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
+    };
+    case "pol" : {
+      //MOVE, PATROL, No garrison, dountil
+      selectRandom [[selectRandom [300, 900, 1200], "PATROL"], [0, "MOVE"], [selectRandom [300, 900, 1200], "DEFEND"]]
+    };
+    case "mil" : {
+      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [0, "MOVE"], [selectRandom [900, 1800, 2400], "DEFEND"]]
+    };
+    default {
+      //Move, no script, no garrison, no "do until"
+      [0, "MOVE"]
+    };
   };
-  [cba_missionTime + (_temp_order select 0), _temp_order select 1]
+} else {
+  [_do_until, _waypointscript];
+};
+[cba_missionTime + (_temp_order select 0), _temp_order select 1]
 
 } else {
   _temp_order = switch _art do {
     case "miliz" : {
       //MOVE, PATROL, can garrison, dountil
-      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, ""], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
+      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, "MOVE"], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
     };
     case "tak" : {
       //MOVE, PATROL, can garrison, dountil
-      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, ""], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
+      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [selectRandom [900, 1800, 2400], "GARRISON"], [0, "MOVE"], [selectRandom [900, 1800, 2400], "DEFEND"], [selectRandom [300,600], "SAD"]]
     };
     case "pol" : {
       //MOVE, PATROL, No garrison, dountil
-      selectRandom [[selectRandom [300, 900, 1200], "PATROL"], [0, ""], [selectRandom [300, 900, 1200], "DEFEND"]]
+      selectRandom [[selectRandom [300, 900, 1200], "PATROL"], [0, "MOVE"], [selectRandom [300, 900, 1200], "DEFEND"]]
     };
     case "mil" : {
-      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [0, ""], [selectRandom [900, 1800, 2400], "DEFEND"]]
+      selectRandom [[selectRandom [600, 1200, 1800], "PATROL"], [0, "MOVE"], [selectRandom [900, 1800, 2400], "DEFEND"]]
     };
     default {
       //Move, no script, no garrison, no "do until"
-      [0, ""]
+      [0, "MOVE"]
     };
   };
   [cba_missionTime + (_temp_order select 0), _temp_order select 1]
@@ -79,7 +79,7 @@ if !(_active) exitWith {
 
 
 //Set Orders if active
-if (!(isNull _grpID)) then {
+if !(isNull _grpID) then {
   _grpID setVariable ["has_orders", _order select 0, true];
 };
 
