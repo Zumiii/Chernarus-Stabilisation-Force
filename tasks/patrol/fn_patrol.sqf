@@ -13,7 +13,7 @@ params ["_task", "_taskParent", "_taskpos", "_description", "_sector"];
 /*
   Variablen redefinieren
 */
-_id = (commy_sectors find _sector);
+_id = commy_sectors find _sector;
 /*
   Maintaskerstellung
 */
@@ -22,7 +22,7 @@ _id = (commy_sectors find _sector);
 [
 	{
 		params ["_args","_handle"];
-    _args params ["_zeitansatz", "_id"];
+    _args params ["_zeitansatz", "_id", "_sector", "_task"];
     if (cba_missionTime >= _zeitansatz) exitWith {
       [_task,"FAILED"] call BIS_fnc_taskSetState;
       [_handle] call CBA_fnc_removePerFrameHandler;
@@ -43,7 +43,7 @@ _id = (commy_sectors find _sector);
 		};
 	},
 	5,
-	[cba_missionTime + _zeitansatz, _id, _sector]
+	[cba_missionTime + _zeitansatz, _id, _sector, _task]
 ] call CBA_fnc_addPerFrameHandler;
 
 

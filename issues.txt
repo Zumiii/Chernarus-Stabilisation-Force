@@ -1,0 +1,15 @@
+
+
+Gesprächsaufklärung ändern
+
+Patrouillen-Task
+- Funktionalität
+- Assigned - Fnc mi Event versehen
+- Nachträgliches assignen bei Sektoraktivierung
+
+Ortschaften
+- Lage anders anzeigen, so dass keine Verwirrung herrscht
+
+Dynamic
+
+Wegpunkte nocher immer das Problem 

@@ -16,7 +16,7 @@ showGPS			= 1;
 showCompass		= 1;
 showWatch		= 1;
 cba_settings_hasSettingsFile = 1;
-
+dev = "Zumi";
 
 
 author		= "[PzGrenBtl 402]  Zumi";

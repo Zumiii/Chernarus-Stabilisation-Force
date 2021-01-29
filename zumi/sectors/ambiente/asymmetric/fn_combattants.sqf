@@ -40,9 +40,9 @@ _situation params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
       [_unit, _spawnpos, 0, "MOVE", "SAFE", "GREEN", "LIMITED", "STAG COLUMN", "", [45, 60, 90]] call CBA_fnc_addWaypoint;
       {
         _x params ["_pos","_dir","_class"];
-        [_unit, _pos getPos [2 + (floor (random 20)), _dir] , 0, "MOVE", "SAFE", "GREEN", "LIMITED", "STAG COLUMN", "count ([this call CBA_fnc_getPos, 50, east, 4] call zumi_fnc_meldungen) >= 1", "this call zumi_fnc_rearm", [5, 15, 25]] call zumi_fnc_addWaypoint;
+        [_unit, _pos getPos [2 + (floor (random 20)), _dir] , 0, "MOVE", "SAFE", "GREEN", "LIMITED", "STAG COLUMN", "count ([this call CBA_fnc_getPos, 150, east, 2] call zumi_fnc_meldungen) >= 1", "this call zumi_fnc_rearm", [5, 15, 25]] call zumi_fnc_addWaypoint;
       } forEach ([_decoratives, 2] call CBA_fnc_selectRandomArray);
-      [_unit, _spawnpos, 0, "CYCLE", "SAFE", "GREEN", "LIMITED", "STAG COLUMN", "count ([this call CBA_fnc_getPos, 50, east, 4] call zumi_fnc_meldungen) >= 1", "this call zumi_fnc_rearm"] call zumi_fnc_addWaypoint;
+      [_unit, _spawnpos, 0, "CYCLE", "SAFE", "GREEN", "LIMITED", "STAG COLUMN", "count ([this call CBA_fnc_getPos, 50, east, 2] call zumi_fnc_meldungen) >= 1", "this call zumi_fnc_rearm"] call zumi_fnc_addWaypoint;
     };
   };
 

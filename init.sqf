@@ -22,7 +22,7 @@ west setFriend [independent, 0];
 west setFriend [civilian, 1];
 west setFriend [east, 0];
 civilian setFriend [independent, 1];
-civilian setFriend [west, 1];
+civilian setFriend [east, 1];
 civilian setFriend [west, 1];
 east setFriend [independent, 0];
 east setFriend [civilian, 1];

@@ -16,7 +16,7 @@ player setVariable ["ACE_canMoveRallypoint", false];
     check_in_db = [_player, _clientOwner, _PlayerUID, _name, _insignia];
     publicVariableServer "check_in_db";
   },
-  [player, clientOwner, getPlayerUID player, name player, "alpha_1_1_private"]
+  [player, clientOwner, getPlayerUID player, name player, ""]
 ] call CBA_fnc_waitUntilAndExecute;
 
 

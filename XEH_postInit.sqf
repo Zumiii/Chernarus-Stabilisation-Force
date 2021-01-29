@@ -1,6 +1,7 @@
 
 if (hasInterface) then {
 
+	/*
 	[{
       (_this select 0) params ["_iterator"];
       if (_iterator >= 5) then {
@@ -18,6 +19,8 @@ if (hasInterface) then {
         _unit setVariable ["ACE_canMoveRallypoint", false];
       };
   }, 1, [0]] call CBA_fnc_addPerFrameHandler;
+
+	*/
 
 	["zumi_interaction_add_to_class", {
 		params ["_klasse", "_interaktion", "_typ", "_parentpath", ["_inheritance", false]];

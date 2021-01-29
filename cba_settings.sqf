@@ -259,7 +259,7 @@ ace_pylons_enabledForZeus = true;
 ace_pylons_enabledFromAmmoTrucks = true;
 force force ace_pylons_rearmNewPylons = false;
 force force ace_pylons_requireEngineer = false;
-force force ace_pylons_requireToolkit = true;
+force force ace_pylons_requireToolkit = false;
 force force ace_pylons_searchDistance = 15;
 force force ace_pylons_timePerPylon = 5;
 
@@ -446,7 +446,7 @@ acre_sys_core_premixGlobalVolume = 2;
 force force acre_sys_core_revealToAI = 1;
 acre_sys_core_spectatorVolume = 1;
 force force acre_sys_core_terrainLoss = 0.5;
-force acre_sys_core_ts3ChannelName = "";
+force acre_sys_core_ts3ChannelName = "A3 Raum 1";
 force acre_sys_core_ts3ChannelPassword = "";
 acre_sys_core_ts3ChannelSwitch = true;
 acre_sys_core_unmuteClients = true;
