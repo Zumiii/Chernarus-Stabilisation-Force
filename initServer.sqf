@@ -175,7 +175,7 @@ if ((count _bestellungen) > 0) then {
 publicVariable "bestellungen";
 
 //Villages
-[] call zumi_fnc_init_villages;
+[] call zumi_fnc_init_sectors;
 
 //Starte Tasks
 [] call zumi_fnc_maintask_master;

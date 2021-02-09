@@ -63,6 +63,10 @@ class zumi_fncs {
 		class set_decoratives;
 		class villages_loop;
 		class bonus_malus;
+		class init_sectors;
+		class sectors_loop;
+		class spawn_grps;
+		class spawn_obj;
 	};
 
 	class gefechtsauftraege {

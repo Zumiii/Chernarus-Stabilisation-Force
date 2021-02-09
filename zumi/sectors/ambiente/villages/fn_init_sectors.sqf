@@ -37,9 +37,30 @@ for "_i" from 0 to (count commy_sectors) - 1 do {
   };
   private _decoratives = [_posarray, 1] call zumi_fnc_set_decoratives;
   villages pushBack [_i, false, _center, [_tension, _humanitarian, _ied], 0, [], [], _decoratives, _name, _rad, _polygon, _housepositions, _chiefshouse, -1, timestamp, []];
+
+  //Set Sector Variables
+
+  _sector setVariable ["id", _i];
+  _sector setVariable ["players_in_sector", 0];
+  _sector setVariable ["securityparams", [_tension, _humanitarian, _ied]];
+  _sector setVariable ["indicator", 0];
+  _sector setVariable ["groups", []];
+  _sector setVariable ["objects", []];
+  _sector setVariable ["decoratives", _decoratives];
+  _sector setVariable ["housepositions", _housepositions];
+  _sector setVariable ["chiefshouse", _chiefshouse];
+  _sector setVariable ["task", -1];
+  _sector setVariable ["timestamp", timestamp];
+  _sector setVariable ["intel", []];
+
+
+
 };
 
+[MissionconfigFile >> "Sector_Statemachine"] call CBA_statemachine_fnc_createFromConfig;
+//CBA_statemachine_stateMachines pushBack stateMachine;
 
-[villages] call zumi_fnc_villages_loop;
+
+[commy_sectors] call zumi_fnc_sectors_loop;
 
 [phase, villages] call zumi_fnc_init_dyn;

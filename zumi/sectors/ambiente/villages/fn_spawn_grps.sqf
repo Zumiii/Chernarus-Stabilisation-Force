@@ -1,7 +1,27 @@
-if !isServer exitWith {};
+//if !isServer exitWith {};
 
-params ["_pos", "_housepositions", "_chiefshouse", "_rad", "_situation", "_id", "_decoratives", "_task"];
-_situation params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
+params ["_sector"];
+
+private _active = _sector getVariable ["active", false];
+private _center = _sector getVariable ["center", [0,0,0]];
+private _polygon = _sector getVariable ["polygon", [[0,0,0],[0,0,1],[0,1,0]]];
+private _rad = _sector getVariable ["radius", 200];
+private _name = _sector getVariable ["name", "Test"];
+private _score = _sector getVariable ["score", -15];
+private _id = _sector getVariable ["id", _i];
+private _securityparams = _sector getVariable ["securityparams", [100, 100, true]];
+private _indicator = _sector getVariable ["indicator", 0];
+private _groups = _sector getVariable ["groups", []];
+private _objects = _sector getVariable ["objects", []];
+private _decoratives = _sector getVariable ["decoratives", []];
+private _housepositions = _sector getVariable ["housepositions", []];
+private _chiefshouse = _sector getVariable ["chiefshouse", [0,0,0]];
+private _task = _sector getVariable ["task", -1];
+private _timestamp = _sector getVariable ["timestamp", timestamp];
+private _intel = _sector getVariable ["intel", []];
+private _players_in_sector = _sector getVariable ["players_in_sector", []];
+
+_securityparams params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
 
 
 _intel = ["Intel","Gather Information",["\A3\ui_f\data\igui\cfg\simpleTasks\types\listen_CA.paa", "##a6ff4d"],

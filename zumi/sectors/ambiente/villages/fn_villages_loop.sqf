@@ -30,7 +30,7 @@ for "_i" from 0 to (count _villages) - 1 do {
       (villages select _i) set [4, cba_missiontime];
       (commy_sectors select _i) setVariable ["active", true, true];
       //Spawn Civilians and Combattants
-      private _groups = [_pos, _housepositions, _chiefshouse, _pos, _rad, _tension, _id, _decoratives, _task] call zumi_fnc_citizens;
+      private _groups = [_pos, _housepositions, _chiefshouse, _rad, _tension, _id, _decoratives, _task] call zumi_fnc_citizens;
       private _allgroups = [_pos, _housepositions, _groups, _situation, _id, _decoratives] call zumi_fnc_combattants;
       (villages select _i) set [5, _allgroups];
 

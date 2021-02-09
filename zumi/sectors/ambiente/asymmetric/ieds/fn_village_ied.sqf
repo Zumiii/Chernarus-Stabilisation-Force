@@ -1,22 +1,28 @@
 if !isServer exitWith {};
 
 
-params ["_position", "_status", "_obj", "_id", "_rad"];
+params ["_sector"];
+
+private _rad = _sector getVariable ["radius", 200];
+private _id = _sector getVariable ["id", _i];
+private _securityparams = _sector getVariable ["securityparams", [100, 100, true]];
+private _objects = _sector getVariable ["objects", []];
+_securityparams params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
 
 private ["_ladung","_ladungen"];
 
 
 _iedtype = switch (true) do {
-  case (_status >= 0 && _status < 25) : {
+  case (_tension >= 0 && _tension < 25) : {
       (["DemoCharge_Remote_Ammo","ACE_IEDUrbanSmall_Range_Ammo","ACE_IEDLandSmall_Range_Ammo"] call BIS_fnc_SelectRandom);
   };
-  case (_status >= 25 && _status < 50) : {
+  case (_tension >= 25 && _tension < 50) : {
     (["DemoCharge_Remote_Ammo","SatchelCharge_Remote_Ammo","ACE_IEDUrbanSmall_Range_Ammo","ACE_IEDLandSmall_Range_Ammo"] call BIS_fnc_SelectRandom);
   };
-  case (_status >= 50 && _status < 75) : {
+  case (_tension >= 50 && _tension < 75) : {
     (["ACE_IEDUrbanSmall_Range_Ammo","SatchelCharge_Remote_Ammo","ACE_IEDLandSmall_Range_Ammo","ACE_IEDLandBig_Range_Ammo","DemoCharge_Remote_Ammo"] call BIS_fnc_SelectRandom);
   };
-  case (_status >= 75 && _status <= 100) : {
+  case (_tension >= 75 && _tension <= 100) : {
     (["SatchelCharge_Remote_Ammo","ACE_IEDUrbanBig_Range_Ammo","ACE_IEDLandBig_Range_Ammo","ACE_IEDLandSmall_Range_Ammo","ACE_IEDUrbanSmall_Range_Ammo","DemoCharge_Remote_Ammo"] call BIS_fnc_SelectRandom);
   };
 };
@@ -34,9 +40,9 @@ _grps = switch _iedtype do {
   case "SatchelCharge_Remote_Ammo" ;
   case "DemoCharge_Remote_Ammo" : {
     if (random 1 >= 0.5) then {
-      [_obj, _iedtype, true, _id] call zumi_fnc_carbomb;
+      [_objects, _iedtype, true, _id] call zumi_fnc_carbomb;
     } else {
-      [_obj, _iedtype, false, _id] call zumi_fnc_carbomb
+      [_objects, _iedtype, false, _id] call zumi_fnc_carbomb
     };
   };
   default {[grpNull]};

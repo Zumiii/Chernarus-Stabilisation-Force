@@ -71,6 +71,8 @@ class CfgSounds {
 	};
 };
 
+#include "stateMachine.hpp"
+
 #include "data\dialogs.hpp"
 class CfgNotifications {
 	#include "data\cfgNotifications.hpp"

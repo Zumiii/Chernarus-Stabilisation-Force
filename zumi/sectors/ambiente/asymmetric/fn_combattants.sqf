@@ -1,7 +1,26 @@
 if !isServer exitWith {};
 
-params ["_pos", "_housepositions", "_grps", "_situation", "_id", "_decoratives"];
-_situation params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
+params ["_sector"];
+
+private _active = _sector getVariable ["active", false];
+private _center = _sector getVariable ["center", [0,0,0]];
+private _polygon = _sector getVariable ["polygon", [[0,0,0],[0,0,1],[0,1,0]]];
+private _rad = _sector getVariable ["radius", 200];
+private _name = _sector getVariable ["name", "Test"];
+private _score = _sector getVariable ["score", -15];
+private _id = _sector getVariable ["id", _i];
+private _securityparams = _sector getVariable ["securityparams", [100, 100, true]];
+_securityparams params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
+private _indicator = _sector getVariable ["indicator", 0];
+private _groups = _sector getVariable ["groups", []];
+private _objects = _sector getVariable ["objects", []];
+private _decoratives = _sector getVariable ["decoratives", []];
+private _housepositions = _sector getVariable ["housepositions", []];
+private _chiefshouse = _sector getVariable ["chiefshouse", [0,0,0]];
+private _task = _sector getVariable ["task", -1];
+private _timestamp = _sector getVariable ["timestamp", timestamp];
+private _intel = _sector getVariable ["intel", []];
+private _players_in_sector = count (_players select {_x distance2d _center < ((4 * _rad) + 200)});
 
 
 //Find civs that are uncooperative and make them potentially hostile
@@ -17,8 +36,8 @@ _situation params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
     _unit allowfleeing 0;
     _jip_str = ["ace_common_setCaptive", [_unit, 1]] call CBA_fnc_globalEventJIP;
     [_jip_str, _unit] call CBA_fnc_removeGlobalEventJIP;
-    _grps deleteAt (_grps find _oldgrp);
-    _grps pushBack _grp;
+    _groups deleteAt (_groups find _oldgrp);
+    _groups pushBack _grp;
     private _house = _unit getVariable ["house", objNull];
     //private _inteldetails = (villages select _id) select 15;
     private _inteldetails = [getPosATL _house, "Discovered weapons cache", "hd_warning"];
@@ -47,10 +66,10 @@ _situation params [["_tension", 50],["_humanitarian", 50],["_ied", false]];
   };
 
 
-} forEach (_grps select {((leader _x) getVariable ["story", 1]) != 10});
+} forEach (_groups select {((leader _x) getVariable ["story", 1]) != 10});
 
 if ((random (linearconversion [0, 100, _tension, 0, 1, true])) < 0.5) exitWith {
-  _grps;
+  _groups;
 };
 
 private _grp = createGroup east;
@@ -60,6 +79,6 @@ _unit setPosATL _hpos;
 _unit setDir (random 360);
 _unit setVariable ["spawn_pos", _hpos, true];
 [_unit, getPosATL _unit, 0] call zumi_fnc_c4_vest;
-_grps pushBack _grp;
+_groups pushBack _grp;
 
-_grps;
+_groups;
